@@ -1,0 +1,86 @@
+<!--
+<div class="p-grid" style="  margin-left: 30px; margin-top: 20px">
+    <div class="card p-col-11" style="background-color: gainsboro; margin-left: 30px; margin-top: 20px">
+        <h1 style="text-align: center; margin-bottom: 30px; color: black">Registration Admin</h1>
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-6">
+                <label for="firstname6" style="color: black;">Firstname</label>
+                <input [(ngModel)]="selected.prenom" id="firstname6" pInputText type="text">
+                <small *ngIf="submitted && !selected.prenom" class="p-invalid">FirstName is required.</small>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="lastname6" style="color: black;">Lastname</label>
+                <input [(ngModel)]="selected.nom" id="lastname6" pInputText type="text">
+                <small *ngIf="submitted && !selected.nom" class="p-invalid">LastName is required.</small>
+            </div>
+            <div class="p-field p-col-12">
+                <label for="address" style="color: black;">Address</label>
+                <textarea [(ngModel)]="selected.addresse" id="address" pInputTextarea rows="4" type="text"></textarea>
+            </div>
+
+            <div class="p-field p-col-12 p-md-6">
+                <label for="integeronly" style="color: black;">Number phone</label>
+                <input [(ngModel)]="selected.numero" id="integeronly" pInputText>
+                <small *ngIf="submitted && !selected.numero" class="p-invalid">Lastname is required.</small>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="loginn" style="color: black;">Username</label>
+                <input [(ngModel)]="selected.login" id="loginn" pInputText type="text">
+                <small *ngIf="submitted && !selected.login" class="p-invalid">Username is required.</small>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="Paswrd" style="color: black;">Password</label>
+                <input [(ngModel)]="selected.password" id="Paswrd" pInputText type="password">
+                <small *ngIf="submitted && !selected.password" class="p-invalid">Password is required.</small>
+
+            </div>
+        </div>
+        <p-button (click)="save()" [routerLink]="submitted? ['']: ['/inscriptionAdmin']" icon="pi pi-check" iconPos="right" label="Submit"
+                  style="float: right"></p-button>
+
+
+    </div>
+</div>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="main">
+
+    <div class="container">
+        <form method="POST" class="appointment-form" id="appointment-form">
+            <h2>Registration form</h2>
+
+            <div class="form-group-1">
+                <input type="text" name="Firstname" id="Firstname" placeholder="Firstname" [(ngModel)]="selected.prenom" required />
+                <input type="text" name="name" id="name" placeholder="Lastname" [(ngModel)]="selected.nom" required />
+                <input type="password" name="Password" id="Password" placeholder="Password" required [(ngModel)]="selected.password"/>
+                <input type="text" name="UserName" id="UserName" placeholder="UserName" required [(ngModel)]="selected.login"/>
+                <input type="tel" name="phone_number" id="phone_number" placeholder="Phone number" required [(ngModel)]="selected.numero"/>
+                <input type="text" name="Address" id="Address" placeholder="Address" required [(ngModel)]="selected.addresse"/>
+                <div  style="visibility: hidden; height: 0; width: 0;" id="log-pass" >
+                    <p-message severity="error" text="Username or Password invalid" autoWidth="false" ></p-message></div>
+            </div>
+            <div class="form-submit" style="margin-top: 10px">
+                <input type="submit" name="submit" id="submit" class="submit" value="Submit" (click)="save()" />
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

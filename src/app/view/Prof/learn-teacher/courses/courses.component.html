@@ -1,0 +1,51 @@
+<div class="p-grid list-demo">
+    <div class="p-grid ">
+
+        <div class="p-col">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between  "
+                 style="text-align: center; padding-bottom: 3%">
+                <h1 class="p-m-0">Courses</h1>
+
+            </div>
+            <p-toast></p-toast>
+            <div class="card" style="background-color: gainsboro;">
+
+                <p-table [(selection)]="itemscours" [columns]="cols" [globalFilterFields]="['libelle','sectionList']" [paginator]="true"
+                         [rowHover]="true"
+                         [rows]="10" [showCurrentPageReport]="true" [value]="selectescours"
+                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                         dataKey="id"
+                         styleClass="p-datatable-customers">
+                    <ng-template pTemplate="header">
+                        <tr>
+
+                            <th pSortableColumn="libelle">General Courses
+                                <p-sortIcon field="libelle"></p-sortIcon>
+                            </th>
+                            <th>Number of sections</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template let-cours pTemplate="body">
+                        <tr>
+
+                            <td (click)="viewType(cours)" [style.color]="(cours.etatCours =='Finish')? 'green':'blue'">
+                                <u style="cursor: pointer">{{cours.libelle}}</u></td>
+                            <td>{{cours.nombreSectionFinalise + cours.nombreSectionEnCours}}</td>
+
+                        </tr>
+
+
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total there are {{selectescours ? selectescours.length : 0 }} items.
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+        </div>
+    </div>
+    <app-choose-view></app-choose-view>
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+</div>

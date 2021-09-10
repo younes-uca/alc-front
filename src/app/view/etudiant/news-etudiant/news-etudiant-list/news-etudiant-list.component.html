@@ -1,0 +1,21 @@
+<h5 style="width: 500px">Company News</h5><br>
+<div class="card">
+    <p-dataView [value]="items">
+        <ng-template let-news pTemplate="listItem">
+            <div class="p-grid">
+                <div class="p-col-4">
+                    <div class="box">
+                        <img src="{{news.image}}">
+                        <h4>{{news.libelle}}</h4>
+                        <h6>{{news.dateDebut}}</h6>
+                        <button (click)="view(news)" class="p-button-rounded p-button-success p-mr-2" pButton
+                                pRipple></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+    <app-news-etudiant-view></app-news-etudiant-view>
+</div>
+
+

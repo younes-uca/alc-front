@@ -1,0 +1,39 @@
+<div (click)="onMenuClick($event)" class="layout-menu-container">
+    <div class="menu-scroll-content">
+        <div *ngIf="app.inlineUser && !appMain.isHorizontal()" class="layout-profile">
+            <a (click)="appMain.onProfileClick($event)" class="layout-profile-button">
+                <img alt="roma-layout" src="assets/layout/images/avatar.png">
+                <div class="layout-profile-userinfo">
+                    <span class="layout-profile-name">Arlene Welch</span>
+                    <span class="layout-profile-role">Design Ops</span>
+                </div>
+            </a>
+            <ul [@inline]="!appMain.isSlim() ? appMain.inlineUserMenuActive ? 'visibleAnimated' : 'hiddenAnimated' : appMain.inlineUserMenuActive ? 'visible' : 'hidden'"
+                class="layout-profile-menu">
+                <li>
+                    <a href="#" pRipple>
+                        <i class="pi pi-fw pi-user"></i><span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" pRipple>
+                        <i class="pi pi-fw pi-cog"></i><span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" pRipple>
+                        <i class="pi pi-fw pi-envelope"></i><span>Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" pRipple>
+                        <i class="pi pi-fw pi-bell"></i><span>Notifications</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <ul class="layout-menu">
+            <li *ngFor="let item of model; let i = index;" [index]="i" [item]="item" [root]="true" app-menuitem></li>
+        </ul>
+    </div>
+</div>

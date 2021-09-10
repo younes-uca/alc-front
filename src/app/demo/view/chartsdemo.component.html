@@ -1,0 +1,34 @@
+<div class="p-grid p-fluid">
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5 class="centerText">Linear Chart</h5>
+            <p-chart [data]="lineData" type="line"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Pie Chart</h5>
+            <p-chart [data]="pieData" type="pie"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Polar Area Chart</h5>
+            <p-chart [data]="polarData" type="polarArea"></p-chart>
+        </div>
+    </div>
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5 class="centerText">Bar Chart</h5>
+            <p-chart [data]="barData" type="bar"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Doughnut Chart</h5>
+            <p-chart [data]="pieData" type="doughnut"></p-chart>
+        </div>
+
+        <div class="card">
+            <h5 class="centerText">Radar Chart</h5>
+            <p-chart [data]="radarData" type="radar"></p-chart>
+        </div>
+    </div>
+</div>

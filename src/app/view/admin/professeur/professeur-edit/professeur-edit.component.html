@@ -1,0 +1,47 @@
+<p-dialog [(visible)]="editDialog" [modal]="true" [style]="{width: '450px'}" header="Professor Edit"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input [(ngModel)]="selected.prenom" autofocus id="firstName" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.prenom" class="p-invalid">First Name is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="firstName">Last Name</label>
+            <input [(ngModel)]="selected.nom" autofocus id="lastName" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.nom" class="p-invalid">Last Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="login">Username</label>
+            <input [(ngModel)]="selected.login" autofocus id="login" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.login" class="p-invalid">UserName is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="pass">Password</label>
+            <input [(ngModel)]="selected.password" autofocus id="pass" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.login" class="p-invalid">Password is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="phoneNumber">Phone Number</label>
+            <input [(ngModel)]="selected.numero" autofocus id="phoneNumber" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.numero" class="p-invalid">Phone Number is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input [(ngModel)]="selected.email" autofocus id="email" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.email" class="p-invalid">email is required.</small>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="edit()" class="p-button-text" icon="pi pi-check" label="Edit" pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+

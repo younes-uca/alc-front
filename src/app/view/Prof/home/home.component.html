@@ -1,0 +1,88 @@
+<div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-4 p-md-4 ">
+        <p-card [style]="{width: '100%'}" header="Professor" styleClass="p-card-shadow">
+            <ng-template pTemplate="header" style="  height: 50%;width: 100%">
+                <img alt="Card" src="{{this.serviceUser.prof.image}}" style=" height: 400px;width: 100%">
+            </ng-template>
+            <p>Hello!! {{this.serviceUser.prof.nom}} you can add A student </p>
+            <ng-template pTemplate="footer">
+
+                <button (click)="openCreateEtud()" class="p-button-help" label="Add Student" pButton pRipple
+                        style="background-color: #0C8990" type="button"></button>
+
+            </ng-template>
+        </p-card>
+    </div>
+
+
+    <div class="p-field p-col-4 p-md-4">
+        <p-card [style]="{'width': '100%', 'margin-bottom': '2em','height' : '100%','backgroundColor':'white'}">
+            <ng-template pTemplate="header">
+                <img [style]="{'height': '15rem'}"
+                     alt="Card"
+                     src="https://www.webmarketing-com.com/wp-content/uploads/2020/04/plateforme-formation-en-ligne-e1586212685849.jpg">
+            </ng-template>
+            <ul style=" background-color: white ">
+                <li style=" background-color: white ">
+
+                    <span style="color: darkslateblue; background-color: white ">CURRENT PAY </span>
+                    <h4 style="  background-color: white;">{{this.selectedsalaryVo.nbrSessionGlobale * this.selectedsalaryVo.prof.categorieProf.lessonRate}}
+                        $</h4>
+
+                </li>
+                <li>
+                    <i class="pi pi-chevron-circle-down"></i> <span style="color: darkslateblue">Workload </span>
+
+                    <h4>{{this.selectedsalaryVo.nbrSessionGlobale}} lessons</h4>
+                </li>
+                <li>
+
+                    <span style="color: darkslateblue">PREMIEUM STUDENTS</span>
+                    <h4>{{this.items.length}} STUDENTS</h4>
+
+                </li>
+
+
+            </ul>
+        </p-card>
+    </div>
+    <div class="p-field p-col-4 p-md-4">
+        <p-card [style]="{'width': '100%', 'margin-bottom': '2em','height' : '100%','backgroundColor':'white'}"
+                header="What's News">
+
+            <ul>
+                <li style="height: 60px;color: black">
+                    <span>04 Oct:</span>
+                    <a routerLink="/pages/news-admin" style="margin-left: 30px;color: darkslateblue">Happy Teachers Day
+                        2019</a>
+                </li>
+                <li style="height: 60px;color: black">
+                    <span>31 Juil:</span>
+                    <a routerLink="/pages/news-admin" style="margin-left: 30px;color: darkslateblue">Summer 2019
+                        Champions</a>
+                </li>
+                <li style="height: 60px;color: black">
+                    <span>11 juin:</span>
+                    <a routerLink="/pages/news-admin" style="margin-left: 30px;color: darkslateblue">Webinars for
+                        Teacher</a>
+                </li>
+                <li style="height: 60px;color: black">
+                    <span>31 May:</span>
+                    <a routerLink="/pages/news-admin" style="margin-left: 30px;color: darkslateblue">Summer plan
+                        2019</a>
+                </li>
+                <li style="height: 60px;color: black">
+                    <span>18 April</span>
+                    <a routerLink="/pages/news-admin" style="margin-left: 30px;color: darkslateblue">May Lifehack</a>
+
+                </li>
+
+            </ul>
+
+
+        </p-card>
+        <app-ajout-etudiant></app-ajout-etudiant>
+
+    </div>
+</div>
+

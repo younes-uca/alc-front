@@ -1,0 +1,34 @@
+<p-dialog [(visible)]="viewDialogFaqEtudiantContact" [modal]="true" [style]="{width: '800px', height: '400px'}"
+          styleClass="p-fluid">
+    <ng-template pTemplate="header">
+        <h3>Question</h3>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <p-tabMenu [activeItem]="menu[0]" [model]="menu" id="menu"></p-tabMenu>
+        <div class="box" id="new-question">
+            <p-dropdown [(ngModel)]="selectedType" [options]="types" optionLabel="libelle"></p-dropdown>
+            <textarea [(ngModel)]="question" cols="30" pInputTextarea placeholder="Your Question" rows="5"></textarea>
+            <button (click)="save()" class="p-button-rounded p-button-success p-mr-2" label="Send" pButton
+                    pRipple></button>
+        </div>
+        <div class="box" id="my-questions">
+            <p-tree [value]="nodes">
+                <ng-template let-node pTemplate="default">
+                    <b class="libelle">{{node.label}}</b>
+                </ng-template>
+                <ng-template let-node pTemplate="string">
+                    <b class="description">{{node.label}}</b>
+                </ng-template>
+
+            </p-tree>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+        <button (click)="hideViewDialog()" [routerLink]="['/pages/faq-student-contact-list']" class="p-button-text" icon="pi pi-times" label="View My Question"
+                pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+

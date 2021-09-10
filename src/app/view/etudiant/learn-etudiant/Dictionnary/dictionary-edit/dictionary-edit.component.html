@@ -1,0 +1,25 @@
+<p-dialog [(visible)]="editDialogDict" [modal]="true" [style]="{width: '700px', height:'300px' }"
+          header="Edit Dictionary" styleClass="p-fluid">
+    <ng-template pTemplate="p-field">
+
+        <div class="p-field">
+            <label for="word">Word</label>
+            <input style="font-size: 20px" [(ngModel)]="selected.word" id="word" pInputText type="text"></div>
+        <div class="p-field">
+            <label for="definition">defintion</label>
+            <textarea style="font-size: 20px" [(ngModel)]="selected.definition" id="definition" pInputTextarea type="text"></textarea></div>
+    </ng-template>
+
+
+    <ng-template pTemplate="footer" style="background-color: lavender;">
+        <button (click)="delete(selected.word)" class="p-button-text " icon="pi pi-trash" label="Delete" pButton
+                pRipple></button>
+        <button (click)="edit()" icon="pi pi-check" class="p-button-text" label="Submit" pButton pRipple type="button"></button>
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+
+    </ng-template>
+</p-dialog>
+
+
+

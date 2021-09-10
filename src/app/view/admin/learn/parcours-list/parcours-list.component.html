@@ -1,0 +1,72 @@
+<div class="p-grid ">
+    <div class="p-col">
+        <p-toast></p-toast>
+        <div class="card" style="background-color: gainsboro;">
+            <p-toolbar styleClass="p-mb-4 ">
+                <ng-template pTemplate="left">
+                    <button (click)="openCreateParcours()" class="p-button-success p-mr-2 p-mb-2" icon="pi pi-plus" label="New" pButton
+                            pRipple style="width: 90px"></button>
+                    <button (click)="deleteMultiple()" [disabled]="!itemsparcours || !itemsparcours.length" class="p-button-danger p-mb-2" icon="pi pi-trash" label="Delete"
+                            pButton pRipple></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [(selection)]="selectesparcours" [columns]="cols" [globalFilterFields]="['libelle']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="6" [value]="itemsparcours" dataKey="id">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Manage Parcours</h5>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="libelle">Title
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template let-parcours pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="parcours"></p-tableCheckbox>
+                        </td>
+                        <td>{{parcours.libelle}}</td>
+
+
+                        <td>
+                            <button (click)="editParcours(parcours)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                                    pRipple></button>
+                            <button (click)="FindCours(parcours)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                                    pRipple></button>
+                            <button (click)="delete(parcours)" class="p-button-rounded p-button-danger" icon="pi pi-trash" pButton
+                                    pRipple></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{itemsparcours ? itemsparcours.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-parcours-create></app-parcours-create>
+        <app-parcours-edit></app-parcours-edit>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+

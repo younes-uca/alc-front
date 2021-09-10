@@ -1,0 +1,23 @@
+<p-dialog [(visible)]="createDialogDict" [modal]="true" [style]="{width: '700px', height:'300px' }" header="Dictionary"
+          styleClass="p-fluid">
+    <ng-template pTemplate="p-field">
+
+        <div class="p-field">
+            <label for="word">Word</label>
+            <input  style="font-size: 20px" [(ngModel)]="selectedNow.word" id="word" pInputText type="text"></div>
+        <div class="p-field">
+            <label for="definition">defintion</label>
+            <textarea  style="font-size: 20px" [(ngModel)]="selectedNow.definition" id="definition" pInputTextarea type="text"></textarea></div>
+    </ng-template>
+
+
+    <ng-template pTemplate="footer" style="background-color: lavender;">
+        <button (click)="save()" icon="pi pi-check" class="p-button-text" label="Submit" pButton pRipple type="button"></button>
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+
+    </ng-template>
+</p-dialog>
+
+
+

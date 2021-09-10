@@ -1,0 +1,78 @@
+<p-dialog [(visible)]="createDialog" [modal]="true" [style]="{width: '450px'}" header="Etat Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="p-field">
+            <label for="reference">Ref</label>
+            <input [(ngModel)]="selected.reference" autofocus id="reference" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.reference" class="p-invalid">ref is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="id">Id</label>
+            <input [(ngModel)]="selected.id" autofocus id="id" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.id" class="p-invalid">id is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="username">Username</label>
+            <input [(ngModel)]="selected.username" autofocus id="username" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.username" class="p-invalid">username is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="firstName">FirstName</label>
+            <input [(ngModel)]="selected.firstName" autofocus id="firstName" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.firstName" class="p-invalid">first Name is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="lastName">LastName</label>
+            <input [(ngModel)]="selected.lastName" autofocus id="lastName" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.lastName" class="p-invalid">Last Name is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="nationallite">Nationnalité</label>
+            <input [(ngModel)]="selected.nationallite" autofocus id="nationallite" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.nationallite" class="p-invalid">Nationallité is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="schedule1">Schedule1</label>
+            <input [(ngModel)]="selected.schedule1" autofocus id="schedule1" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.schedule1" class="p-invalid">schedule1 is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="schedule2">Schedule2</label>
+            <input [(ngModel)]="selected.schedule2" autofocus id="schedule2" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.schedule2" class="p-invalid">schedule2 is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="etatNumber">State Number</label>
+            <input [(ngModel)]="selected.etatNumber" autofocus id="etatNumber" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.schedule2" class="p-invalid">etatNumber is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="lastClass">Last Class</label>
+            <input [(ngModel)]="selected.lastClass" autofocus id="lastClass" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.lastClass" class="p-invalid">last Class is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="etat">State</label>
+            <input [(ngModel)]="selected.etat" autofocus id="etat" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.etat" class="p-invalid">schedule2 is required.</small>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+    </ng-template>
+</p-dialog>

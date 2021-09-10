@@ -1,0 +1,109 @@
+:host ::ng-deep {
+
+
+  .product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .product-description {
+    margin: 0 0 1rem 0;
+  }
+
+  .product-category-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+  }
+
+  .product-category {
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  .product-list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+
+    .product-list-detail {
+      flex: 1 1 0;
+    }
+
+    .p-rating {
+      margin: 0 0 .5rem 0;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+      align-self: flex-end;
+    }
+
+    .product-list-action {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .p-button {
+      margin-bottom: .5rem;
+    }
+  }
+
+  .product-grid-item {
+    margin: .5em;
+    border: 1px solid #dee2e6;
+
+
+    .product-grid-item-top,
+    .product-grid-item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .product-grid-item-content {
+      text-align: center;
+    }
+
+
+  }
+}
+
+tr.timeline {
+  list-style-type: none;
+  position: relative;
+}
+
+tr.timeline:before {
+  content: '            ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 35px;
+  width: 2px;
+  height: 100%;
+  z-index: 200;
+}
+
+tr.timeline > li {
+  margin: 25px 35px;
+  padding-left: 25px;
+
+}
+
+tr.timeline > li:before {
+  content: '            ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #22c0e8;
+  left: 30px;
+  width: 10px;
+  height: 10px;
+  z-index: 200;
+}

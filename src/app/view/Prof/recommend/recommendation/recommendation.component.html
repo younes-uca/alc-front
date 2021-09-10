@@ -1,0 +1,34 @@
+<div class="card" style="background-color: gainsboro;height: 500px">
+    <h5 style="margin-left: 180px">Recommendation Teacher</h5>
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+            <label for="firstname6">Firstname</label>
+            <input [(ngModel)]="selected.nom" id="firstname6" pInputText type="text">
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <label for="lastname6">Lastname</label>
+            <input [(ngModel)]="selected.prenom" id="lastname6" pInputText type="text">
+        </div>
+        <div class="p-field p-col-12" style="margin-bottom: 30px">
+            <label for="address">Comment</label>
+            <textarea [(ngModel)]="selected.commentaire" id="address" pInputTextarea rows="4" style="height: 200px"
+                      type="text"></textarea>
+        </div>
+
+        <div class="p-field p-col-12 p-md-6">
+            <label for="integeronly">Number phone</label>
+            <input [(ngModel)]="selected.telephone" id="integeronly" pInputText type="text">
+        </div>
+
+        <div class="p-field p-col-12 p-md-6">
+            <label for="email">email</label>
+            <input [(ngModel)]="selected.login" id="email" pInputText type="text">
+        </div>
+
+        <div class="card-footer" style="margin-left: 570px;width: 120px">
+            <button (click)="save()" class="p-button-help" label="Submit" pButton pRipple style="background-color: #0C8990"
+                    type="button"></button>
+
+        </div>
+    </div>
+</div>

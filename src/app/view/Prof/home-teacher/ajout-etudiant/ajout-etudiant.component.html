@@ -1,0 +1,39 @@
+<p-dialog [(visible)]="createDialogEtud" [modal]="true" [style]="{width: '450px'}"
+          header="Etudiant Details" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="nom">LastName</label>
+            <input [(ngModel)]="selected.nom" autofocus id="nom" pInputText required type="text"/>
+            <small class="p-invalid">nom is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="prenom">FirsName</label>
+            <input [(ngModel)]="selected.prenom" autofocus id="prenom" pInputText required type="text"/>
+            <small class="p-invalid">prenom is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="login">Username</label>
+            <input [(ngModel)]="selected.login" autofocus id="login" pInputText required type="text"/>
+            <small class="p-invalid">loginis required.</small>
+        </div>
+        <div class="p-field">
+            <label for="parcours">Parcours</label><br>
+            <select (click)="findAllParcours()" [(ngModel)]="selected.parcours.id" class="btn btn-block btn-outline-light form-control" id="parcours"
+                    name="Parcours" pInputText style=" background-color: gainsboro;margin-left: 5px"
+                    type="text">
+                <option *ngFor="let p of parcoursList" [ngValue]="p.id" selected="selected"> {{p.libelle}}</option>
+
+            </select>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+
+

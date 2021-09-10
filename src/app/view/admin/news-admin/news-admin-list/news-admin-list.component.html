@@ -1,0 +1,98 @@
+<h5 style="width: 500px">Company News</h5><br>
+<p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+        <button (click)="openCreate()" class="p-button-success p-mr-2 p-mb-2" icon="pi pi-plus" label="New" pButton
+                pRipple style="background-color: #0C8990"></button>
+    </ng-template>
+</p-toolbar>
+<!--<div class="card">
+    <p-dataView [value]="items">
+        <ng-template let-news pTemplate="listItem">
+            <div class="p-grid">
+                <div class="p-col-4" >
+                    <div class="box">
+                        <img src="{{news.image}}">
+                        <h4>{{news.libelle}}</h4>
+                        <h6>{{news.dateDebut}}</h6>
+                        <button pButton pRipple class="p-button-rounded p-button-success p-mr-2" (click)="view(news)"></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+    <app-news-admin-view></app-news-admin-view>
+    <app-news-admin-create></app-news-admin-create>
+</div>-->
+<p-table #dt [(selection)]="selected" [paginator]="true" [rowHover]="true"
+         [rows]="10" [showCurrentPageReport]="true" [value]="items"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         dataKey="id" styleClass="p-datatable-customers">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+            <h5 class="p-m-0">News</h5>
+            <!--<span >
+                        <input pInputText type="text"  placeholder="Search By Recommended LastName" [(ngModel)]="recommendVo.nom  " style="margin-right: 5px;width: 250px"/>
+                        <input pInputText type="text"  placeholder="Search By Recommended FirstName" [(ngModel)]="recommendVo.prenom  " style="margin-right: 5px;width: 250px"/>
+                        <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-info " (click)="findByCriteria()" >
+
+                        </button>
+
+                    </span>-->
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="libelle">Titre
+                <p-sortIcon field="student"></p-sortIcon>
+            </th>
+            <th pSortableColumn="date">Date
+                <p-sortIcon field="professor"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateDebut">Start date
+                <p-sortIcon field="dateDebut"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateFin">End date
+                <p-sortIcon field="dateFin"></p-sortIcon>
+            </th>
+            <th pSortableColumn="destinataire">For
+                <p-sortIcon field="duration"></p-sortIcon>
+            </th>
+            <th pSortableColumn="numeroOrdre">Ordre
+                <p-sortIcon field="duration"></p-sortIcon>
+            </th>
+            <th pSortableColumn="description">Description
+                <p-sortIcon field="duration"></p-sortIcon>
+            </th>
+
+        </tr>
+    </ng-template>
+    <ng-template let-news pTemplate="body">
+        <tr>
+            <td>{{news.libelle}}</td>
+            <td>{{news.date}}</td>
+            <td>{{news.dateDebut}}</td>
+            <td>{{news.dateFin}}</td>
+            <td>{{news.destinataire}}</td>
+            <td>{{news.numeroOrdre}}</td>
+            <td>{{news.description}}</td>
+            <td>
+                <button (click)="edit(news)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                        pRipple></button>
+                <button (click)="view(news)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                        pRipple></button>
+                <button (click)="delete(news)" class="p-button-rounded p-button-warning" icon="pi pi-trash" pButton
+                        pRipple></button>
+            </td>
+
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{items ? items.length : 0 }} items.
+        </div>
+    </ng-template>
+</p-table>
+<app-news-admin-view></app-news-admin-view>
+<app-news-admin-create></app-news-admin-create>
+<app-news-admin-edit></app-news-admin-edit>

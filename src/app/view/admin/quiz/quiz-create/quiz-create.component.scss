@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
+
+#quizTitre {
+  font-size: 55px;
+  font-family: Algerian, serif;
+
+  color: white;
+
+}
+
+.reponseLib {
+  text-align: center;
+  margin: auto;
+  font-family: "Chaparral Pro", serif;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+#titleQuiz {
+  color: #252529;
+  text-align: center;
+  //margin: auto;
+  margin-top: 40px;
+  margin-left: -250px;
+  font-family: "Chaparral Pro", serif;
+  font-weight: bold;
+  font-size: 30px;
+
+}
+
+#name-quiz {
+  margin-left: 100px;
+  text-align: center;
+  font-family: "Chaparral Pro", serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+::placeholder {
+  color: #252529;
+}
+
+.labelFormat {
+  font-family: "Chaparral Pro", serif;
+  font-weight: bold;
+  color: black;
+}
+
+.card-header {
+  background-color: black;
+  height: 80px;
+  color: cyan;
+}
+
+#header {
+  margin-left: 35%;
+  margin-right: 80px;
+  font-size: 45px;
+  font-family: Algerian;
+  color: cyan;
+}

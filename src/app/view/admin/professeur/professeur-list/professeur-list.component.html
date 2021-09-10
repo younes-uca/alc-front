@@ -1,0 +1,110 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card" style="background-color: gainsboro">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button (click)="openCreate()" class="p-button-success p-mr-2 p-mb-2" icon="pi pi-plus" label="New" pButton
+                            pRipple style="width: 90px"></button>
+                    <button (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length" class="p-button-danger p-mb-2" icon="pi pi-trash" label="Delete"
+                            pButton pRipple></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [(selection)]="selectes" [columns]="cols" [globalFilterFields]="['reference','total','totalPaye','firstName','lastName','phoneNumber','email']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="10" [showCurrentPageReport]="true" [value]="items"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <div class="p-col"><h5 class="p-m-0">Manage Professors</h5><br>
+                            <span>
+                        <input [(ngModel)]="selected.nom  " pInputText placeholder="Search by LastName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+                        <input [(ngModel)]="selected.prenom  " pInputText placeholder="Search by FirstName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+                        <input [(ngModel)]="selected.login  " pInputText placeholder="Search by UserName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+
+             <i (click)="findByCriteria()" class="pi pi-search"></i>
+
+                        </span></div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="firstName">First Name
+                            <p-sortIcon field="firstName"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="lastName">Last Name
+                            <p-sortIcon field="lastName"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="login">UserName
+                            <p-sortIcon field="login"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="phoneNumber">Phone Number
+                            <p-sortIcon field="phoneNumber"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="email">Email
+                            <p-sortIcon field="email"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="address">Address
+                            <p-sortIcon field="address"></p-sortIcon>
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template let-professor pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="professor"></p-tableCheckbox>
+                        </td>
+                        <td>{{professor.prenom}}</td>
+                        <td>{{professor.nom}}</td>
+                        <td>{{professor.login}}</td>
+                        <td>{{professor.numero}}</td>
+                        <td>{{professor.email}}</td>
+                        <td>{{professor.addresse}}</td>
+
+                        <td>
+                            <button (click)="edit(professor)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                                    pRipple></button>
+                            <button (click)="view(professor)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                                    pRipple></button>
+                            <button (click)="delete(professor)" class="p-button-rounded p-button-danger p-mr-2" icon="pi pi-trash" pButton
+                                    pRipple></button>
+                            <button (click)="viewSession(professor)" class="p-button-rounded p-button-sm p-mr-2" icon="pi pi-book" pButton
+                                    pRipple></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-professeur-create></app-professeur-create>
+        <app-professeur-edit></app-professeur-edit>
+        <app-professeur-view></app-professeur-view>
+        <app-session-cours-list></app-session-cours-list>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

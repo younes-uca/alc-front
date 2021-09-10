@@ -1,0 +1,39 @@
+<p-dialog [(visible)]="editDialog" [modal]="true" [style]="{width: '450px'}" header="Recommend Edit"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">LastName</label>
+            <input [(ngModel)]="selected.nom" autofocus id="ref" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.nom" class="p-invalid">LastName is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="total">FirstName</label>
+            <input [(ngModel)]="selected.prenom" autofocus id="total" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.prenom" class="p-invalid">FirstName is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="login">UserName</label>
+            <input [(ngModel)]="selected.login" autofocus id="login" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.login" class="p-invalid">UserName is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Commentaire">Comment</label>
+            <input [(ngModel)]="selected.commentaire" autofocus id="Commentaire" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.commentaire" class="p-invalid">Comment is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="phone">Phone Number </label>
+            <input [(ngModel)]="selected.telephone" autofocus id="phone" pInputText required type="text"/>
+            <small *ngIf="submitted && !selected.telephone" class="p-invalid">Phone Number is required.</small>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="edit()" class="p-button-text" icon="pi pi-check" label="Edit" pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+

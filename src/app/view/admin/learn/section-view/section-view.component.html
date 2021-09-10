@@ -1,0 +1,46 @@
+<p-dialog [(visible)]="viewDialogSection" [modal]="true" [style]="{width: '800px'}" header="Section View"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content" style="background-color: lavender;">
+        <div class="p-field">
+            <label for="libelle">Title</label>
+            <input [(ngModel)]="selectedsection.libelle" disabled id="libelle" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="contenu">Content</label>
+            <textarea [(ngModel)]="selectedsection.contenu" disabled id="contenu" pInputText type="text"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="questions"> Questions</label>
+            <textarea [(ngModel)]="selectedsection.questions" disabled id="questions" pInputText type="text"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="indicationProf">Indication of Teacher's</label>
+            <textarea [(ngModel)]="selectedsection.indicationProf" disabled id="indicationProf" pInputText
+                      type="text"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="urlImage">url Image </label>
+            <textarea [(ngModel)]="selectedsection.urlImage" disabled id="urlImage" pInputText type="text"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="urlVideo">url Video </label>
+            <textarea [(ngModel)]="selectedsection.urlVideo" disabled id="urlVideo" pInputText type="text"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="cours">Course</label>
+            <input [(ngModel)]="selectedsection.cours.libelle" disabled id="cours" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="categorieSection">CategorieSections</label>
+            <input [(ngModel)]="selectedsection.categorieSection.libelle" disabled id="categorieSection" pInputText
+                   type="text"/>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>

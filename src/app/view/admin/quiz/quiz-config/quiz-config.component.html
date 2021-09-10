@@ -1,0 +1,51 @@
+<p-dialog [(visible)]="createDialog" [modal]="true" [style]="{width: '450px'}" header="Paramètres" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <div class="p-field-checkbox">
+                <p-checkbox (change)="ProgressBar($event)" name="group1"></p-checkbox>
+                <label>Afficher la barre de progression</label>
+                <br/>
+                <p-checkbox (change)="checkCheckBoxvalue($event)" [(ngModel)]="configuration.shuffleOptions" name="group1"
+                            value="{{configuration.shuffleOptions}}"></p-checkbox>
+                <label>Trier les reponses en mode aléatoire</label>
+            </div>
+        </div>
+        <p style="justify-content: space-between"></p>
+        <div class="p-field">
+            <div class="p-field-checkbox">
+                <p-checkbox (change)="checkCheckBoxvalue($event)" [(ngModel)]="configuration.shuffleQuestions"
+                            name="group2"
+                            value="{{configuration.shuffleQuestions}}"></p-checkbox>
+                <label>Trier les questions en mode aléatoire</label>
+            </div>
+            <div class="p-field-checkbox">
+                <p-checkbox (change)="checkCheckBoxvalue($event)" [(ngModel)]="configuration.allowBack" name="group2"
+                            value="{{configuration.allowBack}}"></p-checkbox>
+                <label>Retourner en question précédente </label>
+            </div>
+            <div class="p-field-checkbox">
+                <p-checkbox (change)="checkCheckBoxvalue($event)" name="group2"></p-checkbox>
+                <label>Nombre de points</label>
+            </div>
+        </div>
+        <div class="p-field">
+            <h6>Publier la note :</h6>
+            <div class="p-field-radiobutton">
+                <p-radioButton inputId="note1" name="note" value="option1"></p-radioButton>
+                <label>Immédiatement après chaque envoi</label>
+            </div>
+            <div class="p-field-radiobutton">
+                <p-radioButton inputId="note2" name="note" value="option2"></p-radioButton>
+                <label>Plus tard, après examen manuel</label>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="saveConfig()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+
+

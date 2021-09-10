@@ -1,0 +1,35 @@
+<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '450px'}" header="Professor Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="reference">UserName</label>
+            <input [(ngModel)]="selected.login" disabled id="reference" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input [(ngModel)]="selected.prenom" disabled id="firstName" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="lastName">Last Name</label>
+            <input [(ngModel)]="selected.nom" disabled id="lastName" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="phoneNumber">Phone Number</label>
+            <input [(ngModel)]="selected.numero" disabled id="phoneNumber" pInputText type="text"/>
+        </div>
+
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input [(ngModel)]="selected.email" disabled id="email" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="email">Address</label>
+            <input [(ngModel)]="selected.addresse" disabled id="address" pInputText type="text"/>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>

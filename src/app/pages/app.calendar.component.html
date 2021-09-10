@@ -1,0 +1,40 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <div class="card">
+            <h5>Calendar</h5>
+            <p-fullCalendar [events]="events" [options]="options"></p-fullCalendar>
+
+            <p-dialog [(visible)]="eventDialog" [closable]="true" [modal]="true" [style]="{width: '450px'}"
+                      header="Event Details">
+                <ng-template pTemplate="content">
+                    <div class="p-fluid">
+                        <div class="p-field">
+                            <label for="title">Title</label>
+                            <input *ngIf="clickedEvent" [(ngModel)]="changedEvent.title" [required]="true" id="title"
+                                   pInputText type="text">
+                        </div>
+                        <div class="p-field">
+                            <label for="start">From</label>
+                            <p-calendar *ngIf="clickedEvent" [(ngModel)]="changedEvent.start" [showTime]="true"
+                                        appendTo="body" id="start"></p-calendar>
+                        </div>
+                        <div class="p-field">
+                            <label for="end">To</label>
+                            <p-calendar *ngIf="clickedEvent" [(ngModel)]="changedEvent.end" [showTime]="true" appendTo="body"
+                                        id="end"></p-calendar>
+                        </div>
+                        <div class="p-field-checkbox">
+                            <p-checkbox *ngIf="clickedEvent" [(ngModel)]="changedEvent.allday" id="allday"></p-checkbox>
+                            <label for="allday">All Day</label>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton></button>
+                    <button (click)="reset()" class="p-button-text" icon="pi pi-refresh" label="Reset" pButton></button>
+                </ng-template>
+            </p-dialog>
+        </div>
+    </div>
+</div>

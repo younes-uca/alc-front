@@ -1,0 +1,17 @@
+<p-dialog [(visible)]="viewChooseType" [modal]="true" [style]="{width: '800px'}" header=" Choose Style"
+          styleClass="p-fluid">
+
+
+    <div class="p-grid">
+        <div class="p-col-4">
+            <button (click)="FindSectionOneByOne(this.selectedcours)" icon="pi pi-user" label="Sections" pButton routerLink="/pages/sectionsSimulate"
+                    style="margin-left: 100px" type="button"></button>
+        </div>
+        <div class="p-col-4">
+            <button (click)="FindSection(this.selectedcours)" icon="pi pi-list" label="Sections List " pButton routerLink="/pages/sections"
+                    style="margin-left: 120px" type="button"></button>
+        </div>
+    </div>
+
+
+</p-dialog>

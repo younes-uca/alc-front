@@ -1,0 +1,15 @@
+<p-overlayPanel #op style="weight:200px;">
+    <ng-template pTemplate>
+        <p-card>
+            <ng-template pTemplate="header ">
+                Hestory
+            </ng-template>
+            <p-dropdown [(ngModel)]="selectedCity" [options]="cities" optionLabel="name"></p-dropdown>
+            <ng-template pTemplate="footer">
+                Footer content here
+            </ng-template>
+        </p-card>
+    </ng-template>
+</p-overlayPanel>
+
+<button (click)="op.toggle($event)" label="Basic" pButton type="text"></button>

@@ -1,0 +1,32 @@
+<div class="col-md-8 mt-lg-5 faq" style="margin-left: 140px;">
+    <div class="card" id="card">
+        <div class="card-header">
+            <output id="quizGrammar">Create FAQ</output>
+        </div>
+        <div class="card-body" id="quiz">
+            <label for="destinataire">For : </label>
+            <p-dropdown (click)="findTypes()" [(ngModel)]="utilisateur" [options]="utilisateurs" id="destinataire"
+                        optionLabel="label" pInputText></p-dropdown>
+            <label for="type" style="margin-left: 300px">Type of question : </label>
+            <p-dropdown (click)="findTypes()" [(ngModel)]="type" [options]="itemsType" id="type" optionLabel="libelle"
+                        pInputText></p-dropdown>
+            <div class="p-grid" style="margin-top: 10px">
+                <div class="p-col"><label>Question : </label>
+                    <textarea [(ngModel)]="libelle" [cols]="50" [rows]="10" id="libelle" pInputTextarea
+                              style="margin-top: 10px"></textarea>
+                </div>
+                <div class="p-col"><label style="margin-left: 10px">Answer : </label>
+                    <textarea [(ngModel)]="description" [cols]="50" [rows]="10" id="description" pInputTextarea
+                              style="margin-top: 10px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button [routerLink]="['/pages/faq-admin-list']" class="p-button-rounded p-button-success p-mr-2" label="Back to liste" pButton
+                    pRipple style="background-color: #0C8990"></button>
+            <button (click)="save()" class="p-button-rounded p-button-success p-mr-2" label="Save" pButton
+                    pRipple style="background-color: #0C8990"></button>
+        </div>
+    </div>
+</div>
+

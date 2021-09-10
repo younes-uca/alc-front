@@ -1,0 +1,14 @@
+<p-tabMenu (click)="init()" [activeItem]="menu[0]" [model]="menu"></p-tabMenu>
+<p-tree [value]="nodes">
+    <ng-template let-node pTemplate="default">
+        <b class="libelle">{{node.label}}</b>
+    </ng-template>
+    <ng-template let-node pTemplate="string">
+        <b class="description" style="color: blue">{{node.label}}</b>
+    </ng-template>
+
+</p-tree>
+<button (click)="viewContact()" class="p-button-text" label="Contact us" pButton pRipple></button>
+
+<app-faq-contact></app-faq-contact>
+

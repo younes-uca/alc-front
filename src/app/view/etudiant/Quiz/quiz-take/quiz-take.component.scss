@@ -1,0 +1,255 @@
+#header {
+  background: white;
+  width: 60%;
+  margin-left: 20%;
+}
+
+#bodyRadio {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10px;
+}
+
+#result {
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 10px;
+  background-color: white;
+  visibility: hidden;
+}
+
+#question {
+  background: white;
+}
+
+#answers {
+  background: #ebebeb;
+}
+
+#answers-radio {
+  background-color: white;
+  margin-top: 10px;
+  height: 30px;
+  font-size: 20px;
+}
+
+#answers-radio > label {
+  margin-left: -50px;
+}
+
+#answers-radio > input {
+  //position: absolute;
+  //left: 0;
+  //top: 0;
+  //text-align: left;
+  width: 70%;
+  height: 70%;
+  margin-left: -20%;
+  //z-index: 1;
+  cursor: pointer;
+  //opacity: 0;
+}
+
+#float-input-correct-mistake {
+  height: 100%;
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid cyan;
+  font-size: 30px;
+  font-family: "Goudy Old Style";
+  color: #0a80bb;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+#output-correct-mistake {
+  height: 100%;
+  width: 80%;
+  font-size: 30px;
+  font-family: "Goudy Old Style";
+  margin-bottom: 50px;
+}
+
+#tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #1af045;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  //bottom: 80%;
+  //left: 50%;
+  margin-top: -40px;
+  margin-left: -120px;
+}
+
+#tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1af045 transparent transparent transparent;
+}
+
+.span-correct {
+  visibility: hidden;
+  //width: 50px;
+  background-color: #1af045;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  margin-top: -40px;
+  margin-left: -50px;
+  font-size: 20px;
+}
+
+.span-correct::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1af045 transparent transparent transparent;
+}
+
+#translate-correct-mistak {
+  height: 500px;
+  width: 200px;
+  font-size: 100px;
+  font-family: "Goudy Old Style";
+  margin-bottom: 50px;
+  visibility: hidden;
+}
+
+:host ::ng-deep {
+
+
+  .product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .product-description {
+    margin: 0 0 1rem 0;
+  }
+
+  .product-category-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+  }
+
+  .product-category {
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  .product-list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+    iframe {
+      width: 800px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      margin-right: 1rem;
+    }
+
+    .product-list-detail {
+      flex: 1 1 0;
+    }
+
+    .p-rating {
+      margin: 0 0 .5rem 0;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+      align-self: flex-end;
+    }
+
+    .product-list-action {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .p-button {
+      margin-bottom: .5rem;
+    }
+  }
+
+  .product-grid-item {
+    margin: .5em;
+    border: 1px solid #dee2e6;
+
+
+    .product-grid-item-top,
+    .product-grid-item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    iframe {
+      width: 70%;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      margin: 1rem 0;
+    }
+
+    .product-grid-item-content {
+      text-align: center;
+    }
+
+
+  }
+}
+
+tr.timeline {
+  list-style-type: none;
+  position: relative;
+}
+
+tr.timeline:before {
+  content: '            ';
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 35px;
+  width: 2px;
+  height: 100%;
+  z-index: 200;
+}
+
+tr.timeline > li {
+  margin: 25px 35px;
+  padding-left: 25px;
+
+}
+
+tr.timeline > li:before {
+  content: '            ';
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #22c0e8;
+  left: 30px;
+  width: 10px;
+  height: 10px;
+  z-index: 200;
+}

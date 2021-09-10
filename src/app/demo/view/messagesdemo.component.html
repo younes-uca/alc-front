@@ -1,0 +1,61 @@
+<div class="p-grid">
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5>Toast</h5>
+            <p-toast key="tst"></p-toast>
+
+            <button (click)="showSuccessViaToast()" class="p-button-success p-mr-2 p-mb-2" label="Success" pButton
+                    type="button"></button>
+            <button (click)="showInfoViaToast()" class="p-button-info p-mr-2 p-mb-2" label="Info" pButton
+                    type="button"></button>
+            <button (click)="showWarnViaToast()" class="p-button-warning p-mr-2 p-mb-2" label="Warn" pButton
+                    type="button"></button>
+            <button (click)="showErrorViaToast()" class="p-button-danger p-mb-2" label="Error" pButton
+                    type="button"></button>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5>Messages</h5>
+            <button (click)="showSuccessViaMessages()" class="p-button-success p-mr-2 p-mb-2" label="Success" pButton
+                    type="button"></button>
+            <button (click)="showInfoViaMessages()" class="p-button-info p-mr-2 p-mb-2" label="Info" pButton
+                    type="button"></button>
+            <button (click)="showWarnViaMessages()" class="p-button-warning p-mr-2 p-mb-2" label="Warn" pButton
+                    type="button"></button>
+            <button (click)="showErrorViaMessages()" class="p-button-danger p-mb-2" label="Error" pButton
+                    type="button"></button>
+
+            <p-messages [value]="msgs"></p-messages>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-8">
+        <div class="card">
+            <h5>Inline Message</h5>
+            <div class="p-mt-4">
+                <input class="ng-dirty ng-invalid p-invalid p-mr-2" pInputText placeholder="Username" type="text">
+                <p-message severity="error" text="Field is required"></p-message>
+            </div>
+
+            <div class="p-mt-4">
+                <input class="ng-dirty ng-invalid p-invalid p-mr-2" pInputText placeholder="Email" type="text">
+                <p-message severity="error"></p-message>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-4">
+        <div class="card">
+            <h5>Help Text</h5>
+            <div class="p-field p-fluid">
+                <label for="username">Username</label>
+                <input aria-describedby="username-help" class="p-invalid" id="username" pInputText type="username"/>
+                <small class="p-invalid" id="username-help">Username is not available.</small>
+            </div>
+        </div>
+    </div>
+
+
+</div>

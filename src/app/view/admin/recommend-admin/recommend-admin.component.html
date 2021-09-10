@@ -1,0 +1,80 @@
+<div class="p-grid">
+    <h2 style="margin-left: 10px; margin-top: 5px"> Table of Recommendations</h2>
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card" style="background-color: gainsboro">
+            <p-toolbar styleClass="p-mb-2">
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+
+
+            <p-table #dt [(selection)]="selectesRecommend" [paginator]="true" [rowHover]="true"
+                     [rows]="10" [showCurrentPageReport]="true" [value]="itemsRecommend"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Recommendation</h5>
+                        <span>
+                        <input [(ngModel)]="recommendVo.nom  " pInputText placeholder="Search By Recommended LastName"
+                               style="margin-right: 5px;width: 250px" type="text"/>
+                        <input [(ngModel)]="recommendVo.prenom  " pInputText placeholder="Search By Recommended FirstName"
+                               style="margin-right: 5px;width: 250px" type="text"/>
+<button (click)="findByCriteria()" class="p-button-rounded p-button-info " icon="pi pi-search" pButton pRipple
+        type="button">
+
+</button>
+
+                    </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="student">Recommended Teacher LastName
+                            <p-sortIcon field="student"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="professor">Recommended Teacher FirstName
+                            <p-sortIcon field="professor"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="start at">Recommended By
+                            <p-sortIcon field="dateDebut"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="student">Comment
+                            <p-sortIcon field="dateFin"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="duration">Phone Number
+                            <p-sortIcon field="duration"></p-sortIcon>
+                        </th>
+
+                    </tr>
+                </ng-template>
+                <ng-template let-recommend pTemplate="body">
+                    <tr>
+                        <td>{{recommend.nom}}</td>
+                        <td>{{recommend.prenom}}</td>
+                        <td>{{recommend.prof.nom}}  {{recommend.prof.prenom}}</td>
+                        <td>{{recommend.commentaire}}</td>
+                        <td>{{recommend.telephone}}</td>
+
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{itemsRecommend ? itemsRecommend.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</div>

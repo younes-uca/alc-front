@@ -1,0 +1,110 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+
+        <div class="card" style="background-color: gainsboro">
+
+            <p-toolbar styleClass="p-mb-4">
+
+                <ng-template pTemplate="left">
+                    <button (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length" class="p-button-danger p-mb-2" icon="pi pi-trash" label="Delete"
+                            pButton pRipple></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [(selection)]="selectes" [columns]="cols" [globalFilterFields]="['numeroInscription','datedebutinscription','datefininscription' , 'nom', 'prenom' , 'prof' , 'etatInscription']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="6" [showCurrentPageReport]="true" [value]="items"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <div class="p-col"><h5 class="p-m-0">Manage Inscriptions</h5><br>
+                            <span>
+                        <input [(ngModel)]="selected.nom  " pInputText placeholder="Search by LastName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+                        <input [(ngModel)]="selected.prenom  " pInputText placeholder="Search by FirstName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+                        <input [(ngModel)]="selected.login  " pInputText placeholder="Search by UserName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+
+             <i (click)="findByCriteria()" class="pi pi-search"></i>
+
+                    </span></div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="nom">LastName
+                            <p-sortIcon field="nom"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="prenom">FirstName
+                            <p-sortIcon field="prenom"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Address">Address
+                            <p-sortIcon field="Address"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="mail">E-mail
+                            <p-sortIcon field="mail"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Age">Age
+                            <p-sortIcon field="Age"></p-sortIcon>
+                        </th>
+                        <th>Validate Registration</th>
+                        <th>View Details</th>
+                        <th>Delete Registration</th>
+
+                    </tr>
+                </ng-template>
+                <ng-template let-inscription pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="inscription"></p-tableCheckbox>
+                        </td>
+                        <td>{{inscription.nom}}</td>
+                        <td>{{inscription.prenom}}</td>
+                        <td>{{inscription.address}}</td>
+                        <td>{{inscription.gmail}}</td>
+                        <td>{{inscription.age}}</td>
+                        <td>
+                            <button (click)="edit(inscription)"  [style.visibility]="(inscription.etatInscription.libelle) == 'Validated'?'hidden':'visible'" class=" p-button-success " label="Validate" pButton
+                                    pRipple></button></td>
+                        <td>  <button (click)="view(inscription)" class="p-button-info " label="details" pButton
+                                    pRipple></button></td>
+                        <td>  <button (click)="delete(inscription)" class="p-button-danger" label="delete" pButton
+                                    pRipple></button></td>
+
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+        <app-inscription-create></app-inscription-create>
+
+        <app-inscription-edit></app-inscription-edit>
+
+        <app-inscription-view></app-inscription-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+

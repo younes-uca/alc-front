@@ -1,0 +1,111 @@
+<!--
+<div class="p-grid" style="  margin-left: 30px; margin-top: 20px">
+
+
+    <div class="card p-col-11" style="background-color: gainsboro;  margin-left: 30px; margin-top: 20px">
+        <h1 style="text-align: center; margin-bottom: 30px; color: black"><b>Registration Student</b></h1>
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12 p-md-6">
+                <label for="prenom" style="color: black;">Firstname</label>
+                <input [(ngModel)]="selected.prenom" id="prenom" pInputText type="text">
+                <small *ngIf="submitted && !selected.prenom" class="p-invalid">FirstName is required.</small>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="nom" style="color: black;">Lastname</label>
+                <input [(ngModel)]="selected.nom" id="nom" pInputText type="text">
+                <small *ngIf="submitted && !selected.nom" class="p-invalid">Lastname is required.</small>
+
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="logins">UserName</label>
+                <input [(ngModel)]="selected.login" id="logins" pInputText type="text">
+                <small *ngIf="submitted && !selected.login" class="p-invalid">Username is required.</small>
+
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="passwrdd" style="color: black;">Password</label>
+                <input [(ngModel)]="selected.password" id="passwrdd" pInputText type="password">
+                <small *ngIf="submitted && !selected.password" class="p-invalid">Password is required.</small>
+
+            </div>
+            <div class="p-field p-col-12">
+                <label for="address" style="color: black;">Address</label>
+                <textarea [(ngModel)]="selected.address" id="address" pInputTextarea rows="4" type="text"></textarea>
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="city" style="color: black;">City</label>
+                <input [(ngModel)]="selected.ville" id="city" pInputText type="text">
+            </div>
+            <div class="p-field p-col-12 p-md-6">
+                <label for="email" style="color: black;">Email</label>
+                <input [(ngModel)]="selected.gmail" id="email" pInputText type="text">
+            </div>
+            <div class="p-field p-col-12 p-md-3">
+                <label for="parcours" style="color: black;">Parcours</label>
+                <select (click)="findAllParcours()" [(ngModel)]="selected.parcours.id" class="btn btn-block btn-outline-light form-control" id="parcours"
+                        name="Parcours"
+                        style="width: 300px; height: 30px ; border-color: darkgray;margin-left: 5px" type="text">
+                    <option *ngFor="let p of parcoursList" [ngValue]="p.id" selected="selected"> {{p.libelle}}</option>
+
+                </select>
+                <small *ngIf="submitted && !selected.parcours.id" class="p-invalid">Parcours is required.</small>
+
+            </div>
+
+        </div>
+
+        <p-button (click)="save()" icon="pi pi-check" iconPos="right" label="Submit" style="float: right;"></p-button>
+
+
+    </div>
+</div>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="main">
+
+    <div class="container">
+        <form method="POST" class="appointment-form" id="appointment-form">
+            <h2>Registration form</h2>
+            <div class="form-group-1">
+                <input type="text" name="Firstname" id="Firstname" placeholder="Firstname" [(ngModel)]="selected.prenom" required />
+                <input type="text" name="lastname" id="Lastname" placeholder="Lastname" [(ngModel)]="selected.nom" required />
+                <input type="text" name="UserName" id="UserName" placeholder="UserName" required [(ngModel)]="selected.login"/>
+                <input type="email" name="gmail" id="gmail" placeholder="email" required [(ngModel)]="selected.gmail"/>
+                <input type="password" name="Password" id="Password" placeholder="Password" required [(ngModel)]="selected.password"/>
+                <input type="number" name="age" id="age" placeholder="age" required [(ngModel)]="selected.age"/>
+                <input type="tel" name="phone_number" id="phone_number" placeholder="phone number" required [(ngModel)]="selected.numero"/>
+                <input type="text" name="Address" id="Address" placeholder="Address" required [(ngModel)]="selected.address"/>
+                <input type="text" name="City" id="City" placeholder="City" required [(ngModel)]="selected.ville"/>
+                <div class="p-field" style="margin-bottom: 25px">
+                    <p-dropdown [(ngModel)]="selected.parcours" [options]="parcoursList"
+                                 optionLabel="libelle" name="libelle" autoWidth="false" placeholder="--Please choose Parcours--" [style]="{'width': '100%'}" ></p-dropdown>
+                </div>
+                <div  style="visibility: hidden; height: 0; width: 0;margin-bottom: 10px" id="log-pass" >
+                    <p-message severity="error" text="Username or Password invalid" autoWidth="false"></p-message></div>
+
+            </div>
+            <div class="form-submit" >
+                <input type="button" name="submit" id="submit" class="submit" value="Submit" (click)="save()"/>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

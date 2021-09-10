@@ -1,0 +1,41 @@
+<p-dialog [(visible)]="editDialogCours" [modal]="true" [style]="{width: '550px'}" header="Course Edit"
+          styleClass="p-fluid">
+    <ng-template pTemplate="p-field">
+        <div class="p-field">
+            <label for="centre"> Parcours </label>
+            <select (click)="findAllParcours()" [(ngModel)]="selectedcours.parcours.id" class="btn btn-block btn-outline-light form-control" id="centre"
+                    name="Parcours" pInputText style="background-color: lightblue"
+                    type="text">
+                <option *ngFor="let c of itemsparcours" [ngValue]="c.id" selected="selected"> {{c.libelle}}</option>
+            </select>
+            <small *ngIf="submittedCours && !selectedcours.parcours.libelle" class="p-invalid">parcours is
+                required.</small>
+        </div>
+        <div class="p-field">
+            <label for="libelle">Title</label>
+            <input [(ngModel)]="selectedcours.libelle" autofocus id="libelle" pInputText required type="text"/>
+            <small *ngIf="submittedCours && !selectedcours.libelle" class="p-invalid">Title is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="description">Description</label>
+            <input [(ngModel)]="selectedcours.description" autofocus id="description" pInputText required type="text"/>
+            <small *ngIf="submittedCours && !selectedcours.description" class="p-invalid">description is
+                required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="numeroOrder">Number </label>
+            <input [(ngModel)]="selectedcours.numeroOrder" autofocus id="numeroOrder" pInputText required type="text"/>
+            <small *ngIf="submittedCours && !selectedcours.numeroOrder" class="p-invalid">Number is required.</small>
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer" style="background-color: lavender;">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="edit()" class="p-button-text" icon="pi pi-check" label="Edit" pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+
+

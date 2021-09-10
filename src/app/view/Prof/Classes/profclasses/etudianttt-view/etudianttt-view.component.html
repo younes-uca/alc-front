@@ -1,0 +1,82 @@
+<p-dialog [(visible)]="viewDialogEtudiant" [modal]="true" [style]="{width: '800px'}" header="Students Details"
+          styleClass="p-fluid">
+    <div class="p-grid ">
+        <div class="p-col">
+            <p-toast></p-toast>
+            <div class="card" style="background-color: gainsboro">
+                <p-toolbar styleClass="p-mb-4 inline">
+
+
+                    <ng-template pTemplate="right">
+                        <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                      label="Import" mode="basic"></p-fileUpload>
+                        <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                                pRipple></button>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [(selection)]="selectesetudiantClassRoom" [columns]="cols" [globalFilterFields]="['etudiant']" [paginator]="true"
+                         [rowHover]="true"
+                         [rows]="6" [showCurrentPageReport]="true" [value]="itemsetudiantClassRoom"
+                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                         dataKey="id"
+                         styleClass="p-datatable-customers">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Manage Parcours</h5>
+                            <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText placeholder="Search..." type="text"/>
+                    </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                            <th pSortableColumn="etudiant.nom">First Name
+                                <p-sortIcon field="etudiant.nom"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="etudiant.prenom">Last Name
+                                <p-sortIcon field="etudiant.prenom"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="etudiant.age">Age
+                                <p-sortIcon field="etudiant.age"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="etudiant.ville">City
+                                <p-sortIcon field="etudiant.ville"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template let-etudiantClassRoom pTemplate="body">
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="etudiantClassRoom.etudiant"></p-tableCheckbox>
+                            </td>
+                            <td>{{etudiantClassRoom.etudiant.nom}}</td>
+                            <td>{{etudiantClassRoom.etudiant.prenom}}</td>
+                            <td>{{etudiantClassRoom.etudiant.age}}</td>
+                            <td>{{etudiantClassRoom.etudiant.ville}}</td>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total there are {{selectesetudiantClassRoom ? selectesetudiantClassRoom.length : 0 }}
+                            items.
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>
+
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>

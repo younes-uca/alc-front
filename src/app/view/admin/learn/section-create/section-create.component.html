@@ -1,0 +1,65 @@
+<p-dialog [(visible)]="createDialogSection" [modal]="true" [style]="{width: '800px'}" header="Section Create"
+          styleClass="p-fluid">
+    <ng-template pTemplate="p-field">
+        <div class="p-field">
+            <label for="cours"> Courses </label>
+            <select (click)="findAllCours()" [(ngModel)]="selectedsection.cours.id" class="btn btn-block btn-outline-light form-control" id="cours"
+                    name="Parcours" pInputText style="background-color: lavender"
+                    type="text">
+                <option *ngFor="let c of itemscours" [ngValue]="c.id" selected="selected"> {{c.libelle}}</option>
+            </select>
+            <small *ngIf="submittedSection && !selectedsection.cours.libelle" class="p-invalid">cours is
+                required.</small>
+            <label for="categorie"> CategorieSections </label>
+            <select (click)="findAllCategorie()" [(ngModel)]="selectedsection.categorieSection.id" class="btn btn-block btn-outline-light form-control" id="categorie"
+                    name="Parcours" pInputText style="background-color: lavender"
+                    type="text">
+                <option *ngFor="let s of itemscategoriesection" [ngValue]="s.id"
+                        selected="selected"> {{s.libelle}}</option>
+            </select>
+            <small *ngIf="submittedSection && !selectedsection.categorieSection.libelle" class="p-invalid">categorie is
+                required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Number">Number</label>
+            <input [(ngModel)]="selectedsection.numeroOrder" autofocus id="Number" pInputText required type="text"/>
+            <small *ngIf="submittedSection && !selectedsection.numeroOrder" class="p-invalid">Number is
+                required.</small>
+        </div>
+        <div class="p-field">
+            <label for="libelle">Title</label>
+            <input [(ngModel)]="selectedsection.libelle" autofocus id="libelle" pInputText required type="text"/>
+            <small *ngIf="submittedSection && !selectedsection.libelle" class="p-invalid">Title is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="contenu">Content</label>
+            <input [(ngModel)]="selectedsection.contenu" autofocus id="contenu" pInputText required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="questions">Questions </label>
+            <input [(ngModel)]="selectedsection.questions" autofocus id="questions" pInputText required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="indicationProf">Indication of Teacher's </label>
+            <input [(ngModel)]="selectedsection.indicationProf" autofocus id="indicationProf" pInputText required
+                   type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="urlImage"> Url Image </label>
+            <input [(ngModel)]="selectedsection.urlImage" autofocus id="urlImage" pInputText required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="urlVideo"> Url Video </label>
+            <input [(ngModel)]="selectedsection.urlVideo" autofocus id="urlVideo" pInputText required type="text"/>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer" style="background-color: lavender;">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+    </ng-template>
+</p-dialog>
+
+
+

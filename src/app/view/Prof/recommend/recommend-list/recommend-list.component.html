@@ -1,0 +1,88 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card" style="background-color: gainsboro">
+
+
+            <p-table #dt [(selection)]="selectes" [columns]="cols" [globalFilterFields]="['nom','prenom','number phone','login','commentaire']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="89" [showCurrentPageReport]="true" [value]="items"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="caption" style="background-color: lavender">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Manage Teachers</h5>
+                        <span>
+                        <input [(ngModel)]="recommendVo.nom  " pInputText placeholder="Search By LastName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+                        <input [(ngModel)]="recommendVo.prenom  " pInputText placeholder="Search By FirstName"
+                               style="margin-right: 10px;width: 200px" type="text"/>
+<button (click)="findByCriteria()" class="p-button-rounded p-button-info " icon="pi pi-search" pButton pRipple
+        type="button">
+
+</button>
+
+                    </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="nom">LastName
+                            <p-sortIcon field="reference"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="total">FirstName
+                            <p-sortIcon field="total"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="totalPaye">Username
+                            <p-sortIcon field="totalPaye"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="totalPaye">Comment
+                            <p-sortIcon field="totalPaye"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="totalPaye">Phone Number
+                            <p-sortIcon field="totalPaye"></p-sortIcon>
+                        </th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template let-prof pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="prof"></p-tableCheckbox>
+                        </td>
+                        <td>{{prof.nom}}</td>
+                        <td>{{prof.prenom}}</td>
+                        <td>{{prof.login}}</td>
+                        <td>{{prof.commenatire}}</td>
+                        <td>{{prof.telephone}}</td>
+
+                        <td>
+                            <button (click)="edit(prof)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                                    pRipple>
+
+                            </button>
+                            <button (click)="view(prof)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                                    pRipple></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-recommend-edit></app-recommend-edit>
+        <app-recommend-view></app-recommend-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+

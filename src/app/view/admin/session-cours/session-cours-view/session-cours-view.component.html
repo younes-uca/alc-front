@@ -1,0 +1,39 @@
+<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '450px'}" header="Session Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="ref">Ref</label>
+            <input [(ngModel)]="selected.reference" disabled id="ref" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="professor">Professor</label>
+            <input [(ngModel)]="selected.prof.nom" disabled id="professor" pInputText type="text"/>
+        </div>
+
+        <div class="p-field">
+            <label for="student">Student</label>
+            <input [(ngModel)]="selected.etudiant.prenom" disabled id="student" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="startDate">Start at</label>
+            <input [(ngModel)]="selected.dateDebut" disabled id="startDate" pInputText type="text"/>
+        </div>
+
+        <div class="p-field">
+            <label for="endDate">Professor</label>
+            <input [(ngModel)]="selected.dateFin" disabled id="endDate" pInputText type="text"/>
+        </div>
+
+        <div class="p-field">
+            <label for="duration">Duration</label>
+            <input [(ngModel)]="selected.duree" disabled id="duration" pInputText type="text"/>
+        </div>
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>

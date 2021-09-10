@@ -1,0 +1,24 @@
+<p-carousel [circular]="false" [numVisible]="3" [responsiveOptions]="responsiveOptions" [value]="sectionItemList"
+            class="p-carousel">
+    <ng-template pTemplate="header">
+        <h3>List Of Section Items</h3>
+    </ng-template>
+    <ng-template let-product pTemplate="item">
+        <div class="product-item2">
+            <div class="product-item-content2">
+                <div class="p-mb-3">
+                    <img [alt]="product.imageUrl" [src]="product.imageUrl" class="product-image2"/>
+                </div>
+                <div>
+                    <h4 class="p-mb-1">{{product.response}}</h4>
+                    <div class="car-buttons p-mt-5">
+                        <p-button (click)="update(product)" icon="pi pi-undo" styleClass="p-button p-button-rounded p-mr-2"
+                                  type="button"></p-button>
+                        <p-button (click)="delete(product)" icon="pi pi-times" styleClass="p-button-danger p-button-rounded p-mr-2"
+                                  type="button"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

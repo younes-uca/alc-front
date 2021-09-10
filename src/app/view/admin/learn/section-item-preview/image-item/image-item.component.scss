@@ -1,0 +1,29 @@
+h1 {
+  color: gray;
+  font-family: "Great Vibes", cursive;
+  font-size: 100px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  text-align: center;
+  text-shadow: 0 1px 1px #fff;
+}
+
+.bg-image {
+  /* The image used */
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  width: 50%;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}

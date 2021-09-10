@@ -1,0 +1,84 @@
+<div class="p-grid" style="position:initial ">
+    <div class="p-col">
+        <p-toast></p-toast>
+        <div class="card" style="margin-left: 3% ;background-color: gainsboro;">
+            <p-toolbar styleClass="p-mb-5">
+                <ng-template pTemplate="left">
+                    <button (click)="openCreateSection()" class="p-button-success p-mr-2 p-mb-2" icon="pi pi-plus" label="  New" pButton
+                            pRipple style="width: 90px"></button>
+                    <button (click)="deleteMultiple()" [disabled]="!itemssection || !itemssection.length" class="p-button-danger p-mb-2" icon="pi pi-trash" label="Delete"
+                            pButton pRipple></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [(selection)]="selectessection" [columns]="cols" [globalFilterFields]="['libelle','categorieSection','url','content']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="4" [value]="itemssection" dataKey="id">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Manage Section</h5>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="libelle">Title
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="categorieSection">Categories
+                            <p-sortIcon field="categorieSection"></p-sortIcon>
+                        </th>
+                        <th>Action</th>
+
+                    </tr>
+                </ng-template>
+                <ng-template let-section pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="section"></p-tableCheckbox>
+                        </td>
+                        <td [style.color]="(section.url+section.content) == 2? 'green' :(section.url+section.content) == 1? 'orange': 'red'">{{section.numeroOrder}}
+                            -{{section.libelle}} (c:{{section.content}}; L:{{section.url}})
+                        </td>
+                        <td>{{section.categorieSection.libelle}}</td>
+
+                        <td>
+                            <button (click)="editSection(section)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                                    pRipple></button>
+                            <button (click)="view(section)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                                    pRipple></button>
+                            <button (click)="delete(section)" class="p-button-rounded p-button-danger" icon="pi pi-trash" pButton
+                                    pRipple></button>
+                            <button (click)="getSection(section)" *ngIf="this.section.categorieSection.libelle != 'Vocabulary'" [style.background-color]="(this.selectedQuiz.section.id != section.id)?'red':'blue'" class="p-button-rounded p-button-sm "
+                                    icon="pi pi-book"
+                                    pButton
+                                    pRipple></button>
+                            <button (click)="createVocab(section)" *ngIf="this.section.categorieSection.libelle == 'Vocabulary'" class="p-button-rounded p-button-lg " icon="pi pi-image"
+                                    pButton
+                                    pRipple style="background-color: #0C8990"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{itemssection ? itemssection.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+        <app-section-create></app-section-create>
+        <app-section-view></app-section-view>
+        <app-section-edit></app-section-edit>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

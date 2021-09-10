@@ -1,0 +1,24 @@
+
+<p-dialog [(visible)]="TranslateSynonymeDialog"  [style]="{width: '250px',marginTop: '0px'}"
+      header="{{this.selected.word}}"  >
+    <hr size="2" color="black" style="margin-top: 0px; margin-bottom: 0px">
+    <p-table  [rowHover]="true" [rows]="6" [showCurrentPageReport]="true" [value]="listSynonymes"
+             dataKey="id"
+             styleClass="p-datatable-customers">
+        <ng-template let-synon pTemplate="body">
+            <tr style="height: 7px">
+
+                <td style="white-space: pre-wrap; font-size: 20px;text-align: right; " > {{synon}}  <b style="font-size: 25px; text-align: right; color: #0d8e4f; cursor: pointer;" (click)="create(synon)">+</b></td>
+
+
+
+            </tr>
+        </ng-template>
+    </p-table>
+    <ng-template pTemplate="p-field">
+        <div class="p-field" style="margin-top: 5px; margin-bottom: 0px">
+            <textarea [(ngModel)]="word" id="definition" pInputTextarea type="text"></textarea>
+            <button (click)="trans()" icon="pi pi-plus" style="font-size: 25px; color: #0d8e4f; " class="p-button-text"  pButton pRipple type="button"></button>
+        </div>
+    </ng-template>
+</p-dialog>

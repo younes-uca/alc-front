@@ -1,0 +1,89 @@
+<p-dialog [(visible)]="viewDialogQuiz" [modal]="true" [style]="{width: '1200px'}" header="Quiz Details"
+          styleClass="p-fluid">
+    <div class="p-grid ">
+        <div class="p-col">
+            <p-toast></p-toast>
+            <div class="card" style="background-color: gainsboro">
+                <p-toolbar styleClass="p-mb-4 inline">
+
+
+                    <ng-template pTemplate="right">
+                        <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                      label="Import" mode="basic"></p-fileUpload>
+                        <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                                pRipple></button>
+                    </ng-template>
+                </p-toolbar>
+
+                <p-table #dt [(selection)]="selectesquizClassRoom" [columns]="cols" [globalFilterFields]="['quiz']" [paginator]="true"
+                         [rowHover]="true"
+                         [rows]="6" [showCurrentPageReport]="true" [value]="itemsquizClassRoom"
+                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                         dataKey="id"
+                         styleClass="p-datatable-customers">
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                            <h5 class="p-m-0">Manage Parcours</h5>
+                            <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText placeholder="Search..." type="text"/>
+                    </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+                            <th pSortableColumn="quiz.numero">Number
+                                <p-sortIcon field="quiz.numero"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="quiz.ref">Reference
+                                <p-sortIcon field="quiz.ref"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="quiz.lib">Title
+                                <p-sortIcon field="quiz.lib"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="quiz.seuilReussite">Threshold of success
+                                <p-sortIcon field="quiz.seuilReussite"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="quiz.dateDebut">Start date
+                                <p-sortIcon field="quiz.dateDebut"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="quiz.dateFin">final date
+                                <p-sortIcon field="quiz.dateFin"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template let-quizClassRoom pTemplate="body">
+                        <tr>
+                            <td>
+                                <p-tableCheckbox [value]="quizClassRoom.quiz"></p-tableCheckbox>
+                            </td>
+                            <td>{{quizClassRoom.quiz.numero}}</td>
+                            <td>{{quizClassRoom.quiz.ref}}</td>
+                            <td>{{quizClassRoom.quiz.lib}}</td>
+                            <td>{{quizClassRoom.quiz.seuilReussite}}</td>
+                            <td>{{quizClassRoom.quiz.dateDebut}}</td>
+                            <td>{{quizClassRoom.quiz.dateFin}}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total there are {{itemsquizClassRoom ? itemsquizClassRoom.length : 0 }} items.
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+        </div>
+    </div>
+
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>
+

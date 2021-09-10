@@ -1,0 +1,35 @@
+<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '450px'}" header="Recommend Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="nom">LastName</label>
+            <input [(ngModel)]="selected.nom" disabled id="nom" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="prenom">FirstName</label>
+            <input [(ngModel)]="selected.prenom" disabled id="prenom" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="login">UserName</label>
+            <input [(ngModel)]="selected.login" disabled id="login" pInputText type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="commentaire">Comment</label>
+            <input [(ngModel)]="selected.commentaire" disabled id="commentaire" pInputText type="text"/>
+        </div>
+
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="totalPaye">Phone Number</label>
+                <p-inputNumber [(ngModel)]="selected.telephone" disabled id="totalPaye"></p-inputNumber>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>
+

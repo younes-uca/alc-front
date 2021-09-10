@@ -1,0 +1,69 @@
+<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                 <span style="margin-left: 65%">
+
+                     <input [(ngModel)]="mois" pInputText placeholder="Month" style="width:25% ; margin-top: 10%"
+                            type="text"/>
+                        <input [(ngModel)]="annee" pInputText placeholder="Year" style="margin-left: 2%; width:25% ; margin-top: 10%"
+                               type="text"/>
+
+                          <p-button (click)="findSalary()" icon="pi pi-search" style="margin-left: 2%;margin-top: 10%; "></p-button>
+
+                 </span>
+</div>
+<div class="p-grid-transparent p-col-10" style="margin-left: 15%; background-color: transparent">
+    <div class="p-col-10 ">
+        <div class="expenses card card-w-title" style="background-color: gainsboro">
+            <div class="p-grid">
+                <div class="p-col "><h5 (click)="view()" style="color: #0c799f"> MyLevel: <u
+                        style="cursor: pointer"> {{this.selectedsalaryVo.prof.categorieProf.level}} </u></h5></div>
+                <div class="p-col"><p style="margin-left: 45%">EnglishDom Experience: <b>{{this.selectedsalaryVo.mois}}
+                    months</b></p></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-col-10 ">
+        <div class="expenses card card-w-title" style="background-color: gainsboro;">
+            <h5>Salary</h5>
+            <div class="p-grid" style="margin-left: 15%">
+                <div class="p-col">
+
+
+                    <h6>Current Month Pay</h6>
+                    <h1>{{this.selectedsalaryVo.nbrSessionMensuel * this.selectedsalaryVo.prof.categorieProf.lessonRate}}$</h1>
+                    <h6>Global Pay</h6>
+                    <h1>{{this.selectedsalaryVo.nbrSessionGlobale * this.selectedsalaryVo.prof.categorieProf.lessonRate}}$</h1>
+
+                </div>
+                <div class="p-col">
+                    <p-chart [data]="data" type="pie"></p-chart>
+                </div>
+
+
+            </div>
+
+
+            <div class="p-col " style="margin-left: 2% ">
+                <p-menubar [model]="items">
+
+                </p-menubar>
+
+            </div>
+            <div class="p-grid card" style="margin-top: 10%; border-color: #84bfdd; ">
+                <div class="p-col " style="margin-left: 5% ; height:50px ;"><h5> LessonComplete
+                    <br/><u><b> {{this.selectedsalaryVo.nbrSessionMensuel}} Lesson </b></u></h5></div>
+                <div class="p-col " style="margin-left: 4% ; height:50px ;"><h2> X </h2></div>
+                <div class="p-col" style="margin-right: 7% ; height:50px ;"><h5>LessonRate
+                    <br/><b><u>{{this.selectedsalaryVo.prof.categorieProf.lessonRate}}$ </u></b></h5></div>
+                <div class="p-col " style="margin-right: 10% ; height:50px ;"><h1> = </h1></div>
+                <div class="p-col" style="margin-right: 15% ; height:50px ;"><h5>Total
+                    <br/><b><u>{{this.selectedsalaryVo.nbrSessionMensuel * this.selectedsalaryVo.prof.categorieProf.lessonRate}}
+                        $ </u></b></h5></div>
+            </div>
+
+        </div>
+    </div>
+    <app-categorie-prof-view></app-categorie-prof-view>
+</div>
+

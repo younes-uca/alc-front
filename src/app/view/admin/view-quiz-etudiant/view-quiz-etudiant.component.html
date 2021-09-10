@@ -1,0 +1,54 @@
+<p-table #dt [(selection)]="quizEtudiant" [paginator]="true" [rowHover]="true"
+         [rows]="10" [showCurrentPageReport]="true" [value]="quizsEtudiant"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         dataKey="id" styleClass="p-datatable-customers">
+    <ng-template pTemplate="caption">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+            <h5 class="p-m-0">Quiz etudiant</h5>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="libelle">Last name
+                <p-sortIcon field="student"></p-sortIcon>
+            </th>
+            <th pSortableColumn="date">First name
+                <p-sortIcon field="professor"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateDebut">Teacher
+                <p-sortIcon field="dateDebut"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateFin">Note
+                <p-sortIcon field="dateFin"></p-sortIcon>
+            </th>
+            <th pSortableColumn="destinataire">Mark
+                <p-sortIcon field="duration"></p-sortIcon>
+            </th>
+            <th pSortableColumn="numeroOrdre">Actions
+                <p-sortIcon field="duration"></p-sortIcon>
+            </th>
+
+        </tr>
+    </ng-template>
+    <ng-template let-quiz pTemplate="body">
+        <tr>
+            <td>{{quiz.etudiant.nom}}</td>
+            <td>{{quiz.etudiant.prenom}}</td>
+            <td>{{quiz.etudiant.prof.name}} {{quiz.etudiant.prof.prenom}}</td>
+            <td>{{quiz.note}}</td>
+            <td>{{quiz.resultat}}</td>
+            <td>
+                <button (click)="view(quiz)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                        pRipple></button>
+                <button (click)="delete(quiz)" class="p-button-rounded p-button-danger" icon="pi pi-trash" pButton
+                        pRipple></button>
+            </td>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{quizsEtudiant ? quizsEtudiant.length : 0 }} items.
+        </div>
+    </ng-template>
+</p-table>

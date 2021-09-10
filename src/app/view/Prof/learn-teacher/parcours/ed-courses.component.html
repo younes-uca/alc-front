@@ -1,0 +1,47 @@
+<div class="p-grid ">
+
+    <div class="p-col">
+        <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between  "
+             style="text-align: center; padding-bottom: 1%; margin-top: 2px">
+            <h1 class="p-m-0">Parcours</h1>
+
+        </div>
+        <p-toast></p-toast>
+        <div class="card" style="background-color: gainsboro;">
+
+            <p-table [(selection)]="selectesparcours" [columns]="cols" [globalFilterFields]="['libelle','coursList']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="6" [showCurrentPageReport]="true" [value]="itemsparcours"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="header">
+                    <tr>
+
+                        <th pSortableColumn="libelle">General Courses
+                            <p-sortIcon field="libelle"></p-sortIcon>
+                        </th>
+                        <th>lesson</th>
+                    </tr>
+                </ng-template>
+                <ng-template let-parcours pTemplate="body">
+                    <tr>
+
+                        <td (click)="FindCours(parcours)" routerLink="/pages/cours" style="color: #0c799f"><u
+                                style="cursor: pointer">{{parcours.libelle}}</u></td>
+                        <td>{{parcours.nombreCours}}</td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{itemsparcours ? itemsparcours.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</div>
+
+

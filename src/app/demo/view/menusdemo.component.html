@@ -1,0 +1,89 @@
+<div class="p-grid p-fluid">
+    <div class="p-col-12">
+        <div class="card">
+            <h5>MenuBar</h5>
+            <p-menubar [model]="tieredItems">
+                <ng-template pTemplate="end">
+                    <span class="p-input-icon-right">
+                        <input pInputText placeholder="Search" type="text">
+                        <i class="pi pi-search"></i>
+                    </span>
+                </ng-template>
+            </p-menubar>
+        </div>
+    </div>
+
+    <div class="p-col-12">
+        <div class="card">
+            <h5>Breadcrumb</h5>
+            <p-breadcrumb [home]="{icon: 'pi pi-home'}" [model]="breadcrumbItems"></p-breadcrumb>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>Steps</h5>
+            <p-steps [activeIndex]="1" [model]="stepsItems"></p-steps>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>TabMenu</h5>
+            <p-tabMenu [activeItem]="tabMenuItems[0]" [model]="tabMenuItems"></p-tabMenu>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+        <div class="card">
+            <h5>TieredMenu</h5>
+            <p-tieredMenu [model]="tieredItems" [style]="{'width':'100%','margin-bottom':'20px'}"></p-tieredMenu>
+        </div>
+
+        <div class="card">
+            <h5>MenuButton</h5>
+            <p-menu #menu [model]="menuItems" [popup]="true" [style]="{'width':'250px'}"></p-menu>
+            <button (click)="menu.toggle($event)" icon="pi pi-chevron-down" label="Options" pButton style="width:auto"
+                    type="button"></button>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+        <div class="card">
+            <h5>Plain Menu</h5>
+            <p-menu [model]="items" [style]="{'width':'100%'}"></p-menu>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+        <div class="card">
+            <h5>ContextMenu</h5>
+            Right click to display.
+
+            <p-contextMenu [global]="true" [model]="menuItems"></p-contextMenu>
+        </div>
+
+        <div class="card">
+            <h5>SlideMenu</h5>
+            <p-slideMenu [menuWidth]="175" [model]="slideItems" [viewportHeight]="250"></p-slideMenu>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>MegaMenu - Horizontal</h5>
+            <p-megaMenu [model]="megaMenuItems"></p-megaMenu>
+
+            <h5>MegaMenu - Vertical</h5>
+            <p-megaMenu [model]="megaMenuItems" [style]="{'width':'200px'}" orientation="vertical"></p-megaMenu>
+        </div>
+    </div>
+
+
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>PanelMenu</h5>
+            <p-panelMenu [model]="panelMenuItems"></p-panelMenu>
+        </div>
+    </div>
+</div>

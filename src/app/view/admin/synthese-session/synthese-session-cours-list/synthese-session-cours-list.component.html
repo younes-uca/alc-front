@@ -1,0 +1,157 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card" style="background-color: gainsboro">
+            <p-toolbar styleClass="p-mb-4"><!--style="display: none"-->
+                <ng-template pTemplate="left">
+                    <button (click)="openCreate()" class="p-button-success p-mr-2 p-mb-2" icon="pi pi-plus" label="New" pButton
+                            pRipple
+                            style="width: 90px"></button>
+                    <button (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length" class="p-button-danger p-mb-2" icon="pi pi-trash" label="Delete"
+                            pButton pRipple></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+            <h1 class="p-m-0">Students</h1>
+
+            <p-table #dt [(selection)]="selectes" [columns]="cols" [globalFilterFields]="['reference','username','lastName']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="10" [showCurrentPageReport]="true" [value]="items"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers p-datatable-striped">
+                <ng-template pTemplate="caption" style="display: none">
+                    <div class="p-d-flex p-flex-column p-flex-md-column  table-header">
+                        <!--  <h5 class="p-m-0">STUDENT</h5><br/>-->
+                        <div class="container">
+                            <div class="left_button">
+
+                                <!--<a (click)="setEtat(active)" href="http://localhost:4200/#/pages/etat"> Active(20)</a>
+                                <a (click)="setEtat(start)" href=""> Start(8) </a>
+                                <a (click)="setEtat(soon)" href=""> Soon(0) </a>
+                                <a href=""> On break(0) </a>-->
+                                <button (click)="setetat(1)" class="p-button-text  " label="Active({{this.j}})" pButton
+                                        type="button"></button>
+                                <button (click)="setetat(4)" class="p-button-text" label="Start({{m}})" pButton
+                                        type="button"></button>
+                                <button (click)="setetat(2)" class="p-button-text" label="Soon({{k}})" pButton
+                                        type="button"></button>
+                                <button (click)="setetat(3)" class="p-button-text" label="On break({{c}})" pButton
+                                        type="button"></button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="reference">STUDENT
+                            <p-sortIcon field="Student"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="id">SCHEDULE
+                            <p-sortIcon field="schedule"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="totalPaye">LAST CLASS
+                            <p-sortIcon field="last class"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="totalPaye">BALANCE
+                            <p-sortIcon field="last class"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="totalPaye">EDCLASS
+                            <p-sortIcon field="last class"></p-sortIcon>
+                        </th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template let-synthese pTemplate="body"> <!--*ngIf="etatEtudiant.id==33"-->
+
+                    <tr *ngIf="synthese.etatNumber==etat"><!--*ngIf="etatEtudiant.etatNumber==etat"-->
+                        <td>
+                            <p-tableCheckbox [value]="synthese"></p-tableCheckbox>
+                        </td>
+                        <td><!-- <img src="" alt="drapeau">-->
+                            <a (click)="setetat(3)" href="http://localhost:4200/#/pages/etat">{{synthese.lastName}}</a>
+                            <p class="nom"> {{synthese.username}}</p>
+                            <p class="nom"> id: {{synthese.id}}</p>
+                        </td>
+                        <td><p class="bold">{{synthese.schedule1}} </p>
+                            <p class="bold"> {{synthese.schedule2}} </p>
+                        </td>
+                        <td><P class="bold">{{synthese.lastClass}}</P>
+                            <a href="lesson_card">Lessons card</a> <br>
+                            <!--   <img class="icon" src="img/horloge.png" alt="">-->
+                            <a (click)="op.toggle($event)" href="http://localhost:4200/#/pages/synthese"
+                               style="margin-top: 10px;">History </a>
+                        </td>
+                        <td><p class="bold "> {{synthese.nbrClass}}</p>
+                            <a (click)="incrementer(synthese)" class="button_class"
+                               href="http://localhost:4200/#/pages/synthese">ADD CLASS</a>
+                        </td>
+                        <td><p>Pre-intermediate for Teens</p>
+                            <p class="bold"> Lesson 35</p>
+                            <a href="lesson">Enter Lesson</a>
+                        </td>
+
+                        <td>
+                            <button (click)="edit(synthese)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                                    pRipple></button>
+                            <button (click)="view(synthese)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                                    pRipple></button>
+                            <button (click)="delete(synthese)" class="p-button-rounded p-button-danger" icon="pi pi-trash" pButton
+                                    pRipple></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-synthese-session-cours-create></app-synthese-session-cours-create>
+        <app-synthese-session-cours-edit></app-synthese-session-cours-edit>
+        <app-synthese-session-cours-view></app-synthese-session-cours-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+
+    <p-overlayPanel #op style="weight:600px; height:400px;">
+        <ng-template pTemplate>
+            <p-card>
+                <ng-template pTemplate="header ">
+                    History
+                </ng-template>
+                <br/>
+                <p-dropdown [(ngModel)]="selectedCity" [options]="cities" optionLabel="name"></p-dropdown>
+                <ng-template pTemplate="footer">
+                    Footer content here
+                </ng-template>
+            </p-card>
+            <p-card>
+                <ng-template pTemplate="header ">
+                    History
+                </ng-template>
+                <br/>
+                <p-dropdown [(ngModel)]="selectedCity" [options]="cities" optionLabel="name"></p-dropdown>
+                <ng-template pTemplate="footer">
+                    Footer content here
+                </ng-template>
+            </p-card>
+        </ng-template>
+    </p-overlayPanel>
+
+    <button (click)="op.toggle($event)" label="Basic" pButton type="text"></button>
+</div>

@@ -1,0 +1,35 @@
+.left_button button {
+  text-decoration: none;
+
+
+  margin-right: 7px;
+  /* border: black solid 2px;*/
+  border-radius: 1rem;
+  color: black;
+  padding: 7px 20px;
+}
+
+.left_button button:hover {
+  border-color: #009879;
+  color: #009879;
+  border: black solid 2px;
+}
+
+/*td img {
+  max-width: 15px;
+  max-width: 25px;
+}*/
+
+.button_class:link, .button_class:visited {
+  background-color: #009879;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.button_class:hover, .button_class:active {
+  background-color: #009879;
+}

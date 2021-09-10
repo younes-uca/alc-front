@@ -1,0 +1,108 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card" style="background-color: gainsboro;">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button (click)="openCreateEtud()" class="p-button-success p-mr-2 p-mb-2" icon="pi pi-plus" label="New" pButton
+                            pRipple style="width: 90px"></button>
+
+                    <button (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length" class="p-button-danger p-mb-2" icon="pi pi-trash" label="Delete"
+                            pButton pRipple></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-fileUpload [maxFileSize]="1000000" accept="image/*" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"
+                                  label="Import" mode="basic"></p-fileUpload>
+                    <button (click)="dt.exportCSV()" class="p-button-info p-mb-2" icon="pi pi-upload" label="Export" pButton
+                            pRipple></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [(selection)]="selectes" [columns]="cols" [globalFilterFields]="['nom','prenom','login','parcours','centre']" [paginator]="true"
+                     [rowHover]="true"
+                     [rows]="8" [showCurrentPageReport]="true" [value]="items"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <div class="p-col"><h5 class="p-m-0">Manage Students</h5><br>
+                            <span>
+                        <input [(ngModel)]="etudiantVo.nom  " pInputText placeholder="Search by LastName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+                        <input [(ngModel)]="etudiantVo.prenom  " pInputText placeholder="Search by FirstName"
+                               style="margin-right: 10px;width: 200px" type="text"/>
+                        <input [(ngModel)]="etudiantVo.login  " pInputText placeholder="Search by UserName" style="margin-right: 10px;width: 200px"
+                               type="text"/>
+
+             <i (click)="findByCriteria()" class="pi pi-search"></i>
+                                <!-- search -->
+                    </span></div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="nom">LastName
+                            <p-sortIcon field="nom"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="prenom">FirsName
+                            <p-sortIcon field="prenom"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="login">Username
+                            <p-sortIcon field="login"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="prenom">Teacher Name
+                            <p-sortIcon field="prenom"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="Parcours">Parcours
+                            <p-sortIcon field="Parcours"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="centre">Center
+                            <p-sortIcon field="centre"></p-sortIcon>
+                        </th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template let-etudiant pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="etudiant"></p-tableCheckbox>
+                        </td>
+                        <td>{{etudiant.nom}}</td>
+                        <td>{{etudiant.prenom}}</td>
+                        <td>{{etudiant.login}}</td>
+                        <td>{{etudiant.prof.nom}} {{etudiant.prof.prenom}}</td>
+                        <td>{{etudiant.parcours.libelle}}</td>
+                        <td>{{etudiant.parcours.centre.libelle}}</td>
+
+                        <td>
+                            <button (click)="edit(etudiant)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton
+                                    pRipple></button>
+                            <button (click)="view(etudiant)" class="p-button-rounded p-button-info p-mr-2" icon="pi pi-list" pButton
+                                    pRipple></button>
+                            <button (click)="delete(etudiant)" class="p-button-rounded p-button-danger" icon="pi pi-trash" pButton
+                                    pRipple></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-etudiant-create></app-etudiant-create>
+        <app-etudiant-edit></app-etudiant-edit>
+        <app-etudiantss-view></app-etudiantss-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+

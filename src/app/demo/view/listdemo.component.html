@@ -1,0 +1,90 @@
+<div class="p-grid list-demo">
+    <div class="p-col-12">
+        <div class="card">
+            <h5>DataView</h5>
+            <p-dataView #dv [paginator]="true" [rows]="9" [sortField]="sortField" [sortOrder]="sortOrder"
+                        [value]="products" filterBy="name" layout="grid">
+                <ng-template pTemplate="header">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                        <p-dropdown (onChange)="onSortChange($event)" [(ngModel)]="sortKey" [options]="sortOptions"
+                                    placeholder="Sort By Price" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                        <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                    <i class="pi pi-search"></i>
+                    <input (input)="dv.filter($event.target.value)" pInputText placeholder="Search by Name"
+                           type="search">
+                </span>
+                        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                    </div>
+                </ng-template>
+                <ng-template let-product pTemplate="listItem">
+                    <div class="p-col-12">
+                        <div class="product-list-item">
+                            <img [alt]="product.name" [src]="'assets/demo/images/product/' + product.image"/>
+                            <div class="product-list-detail">
+                                <div class="product-name">{{product.name}}</div>
+                                <div class="product-description">{{product.description}}</div>
+                                <p-rating [cancel]="false" [ngModel]="product.rating" [readonly]="true"></p-rating>
+                                <i class="pi pi-tag product-category-icon"></i><span
+                                    class="product-category">{{product.category}}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <span class="product-price">${{product.price}}</span>
+                                <p-button [disabled]="product.inventoryStatus === 'OUTOFSTOCK'" icon="pi pi-shopping-cart"
+                                          label="Add to Cart"></p-button>
+                                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-product pTemplate="gridItem">
+                    <div class="p-col-12 p-md-4">
+                        <div class="product-grid-item card">
+                            <div class="product-grid-item-top">
+                                <div>
+                                    <i class="pi pi-tag product-category-icon"></i>
+                                    <span class="product-category">{{product.category}}</span>
+                                </div>
+                                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                            </div>
+                            <div class="product-grid-item-content">
+                                <img [alt]="product.name" [src]="'assets/demo/images/product/' + product.image"/>
+                                <div class="product-name">{{product.name}}</div>
+                                <div class="product-description">{{product.description}}</div>
+                                <p-rating [cancel]="false" [ngModel]="product.rating" [readonly]="true"></p-rating>
+                            </div>
+                            <div class="product-grid-item-bottom">
+                                <span class="product-price">${{product.price}}</span>
+                                <p-button [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
+                                          icon="pi pi-shopping-cart"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-8">
+        <div class="card">
+            <h5>PickList</h5>
+            <p-pickList [responsive]="true" [sourceStyle]="{'height':'300px'}" [source]="sourceCities" [targetStyle]="{'height':'300px'}"
+                        [target]="targetCities"
+                        dragdrop="true" sourceHeader="From" targetHeader="To">
+                <ng-template let-city pTemplate="item">
+                    <div>{{city.name}}</div>
+                </ng-template>
+            </p-pickList>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-4">
+        <div class="card">
+            <h5>OrderList</h5>
+            <p-orderList [listStyle]="{'height':'auto'}" [value]="orderCities" dragdrop="true" header="Cities">
+                <ng-template let-city pTemplate="item">
+                    <div>{{city.name}}</div>
+                </ng-template>
+            </p-orderList>
+        </div>
+    </div>
+</div>
