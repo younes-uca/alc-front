@@ -22,39 +22,45 @@ webSocketService.chatMessages
 
 
 <div class="container2">
-    <div class="container1" style="overflow-y: scroll;max-height: 250px;">
-        <div>
-            <div *ngFor="let chatMessage of webSocketService.chatMessages" class="list-group list-group-flush">
-                <!--    <div class="list-group-item" *ngFor="let chatMessage of webSocketService.chatMessages">
-                        <strong style="right: 100%;color: dodgerblue" *ngIf="chatMessage.student" >{{chatMessage.user}} : </strong>
-                        <strong style="right: 100%;color: #E2841A" *ngIf="!chatMessage.student" >teacher {{chatMessage.user}} : </strong>
-                        <span>{{chatMessage.message}}</span>
-                    </div> -->
-                <div *ngIf="!chatMessage.student" class="container">
-                    <strong style="right: 100%;color: #E2841A">teacher {{chatMessage.user}} : </strong>
-                    <p>{{chatMessage.message}}</p>
-                    <span class="time-right">{{today | date:'h:mm'}}</span>
-                </div>
+    <div class="container1" style="overflow-y: auto;max-height: 300px;">
 
-                <div *ngIf="chatMessage.student" class="container darker">
-                    <strong *ngIf="chatMessage.student" style="right: 100%;color: dodgerblue">{{chatMessage.user}}
-                        : </strong>
-                    <p>{{chatMessage.message}}</p>
-                    <span class="time-left">{{today | date:'h:mm'}}</span>
+        <div class="speech-wrapper" *ngFor="let chatMessage of webSocketService.chatMessages">
+            <div class="bubble alt" *ngIf="chatMessage.student">
+                <div class="txt">
+                    <p class="name alt">{{chatMessage.user}}</p>
+                    <p class="message">{{chatMessage.message}}</p>
+                    <span class="timestamp">{{today | date:'h:mm'}}</span>
                 </div>
+                <div class="bubble-arrow alt"></div>
+            </div>
+
+            <div class="speech-divider" ></div>
+
+
+            <div class="bubble" *ngIf="!chatMessage.student">
+                <div class="txt">
+                    <p class="name">Teacher {{chatMessage.user}}</p>
+                    <p class="message">{{chatMessage.message}}</p>
+                    <span class="timestamp">{{today | date:'h:mm'}}</span>
+                </div>
+                <div class="bubble-arrow"></div>
+                <div class="speech-divider" ></div>
             </div>
         </div>
     </div>
-    <form #sendForm="ngForm" (ngSubmit)="sendMessage(sendForm)">
-        <div class="chat-send row">
-            <div>
+
+</div>
+<br>
+<form #sendForm="ngForm" (ngSubmit)="sendMessage(sendForm)">
+    <div class="chat-send row">
+        <div>
                 <textarea autoResize="true" autofocus class="form-control" id="input-message" name="message"
                           ngModel pInputTextarea required type="text"></textarea>
-            </div>
-            <div>
-                <p-button class="btn btn-primary" type="submit">Send</p-button>
-            </div>
         </div>
-    </form>
-</div>
+        <div>
+            <p-button class="btn btn-primary" type="submit">Send</p-button>
+        </div>
+    </div>
+</form>
+
 
