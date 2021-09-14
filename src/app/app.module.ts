@@ -251,6 +251,7 @@ import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/t
 import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etudiant-review-view/etudiant-review-view.component';
 // tslint:disable-next-line:max-line-length
 import {SyntheseSessionHistoryComponent} from './view/Prof/synthese-session/synthese-session-history/synthese-session-history.component';
+import {PickerModule} from '@ctrl/ngx-emoji-mart';
 
 
 @NgModule({
@@ -340,6 +341,7 @@ import {SyntheseSessionHistoryComponent} from './view/Prof/synthese-session/synt
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
+        PickerModule,
     ],
     declarations: [
         AppComponent,
