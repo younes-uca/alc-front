@@ -9,6 +9,8 @@ import {Quiz} from '../../../../controller/model/quiz.model';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
 import {QuizEtudiant} from '../../../../controller/model/quiz-etudiant.model';
 import {QuizEtudiantService} from '../../../../controller/service/quiz-etudiant.service';
+import {EtudiantReview} from '../../../../controller/model/etudiant-review.model';
+import {EtudiantReviewService} from '../../../../controller/service/etudiant-review.service';
 
 @Component({
     selector: 'app-etudiant-courses',
@@ -22,7 +24,14 @@ export class EtudiantCoursesComponent implements OnInit {
     cols: any[];
 
     // tslint:disable-next-line:max-line-length
-    constructor(private messageService: MessageService, private quizService: QuizEtudiantService, private loginService: LoginService, private confirmationService: ConfirmationService, private service: ParcoursService) {
+    constructor(private messageService: MessageService, private quizService: QuizEtudiantService, private loginService: LoginService, private review: EtudiantReviewService , private confirmationService: ConfirmationService, private service: ParcoursService) {
+    }
+    get selectedReview(): EtudiantReview {
+        return this.review.selected;
+    }
+
+    set selectedReview(value: EtudiantReview) {
+        this.review.selected = value;
     }
     public FindSectionOneByOne(cour: Cours) {
         this.selectedcours = cour;
@@ -179,6 +188,10 @@ export class EtudiantCoursesComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.review.findReview(this.selectedcours.id).subscribe(
+            data => {
+                this.selectedReview = data;
+            });
         this.initCol();
         this.viewChooseType2 = false;
         this.service.findAllEtudiantCours().subscribe(

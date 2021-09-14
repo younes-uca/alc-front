@@ -24,7 +24,7 @@
                     <tr>
 
                         <td (click)="FindSectionOneByOne(cours)" routerLink="/pages/etudiantsimulatesections"
-                            [style.color]="(findAllEtudiantCours(cours) != null )? 'green':'blue'"><u style="cursor: pointer">{{cours.libelle}}</u></td>
+                            [style.color]="(this.selectedReview.review != null)? 'green':'black'"><u style="cursor: pointer">{{cours.libelle}}</u></td>
                         <td>{{cours.nombreSectionFinalise + cours.nombreSectionEnCours}}</td>
 
                     </tr>
