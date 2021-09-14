@@ -311,7 +311,6 @@ export class StudentSimulateSectionComponent implements OnInit {
             this.itemsEtudiantCours.push({...data});
             this.viewDialog = true;
         });
-        this.router.navigate(['/pages/etudiantcours']);
     }
 
     public openCreateDict() {
