@@ -5,10 +5,11 @@
     </div>
     <div  id="divStudentResponse" style="width: auto;margin:0 auto;margin-top: 15px;text-align: center">
         <i class="pi pi-volume-up p-mr-2 p-d-inline" style="font-size: 1.5rem; cursor: pointer;color: greenyellow" (click)="sound(current.response)"></i>
-        <h4 class="p-d-inline">{{current.response}}</h4>
+        <h2 class="p-d-inline">{{current.response}}</h2>
+        <h3 id="translateShow" style="margin-top: 10px;visibility: hidden">{{current.translation}}</h3>
     </div>
 
-    <div  *ngIf="fliped===false" class="card"  style="width: 100%;margin:0 auto;margin-top: 7px;background: #F6F6F6;visibility: hidden">
+    <div id="infoDiv" class="card"  style="width: 100%;margin:0 auto;margin-top: 7px;background: #F6F6F6;visibility: hidden">
         <p-accordion>
                 <div class="p-text-left">
                     <h5>Response</h5>
@@ -22,19 +23,6 @@
                 </div>
         </p-accordion>
     </div>
-    <div *ngIf="fliped===true"  class="card"  style="width: 100%;margin:0 auto;margin-top: 7px;background: #F6F6F6;visibility: visible">
-        <p-accordion>
-            <div class="p-text-left">
-                <h5>Response</h5>
-                <p>{{current.response}}</p>
-                <h5>Translation</h5>
-                <p>{{current.translation}}</p>
-                <h5>Explanation</h5>
-                <p>{{current.explanation}}</p>
-                <h5>Example</h5>
-                <p>{{current.example}}s</p>
-            </div>
-        </p-accordion>
-    </div>
+
 
 </p-card>

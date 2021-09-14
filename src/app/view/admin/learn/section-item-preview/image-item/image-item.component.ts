@@ -40,7 +40,16 @@ export class ImageItemComponent implements OnInit {
         }
     }
 
+    showHidden() {
+        document.getElementById('infoDiv').style.visibility = 'visible'
+        document.getElementById('translateShow').style.visibility = 'visible'
+        this.fliped = true;
+    }
+
+
     reloadComponent() {
+        document.getElementById('infoDiv').style.visibility = 'hidden'
+        document.getElementById('translateShow').style.visibility = 'hidden'
      this.fliped=false
     }
     public sound(word: string){

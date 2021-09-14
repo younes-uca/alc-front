@@ -23,6 +23,7 @@ export class SectionItemPreviewComponent implements OnInit {
     showItems: boolean;
     currentIndex:number
     fliped: boolean;
+    progressBarValue: number;
 
 
     constructor(private messageService: MessageService, private sectionItemService: SectionItemService, private router: Router) {
@@ -31,7 +32,8 @@ export class SectionItemPreviewComponent implements OnInit {
     ngOnInit(): void {
         this.listItems = this.sectionItemService.sectionSelected.sectionItems;
         this.currentItem = this.listItems[0];
-        this.currentIndex=this.listItems.indexOf(this.currentItem);
+        this.currentIndex=this.listItems.indexOf(this.currentItem)+1;
+        this.calculProgressBarValue(this.currentIndex)
         this.showNext = true;
         this.showPrevious = false;
         this.showStart = true;
@@ -62,6 +64,8 @@ export class SectionItemPreviewComponent implements OnInit {
         if ( index < this.listItems.length - 1) {
             this.child.reloadComponent();
             this.currentItem = this.listItems[index + 1];
+            this.currentIndex=index+2
+            this.calculProgressBarValue(this.currentIndex)
             this.showNext = true;
             this.showfinish = false;
             this.fliped=false
@@ -93,11 +97,16 @@ export class SectionItemPreviewComponent implements OnInit {
 
     flip() {
         this.fliped=true
-        this.child.fliped=true
+        this.child.showHidden()
         const index = this.listItems.indexOf(this.currentItem);
         if (index + 1 >= this.listItems.length) {
             this.showNext = false;
             this.showfinish = true;
         }
+    }
+
+    calculProgressBarValue(index: number) {
+        const length=this.listItems.length
+        this.progressBarValue=(index*100)/length
     }
 }

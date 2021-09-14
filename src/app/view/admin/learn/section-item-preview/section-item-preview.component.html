@@ -34,7 +34,7 @@
         <h6 style="position: absolute;right: 15px;">{{currentIndex}} out of {{listItems.length}}</h6>
     </div>
     <div>
-        <p-progressBar [value]="50"></p-progressBar>
+        <p-progressBar [value]="progressBarValue" [showValue]=false></p-progressBar>
     </div>
     <app-image-item [current]="currentItem"></app-image-item>
     <div *ngIf="showNext" style="margin-top: 10px;text-align: center">
