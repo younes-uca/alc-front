@@ -53,6 +53,7 @@ public save(review: number){
   this.selected.etudiant = this.loginService.etudiant;
   this.service.Save().subscribe(
         data => {
+          this.viewDialog = false;
           this.router.navigate(['/pages/etudiantcours']);
         });
   }
