@@ -16,6 +16,9 @@ export class EtudiantReviewService {
   }
 
   get selected(): EtudiantReview {
+    if (this._selected == null){
+      this._selected = new EtudiantReview();
+    }
     return this._selected;
   }
 

@@ -49,8 +49,8 @@ export class EtudiantReviewViewComponent implements OnInit {
 public save(review: number){
   console.log(review);
   this.selected.review = review;
-  this.selected.cours.id = this.selectedcours.id;
-  this.selected.etudiant.id = this.loginService.etudiant.id;
+  this.selected.cours = this.selectedcours;
+  this.selected.etudiant = this.loginService.etudiant;
   this.service.Save().subscribe(
         data => {
           this.router.navigate(['/pages/etudiantcours']);
