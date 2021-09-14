@@ -5,6 +5,7 @@ import {EtudiantReview} from '../../../../controller/model/etudiant-review.model
 import {Cours} from '../../../../controller/model/cours.model';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {LoginService} from '../../../../controller/service/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-etudiant-review-view',
@@ -13,7 +14,8 @@ import {LoginService} from '../../../../controller/service/login.service';
 })
 export class EtudiantReviewViewComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private messageService: MessageService, private router: Router, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
   get selectedcours(): Cours {
     return this.serviceCours.selectedcours;
   }
@@ -45,5 +47,7 @@ export class EtudiantReviewViewComponent implements OnInit {
 public save(){
     this.selected.cours.id = this.selectedcours.id;
     this.selected.etudiant.id = this.loginService.etudiant.id;
-}
+    // hna diri save liflback
+    this.router.navigate(['/pages/etudiantcours']);
+  }
 }

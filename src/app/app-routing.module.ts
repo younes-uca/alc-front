@@ -64,7 +64,7 @@ import {RecommendComponent} from './view/Prof/recommend/recommend.component';
 import {QuizCreateComponent} from './view/admin/quiz/quiz-create/quiz-create.component';
 import {QuizEtudiantViewComponent} from './view/etudiant/Quiz/quiz-etudiant-view/quiz-etudiant-view.component';
 import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
-import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
+import {SyntheseSessionComponent} from './view/Prof/synthese-session/synthese-session.component';
 import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/professeur-list.component';
 import {EtudiantParcoursComponent} from './view/etudiant/learn-etudiant/etudiant-parcours/etudiant-parcours.component';
 import {EtudiantCoursesComponent} from './view/etudiant/learn-etudiant/etudiant-courses/etudiant-courses.component';

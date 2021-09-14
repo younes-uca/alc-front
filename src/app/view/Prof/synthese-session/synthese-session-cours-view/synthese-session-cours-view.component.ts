@@ -1,9 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {SyntheseSessionCoursService} from '../../../../controller/service/synthese-session-cours.service';
 import {SyntheseSessionCours} from '../../../../controller/model/synthese-session-cours.model';
 import {City} from '../../../../controller/model/city.model';
-
+import {Etudiant} from '../../../../controller/model/etudiant.model';
+import {Prof} from '../../../../controller/model/prof.model';
+import {SessionCours} from '../../../../controller/model/session-cours.model';
+import {ProfessorService} from '../../../../controller/service/professor.service';
+import {SyntheseSessionCoursService} from '../../../../controller/service/synthese-session-cours.service';
 @Component({
     selector: 'app-synthese-session-cours-list',
     templateUrl: './synthese-session-cours-list.component.html',
@@ -23,7 +26,7 @@ export class SyntheseSessionCoursListComponent implements OnInit {
     public m = 0;
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-                private service: SyntheseSessionCoursService) {
+                private service: SyntheseSessionCoursService, private servicePrf: ProfessorService) {
         this.cities = [
             {name: 'New York', code: 'NY'},
             {name: 'Rome', code: 'RM'},
@@ -93,6 +96,12 @@ export class SyntheseSessionCoursListComponent implements OnInit {
 
     ngOnInit(): void {
         this.initCol();
+        this.service.findAllStudent().subscribe(
+            data => {
+                this.itemsEtudiant = data;
+            }
+        );
+        console.log(this.itemsEtudiant);
         this.service.findAll().subscribe(data => {
             this.items = data;
             for (let i = 0; i < this.items.length; i++) {
@@ -113,14 +122,41 @@ export class SyntheseSessionCoursListComponent implements OnInit {
             }
         });
 
-
+    }
+    get itemsSession(): Array<SessionCours> {
+        return this.servicePrf.itemsSession;
     }
 
+    set itemsSession(value: Array<SessionCours>) {
+        this.servicePrf.itemsSession = value;
+    }
+    get viewDialogProf(): boolean {
+        return this.servicePrf.viewDialogProf;
+    }
+
+    set viewDialogProf(value: boolean) {
+        this.servicePrf.viewDialogProf = value;
+    }
+
+    public viewSession(etd: Etudiant) {
+        this.servicePrf.afficheSessionStd(etd.id).subscribe(
+            data => {
+                // @ts-ignore
+                this.itemsSession = data;
+            });
+        this.viewDialogProf = true;
+    }
     public setetat(nbr: number): number {
         this.etat = nbr;
         return this.etat;
     }
+    get itemsEtudiant(): Array<Etudiant> {
+        return this.service.itemsEtudiant;
+    }
 
+    set itemsEtudiant(value: Array<Etudiant>) {
+        this.service.itemsEtudiant = value;
+    }
     public delete(selected: SyntheseSessionCours) {
         this.selected = selected;
         this.confirmationService.confirm({

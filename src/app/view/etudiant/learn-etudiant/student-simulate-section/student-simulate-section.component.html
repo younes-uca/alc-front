@@ -170,6 +170,7 @@
     <!--        <button pButton pRipple type="button" icon="pi pi-caret-right" label="Next" id="next" style=" width: 120px;  position: absolute;right: 25%;" class="p-button-rounded" [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'visible':'hidden'"  (click)="NextSection()" ></button>-->
     <!--        <button pButton pRipple type="button" icon="pi pi-caret-right"  label="Vocabulary" style="margin-left: 360px; width: 120px" *ngIf="this.selectedsection.categorieSection.libelle == 'Vocabulary'" class="p-button-rounded" (click)="Vocab(this.selectedsection.id)" ></button>-->
     <!--    </div>-->
+    <app-etudiant-review-view></app-etudiant-review-view>
     <app-dictionary-create></app-dictionary-create>
     <app-dictionary-edit></app-dictionary-edit>
     <app-translate></app-translate>
