@@ -250,6 +250,7 @@ import {SectionItemListComponent} from './view/admin/learn/section-item/section-
 import {SectionItemPreviewComponent} from './view/admin/learn/section-item-preview/section-item-preview.component';
 import {ImageItemComponent} from './view/admin/learn/section-item-preview/image-item/image-item.component';
 import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/translate/translate.component';
+import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etudiant-review-view/etudiant-review-view.component';
 
 
 @NgModule({
@@ -499,7 +500,8 @@ import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/t
         SectionItemComponent,
         DictionaryEditComponent,
         ViewQuizEtudiantComponent,
-        TranslateComponent
+        TranslateComponent,
+        EtudiantReviewViewComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

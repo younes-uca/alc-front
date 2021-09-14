@@ -17,6 +17,9 @@ import {Router} from '@angular/router';
 import {VocabularyService} from '../../../../controller/service/vocabulary.service';
 import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 import {SectionItemService} from '../../../../controller/service/section-item.service';
+import {Inscription} from '../../../../controller/model/inscription.model';
+import {EtudiantReview} from '../../../../controller/model/etudiant-review.model';
+import {EtudiantReviewService} from '../../../../controller/service/etudiant-review.service';
 
 @Pipe({name: 'safe'})
 export class SafePipe implements PipeTransform {
@@ -58,7 +61,20 @@ export class StudentSimulateSectionComponent implements OnInit {
                 private quizService: QuizEtudiantService,
                 private loginService: LoginService,
                 private vocab: VocabularyService,
+                private review: EtudiantReviewService,
                 private sectionItemService: SectionItemService) {
+    }
+    get viewDialog(): boolean {
+        return this.review.viewDialog;
+    }
+
+    set viewDialog(value: boolean) {
+        this.review.viewDialog = value;
+    }
+
+    public view(EtudiantReview: EtudiantReview) {
+        this.review.selected = {...EtudiantReview};
+        this.viewDialog = true;
     }
     get contenuSection(): Array<string> {
         return this.service.contenuSection;

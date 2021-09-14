@@ -1,0 +1,17 @@
+<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '450px'}" header="You're opinion"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+
+
+
+
+
+        <p> hi, how are u ????</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>
