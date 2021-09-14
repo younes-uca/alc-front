@@ -6,6 +6,8 @@ import {Cours} from '../../../../controller/model/cours.model';
 import {ParcoursService} from '../../../../controller/service/parcours.service';
 import {LoginService} from '../../../../controller/service/login.service';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Etudiant} from '../../../../controller/model/etudiant.model';
 
 @Component({
   selector: 'app-etudiant-review-view',
@@ -44,10 +46,14 @@ export class EtudiantReviewViewComponent implements OnInit {
   public hideViewDialog() {
     this.viewDialog = false;
   }
-public save(){
-    this.selected.cours.id = this.selectedcours.id;
-    this.selected.etudiant.id = this.loginService.etudiant.id;
-    // hna diri save liflback
-    this.router.navigate(['/pages/etudiantcours']);
+public save(review: number){
+  console.log(review);
+  this.selected.review = review;
+  this.selected.cours.id = this.selectedcours.id;
+  this.selected.etudiant.id = this.loginService.etudiant.id;
+  this.service.Save().subscribe(
+        data => {
+          this.router.navigate(['/pages/etudiantcours']);
+        });
   }
 }

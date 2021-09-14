@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '450px'}" header="You're opinion"
+<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '700px'}" header="You're opinion"
           styleClass="p-fluid">
     <ng-template pTemplate="content">
 
@@ -6,26 +6,21 @@
 
 <p>Hello , how did you find today's lesson with this professor</p>
 
-        <div class="p-grid p-fluid">
-            <div class="p-field p-col-12 p-md-3">
-                <span style='font-size:100px;'>&#128532;</span>
-                <p>I will display &#128532;</p>
-
+        <div class="p-grid p-fluid p-col">
+            <div class="p-field p-col">
+                <p style="font-size: 60px; cursor: pointer" (click)="save(1)" >😡</p>
+        </div>
+        <div class="p-field p-col">
+                <p style="font-size: 60px; cursor: pointer" (click)="save(2)">😣</p>
             </div>
-            <div class="p-field p-col-12 p-md-3">
-                <span style='font-size:100px;'>&#128545;</span>
-                <p>I will display &#128545;</p>
+            <div class="p-field p-col">
+                <p style="font-size: 60px; cursor: pointer" (click)="save(3)" >😏</p>
             </div>
-            <div class="p-field p-col-12 p-md-3">
-                <span style='font-size:100px;'>&#128549;</span>
-                <p>I will display &#128549;</p>
-
-
+            <div class="p-field p-col">
+                <p style="font-size: 60px; cursor: pointer" (click)="save(4)">🙂</p>
             </div>
-            <div class="p-field p-col-12 p-md-3">
-                <span style='font-size:100px;'>&#128578;</span>
-                <p>I will display &#128578;</p>
-
+            <div class="p-field p-col">
+                <p style="font-size: 60px; cursor: pointer" (click)="save(5)">😀</p>
 
             </div>
         </div>

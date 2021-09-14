@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {EtudiantReview} from '../model/etudiant-review.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class EtudiantReviewService {
   constructor(private http: HttpClient) { }
   private _viewDialog: boolean;
   private _selected: EtudiantReview;
-
+  public Save(): Observable<EtudiantReview> {
+    return this.http.post<EtudiantReview> ('http://localhost:8036/learn/etudiantReview/', this.selected);
+  }
 
   get selected(): EtudiantReview {
     return this._selected;
