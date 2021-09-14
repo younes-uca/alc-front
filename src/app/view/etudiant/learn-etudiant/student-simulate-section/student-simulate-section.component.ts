@@ -300,7 +300,12 @@ export class StudentSimulateSectionComponent implements OnInit {
                 );
             }, error => console.log('erreeeeeeeeeeeeeeeeur'));
     }
-
+public ReviewExist(){
+    this.review.findReview(this.selectedcours.id).subscribe(
+        data => {
+            this.selectedReview = data;
+        });
+}
     public finish() {
         this.selectedEtudiantCours.etudiant.id = this.loginService.etudiant.id;
         console.log(this.selectedEtudiantCours.etudiant.id);
@@ -337,8 +342,18 @@ export class StudentSimulateSectionComponent implements OnInit {
 
         this.filteredDict = filtered;
     }
+    get selectedReview(): EtudiantReview {
+        return this.review.selected;
+    }
 
+    set selectedReview(value: EtudiantReview) {
+        this.review.selected = value;
+    }
     ngOnInit(): void {
+        this.review.findReview(this.selectedcours.id).subscribe(
+            data => {
+                this.selectedReview = data;
+            });
         this.dictionnaryService.FindAllWord().subscribe(
             data => {
                 this.itemsDict = data;

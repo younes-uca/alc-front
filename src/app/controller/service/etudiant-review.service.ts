@@ -2,19 +2,23 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {EtudiantReview} from '../model/etudiant-review.model';
 import {Observable} from 'rxjs';
+import {LoginService} from './login.service';
+import {ParcoursService} from './parcours.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EtudiantReviewService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private user: LoginService,  private service: ParcoursService) { }
   private _viewDialog: boolean;
   private _selected: EtudiantReview;
   public Save(): Observable<EtudiantReview> {
     return this.http.post<EtudiantReview> ('http://localhost:8036/learn/etudiantReview/', this.selected);
   }
-
+  public findReview(id: number): Observable<EtudiantReview> {
+    return this.http.get<EtudiantReview> ('http://localhost:8036/learn/etudiantReview/etudiant/id/' + this.user.etudiant.id + '/cours/id/' + this.service.selectedcours.id);
+  }
   get selected(): EtudiantReview {
     if (this._selected == null){
       this._selected = new EtudiantReview();
