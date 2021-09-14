@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {EtudiantReviewService} from '../../../../controller/service/etudiant-review.service';
 import {EtudiantReview} from '../../../../controller/model/etudiant-review.model';
+import {Cours} from '../../../../controller/model/cours.model';
+import {ParcoursService} from '../../../../controller/service/parcours.service';
+import {LoginService} from '../../../../controller/service/login.service';
 
 @Component({
   selector: 'app-etudiant-review-view',
@@ -10,7 +13,14 @@ import {EtudiantReview} from '../../../../controller/model/etudiant-review.model
 })
 export class EtudiantReviewViewComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private service: EtudiantReviewService) { }
+  constructor(private messageService: MessageService, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
+  get selectedcours(): Cours {
+    return this.serviceCours.selectedcours;
+  }
+
+  set selectedcours(value: Cours) {
+    this.serviceCours.selectedcours = value;
+  }
 
   ngOnInit(): void {
   }
@@ -32,5 +42,8 @@ export class EtudiantReviewViewComponent implements OnInit {
   public hideViewDialog() {
     this.viewDialog = false;
   }
-
+public save(){
+    this.selected.cours.id = this.selectedcours.id;
+    this.selected.etudiant.id = this.loginService.etudiant.id;
+}
 }

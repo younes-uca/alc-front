@@ -309,6 +309,7 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.service.saveEtudiantCours().subscribe(data => {
             // @ts-ignore
             this.itemsEtudiantCours.push({...data});
+            this.viewDialog = true;
         });
         this.router.navigate(['/pages/etudiantcours']);
     }
