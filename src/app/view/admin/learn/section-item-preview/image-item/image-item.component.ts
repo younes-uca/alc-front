@@ -10,6 +10,7 @@ import {SectionItemModel} from '../../../../../controller/model/section-item.mod
 export class ImageItemComponent implements OnInit {
 
     @Input() current: SectionItemModel = null;
+    fliped:boolean=false
     image: string = 'https://drive.google.com/uc?export=view&id=1k_v1w04p_9JkbPZdPwjTGRY-00IktME4';
     selected: boolean = false;
     cureentResponse: string = '';
@@ -40,11 +41,13 @@ export class ImageItemComponent implements OnInit {
     }
 
     reloadComponent() {
-        document.getElementById('imageDiv').style.filter = 'blur(8px)';
-        document.getElementById('imageDiv').style.webkitFilter = 'blur(8px)';
-        this.messageService.clear();
-        this.selected = false;
-        this.cureentResponse = '';
+     this.fliped=false
+    }
+    public sound(word: string){
+        const text = encodeURIComponent(word);
+        const url = 'https://www.translatedict.com/speak.php?word='+text+'&lang=en';
+        const audio = new Audio(url);
+        audio.play();
     }
 
 }

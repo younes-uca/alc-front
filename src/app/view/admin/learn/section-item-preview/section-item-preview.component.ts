@@ -21,6 +21,8 @@ export class SectionItemPreviewComponent implements OnInit {
     showStart: boolean;
     showEnd: boolean;
     showItems: boolean;
+    currentIndex:number
+    fliped: boolean;
 
 
     constructor(private messageService: MessageService, private sectionItemService: SectionItemService, private router: Router) {
@@ -29,11 +31,13 @@ export class SectionItemPreviewComponent implements OnInit {
     ngOnInit(): void {
         this.listItems = this.sectionItemService.sectionSelected.sectionItems;
         this.currentItem = this.listItems[0];
+        this.currentIndex=this.listItems.indexOf(this.currentItem);
         this.showNext = true;
         this.showPrevious = false;
         this.showStart = true;
         this.showItems = false;
         this.showEnd = false;
+        this.fliped=false
     }
 
 
@@ -55,17 +59,17 @@ export class SectionItemPreviewComponent implements OnInit {
 
     nextItem() {
         const index = this.listItems.indexOf(this.currentItem);
-        if (index + 1 === 1) {
-            this.showPrevious = true;
-        }
-        if (index >= 0 && index < this.listItems.length - 1) {
+        if ( index < this.listItems.length - 1) {
             this.child.reloadComponent();
             this.currentItem = this.listItems[index + 1];
             this.showNext = true;
+            this.showfinish = false;
+            this.fliped=false
+            this.child.fliped=false
             console.log('Hada howa index' + index + 1);
 
         }
-        if (index + 1 >= this.listItems.length - 1) {
+        if (index + 1 >= this.listItems.length) {
             this.showNext = false;
             this.showfinish = true;
         }
@@ -85,5 +89,15 @@ export class SectionItemPreviewComponent implements OnInit {
 
     finish() {
         this.router.navigate(['/pages/create-section-items']);
+    }
+
+    flip() {
+        this.fliped=true
+        this.child.fliped=true
+        const index = this.listItems.indexOf(this.currentItem);
+        if (index + 1 >= this.listItems.length) {
+            this.showNext = false;
+            this.showfinish = true;
+        }
     }
 }
