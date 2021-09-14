@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Prof} from '../model/prof.model';
 import {Paiement} from '../model/paiement.model';
 import {SessionCours} from '../model/session-cours.model';
+import {LoginService} from './login.service';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class ProfessorService {
     private url = environment.baseUrl + 'prof/';
 
     // }
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private user: LoginService) {
     }
 
     private _items: Array<Prof>;
@@ -163,7 +164,9 @@ export class ProfessorService {
     public afficheSession(id: number): Observable<Array<SessionCours>> {
         return this.http.get<Array<SessionCours>>('http://localhost:8036/learn/session/prof/id/' + id);
     }
-
+    public afficheSessionStd(id: number): Observable<Array<SessionCours>> {
+        return this.http.get<Array<SessionCours>>('http://localhost:8036/learn/session/prof/id/' + this.user.prof.id + '/etudiant/id/' + id );
+    }
     /*paiement*/
     public paiementProf(): Observable<Array<Paiement>> {
         return this.http.get<Array<Paiement>>('http://localhost:8036/learn//prof/paiement');

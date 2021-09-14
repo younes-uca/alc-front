@@ -24,7 +24,7 @@
 
             <p-table #dt [(selection)]="selectes" [columns]="cols" [globalFilterFields]="['reference','username','lastName']" [paginator]="true"
                      [rowHover]="true"
-                     [rows]="10" [showCurrentPageReport]="true" [value]="items"
+                     [rows]="10" [showCurrentPageReport]="true" [value]="itemsEtudiant"
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                      dataKey="id"
                      styleClass="p-datatable-customers p-datatable-striped">
@@ -77,31 +77,30 @@
                 </ng-template>
                 <ng-template let-synthese pTemplate="body"> <!--*ngIf="etatEtudiant.id==33"-->
 
-                    <tr *ngIf="synthese.etatNumber==etat"><!--*ngIf="etatEtudiant.etatNumber==etat"-->
+                    <tr ><!--*ngIf="etatEtudiant.etatNumber==etat"-->
                         <td>
                             <p-tableCheckbox [value]="synthese"></p-tableCheckbox>
                         </td>
                         <td><!-- <img src="" alt="drapeau">-->
-                            <a (click)="setetat(3)" href="http://localhost:4200/#/pages/etat">{{synthese.lastName}}</a>
-                            <p class="nom"> {{synthese.username}}</p>
-                            <p class="nom"> id: {{synthese.id}}</p>
+                            <a (click)="setetat(3)" href="http://localhost:4200/#/pages/etat">{{synthese.nom}}</a>
+                            <p class="nom"> {{synthese.prenom}}</p>
                         </td>
-                        <td><p class="bold">{{synthese.schedule1}} </p>
-                            <p class="bold"> {{synthese.schedule2}} </p>
+                        <td><p class="bold">{{synthese.datedebutinscription}} </p>
+                            <p class="bold"> {{synthese.datefininscription}} </p>
                         </td>
-                        <td><P class="bold">{{synthese.lastClass}}</P>
-                            <a href="lesson_card">Lessons card</a> <br>
+                        <td (click)="viewSession(synthese)"><P class="bold"></P>
+                            <a >Lessons card</a> <br>
                             <!--   <img class="icon" src="img/horloge.png" alt="">-->
-                            <a (click)="op.toggle($event)" href="http://localhost:4200/#/pages/synthese"
-                               style="margin-top: 10px;">History </a>
+                            <a
+                                    style="margin-top: 10px; cursor: pointer">History </a>
                         </td>
-                        <td><p class="bold "> {{synthese.nbrClass}}</p>
+                        <td><p class="bold "> </p>
                             <a (click)="incrementer(synthese)" class="button_class"
                                href="http://localhost:4200/#/pages/synthese">ADD CLASS</a>
                         </td>
-                        <td><p>Pre-intermediate for Teens</p>
-                            <p class="bold"> Lesson 35</p>
-                            <a href="lesson">Enter Lesson</a>
+                        <td><p>{{synthese.parcours.libelle}}</p>
+                            <p class="bold"> Lesson {{synthese.parcours.length}}</p>
+                            <a href="lesson"></a>
                         </td>
 
                         <td>
@@ -116,13 +115,14 @@
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        In total there are {{items ? items.length : 0 }} items.
+                        In total there are {{itemsEtudiant ? itemsEtudiant.length : 0 }} items.
                     </div>
                 </ng-template>
             </p-table>
         </div>
 
         <app-synthese-session-cours-create></app-synthese-session-cours-create>
+        <app-session-cours-list></app-session-cours-list>
         <app-synthese-session-cours-edit></app-synthese-session-cours-edit>
         <app-synthese-session-cours-view></app-synthese-session-cours-view>
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

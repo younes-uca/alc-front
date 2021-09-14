@@ -203,14 +203,13 @@ import {QuizCreateComponent} from './view/admin/quiz/quiz-create/quiz-create.com
 import {QuizEtudiantViewComponent} from './view/etudiant/Quiz/quiz-etudiant-view/quiz-etudiant-view.component';
 import {SessionCoursEditComponent} from './view/admin/session-cours/session-cours-edit/session-cours-edit.component';
 import {SessionCoursCreateComponent} from './view/admin/session-cours/session-cours-create/session-cours-create.component';
-import {SyntheseSessionComponent} from './view/admin/synthese-session/synthese-session.component';
+import {SyntheseSessionComponent} from './view/Prof/synthese-session/synthese-session.component';
 import {SessionCoursViewComponent} from './view/admin/session-cours/session-cours-view/session-cours-view.component';
 import {SessionCoursListComponent} from './view/admin/session-cours/session-cours-list/session-cours-list.component';
 import {SessionCoursComponent} from './view/admin/session-cours/session-cours.component';
-import {SyntheseSessionCoursViewComponent} from './view/admin/synthese-session/synthese-session-cours-view/synthese-session-cours-view.component';
-import {SyntheseSessionCoursListComponent} from './view/admin/synthese-session/synthese-session-cours-list/synthese-session-cours-list.component';
-import {SyntheseSessionCoursEditComponent} from './view/admin/synthese-session/synthese-session-cours-edit/synthese-session-cours-edit.component';
-import {SyntheseSessionCoursCreateComponent} from './view/admin/synthese-session/synthese-session-cours-create/synthese-session-cours-create.component';
+import {SyntheseSessionCoursListComponent} from './view/Prof/synthese-session/synthese-session-cours-list/synthese-session-cours-list.component';
+import {SyntheseSessionCoursEditComponent} from './view/Prof/synthese-session/synthese-session-cours-edit/synthese-session-cours-edit.component';
+import {SyntheseSessionCoursCreateComponent} from './view/Prof/synthese-session/synthese-session-cours-create/synthese-session-cours-create.component';
 import {ProfesseurListComponent} from './view/admin/professeur/professeur-list/professeur-list.component';
 import {ProfesseurCreateComponent} from './view/admin/professeur/professeur-create/professeur-create.component';
 import {ProfesseurEditComponent} from './view/admin/professeur/professeur-edit/professeur-edit.component';
@@ -221,7 +220,6 @@ import {
     SafePipe,
     StudentSimulateSectionComponent
 } from './view/etudiant/learn-etudiant/student-simulate-section/student-simulate-section.component';
-import {SyntheseSessionHistoryComponent} from './view/admin/synthese-session/synthese-session-history/synthese-session-history.component';
 import {RecommendAdminComponent} from './view/admin/recommend-admin/recommend-admin.component';
 import {FaqCreateComponent} from './view/admin/faq-admin/faq-create/faq-create.component';
 import {FaqStudentListComponent} from './view/etudiant/FAQ-etudiant/faq-student/faq-student-list/faq-student-list.component';
@@ -251,6 +249,8 @@ import {SectionItemPreviewComponent} from './view/admin/learn/section-item-previ
 import {ImageItemComponent} from './view/admin/learn/section-item-preview/image-item/image-item.component';
 import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/translate/translate.component';
 import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etudiant-review-view/etudiant-review-view.component';
+// tslint:disable-next-line:max-line-length
+import {SyntheseSessionHistoryComponent} from './view/Prof/synthese-session/synthese-session-history/synthese-session-history.component';
 
 
 @NgModule({
@@ -458,7 +458,6 @@ import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etud
         SyntheseSessionComponent,
         SyntheseSessionCoursCreateComponent,
         SyntheseSessionCoursEditComponent,
-        SyntheseSessionCoursViewComponent,
         SyntheseSessionCoursListComponent,
         // ProfesseurComponent,
         ProfesseurListComponent,
@@ -501,6 +500,7 @@ import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etud
         DictionaryEditComponent,
         ViewQuizEtudiantComponent,
         TranslateComponent,
+        SyntheseSessionCoursListComponent,
         EtudiantReviewViewComponent
     ],
     providers: [

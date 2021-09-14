@@ -43,6 +43,9 @@
                             <th pSortableColumn="professor">Teacher LastName
                                 <p-sortIcon field="professor"></p-sortIcon>
                             </th>
+                            <th pSortableColumn="student">Student FirstName
+                                <p-sortIcon field="student"></p-sortIcon>
+                            </th>
                             <th pSortableColumn="student">Student LastName
                                 <p-sortIcon field="student"></p-sortIcon>
                             </th>
@@ -64,6 +67,7 @@
                             <td>
                                 <p-tableCheckbox [value]="sessionCours"></p-tableCheckbox>
                             </td>
+                            <td>{{sessionCours.prof.nom}}</td>
                             <td>{{sessionCours.etudiant.prenom}}</td>
                             <td>{{sessionCours.etudiant.nom}}</td>
                             <td>{{sessionCours.dateDebut}}</td>

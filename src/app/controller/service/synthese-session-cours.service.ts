@@ -3,6 +3,8 @@ import {environment} from '../../../environments/environment';
 import {SyntheseSessionCours} from '../model/synthese-session-cours.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Etudiant} from '../model/etudiant.model';
+import {LoginService} from './login.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,10 +15,22 @@ export class SyntheseSessionCoursService {
     private url = environment.baseUrl + 'etat/';
 
     // }
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private serviceUser: LoginService) {
     }
 
     private _items: Array<SyntheseSessionCours>;
+    private _itemsEtudiant: Array<Etudiant>;
+
+    get itemsEtudiant(): Array<Etudiant> {
+        if (this._itemsEtudiant == null) {
+            this._itemsEtudiant = new Array<Etudiant>();
+        }
+        return this._itemsEtudiant;
+    }
+
+    set itemsEtudiant(value: Array<Etudiant>) {
+        this._itemsEtudiant = value;
+    }
 
     get items(): Array<SyntheseSessionCours> {
         if (this._items == null) {
@@ -103,7 +117,9 @@ export class SyntheseSessionCoursService {
     public findAll(): Observable<Array<SyntheseSessionCours>> {
         return this.http.get<Array<SyntheseSessionCours>>(this.url);
     }
-
+    public findAllStudent(): Observable<Array<Etudiant>> {
+        return this.http.get<Array<Etudiant>>('http://localhost:8036/learn/etudiant/prof/id/' + this.serviceUser.prof.id);
+    }
     public save(): Observable<SyntheseSessionCours> {
         return this.http.post<SyntheseSessionCours>(this.url, this.selected);
     }
