@@ -93,9 +93,6 @@ export class FormLayoutDemoComponent implements OnInit {
     ngOnInit(): void {
         this.selected = new Inscription();
         this.selected.datedebutinscription = new Date();
-        document.getElementById('log-pass').style.visibility = 'hidden';
-        document.getElementById('log-pass').style.height = '0%';
-        document.getElementById('log-pass').style.width = '0%';
         this.service.findAllParcours().subscribe(data => this.parcoursList = data);
     }
 

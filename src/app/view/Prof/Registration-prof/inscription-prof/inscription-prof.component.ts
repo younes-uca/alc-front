@@ -42,9 +42,6 @@ export class InscriptionProfComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        document.getElementById('log-pass').style.visibility = 'hidden';
-        document.getElementById('log-pass').style.height = '0px';
-        document.getElementById('log-pass').style.width = '0px';
         this.selectedProf = new Prof();
     }
 
