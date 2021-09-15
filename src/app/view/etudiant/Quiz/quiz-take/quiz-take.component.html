@@ -43,6 +43,9 @@
 
                 </div>
             </div>
+            <div id="type-input" style="background-color: white; width: 100%; ">
+                <h3 style="text-align: center; margin-top: 100px; margin-bottom: 100px">{{this.question1}} <input type="text" style="margin-left: 5px; margin-right: 5px; color: #0a80bb; border: 1px solid #4d646f; width: 80px; height: 30px" placeholder="{{this.placeholderTypeInput}}"> {{this.question2}}</h3>
+            </div>
             <div style="margin-left: 40%; margin-top: 50px">
                 <button pButton pRipple type="button" style="width: 200px;" [style.visibility]="disable? 'visible' : 'hidden'" label="{{this.button}}" (click)="start()" class="p-button-outlined p-button-success"></button>
             </div>
