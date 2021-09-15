@@ -15,7 +15,7 @@ export class SectionItemComponent implements OnInit {
 
     sctionItem: SectionItemModel;
     sectionItemList: SectionItemModel[];
-    updateTime:boolean=false
+    updateTime: boolean = false;
     imageUrl: string;
     idsList: Array<number> = [];
 
@@ -23,7 +23,7 @@ export class SectionItemComponent implements OnInit {
     responsiveOptions;
     itemsLoaded: Promise<boolean>;
 
-    constructor(private translationFeaturesService:TranslationFeaturesService,private sectionItemService: SectionItemService, private messageService: MessageService, private router: Router) {
+    constructor(private translationFeaturesService: TranslationFeaturesService, private sectionItemService: SectionItemService, private messageService: MessageService, private router: Router) {
 
     }
 
@@ -107,7 +107,7 @@ export class SectionItemComponent implements OnInit {
         }
         this.sctionItem = new SectionItemModel('assets/image5.png');
         this.imageUrl = null;
-        this.updateTime=false
+        this.updateTime = false;
         //    this.sectionItemList = this.sectionSelected.sectionItems;
     }
 
@@ -124,7 +124,7 @@ export class SectionItemComponent implements OnInit {
     }
 
     update(node: any) {
-        this.updateTime=true
+        this.updateTime = true;
         this.sctionItem = node;
     }
 
@@ -136,17 +136,21 @@ export class SectionItemComponent implements OnInit {
         this.sectionSelected.sectionItems.splice(index, 1);
         console.log(this.sectionSelected.sectionItems.length);
         console.log(this.idsList);
-        this.updateTime=false
+        this.updateTime = false;
         this.sctionItem = new SectionItemModel('assets/image5.png');
     }
 
     translate() {
         this.translationFeaturesService.getTranslationFeatures(this.sctionItem.response).subscribe(data => {
 
-            this.sctionItem.translation=data.translation
-            this.sctionItem.example=data.example
-            this.sctionItem.explanation=data.explanation
-            this.sctionItem.synonyms=data.synonyms
+            this.sctionItem.translation = data.translation;
+            this.sctionItem.example = data.example;
+            this.sctionItem.explanation = data.explanation;
+            this.sctionItem.synonyms = data.synonyms;
         });
+    }
+
+    trackByIdx(index: number, obj: any): any {
+        return index;
     }
 }

@@ -68,7 +68,9 @@
                         </span>
                                 <h6 style="text-align: left">Synonyms</h6>
                                 <ul style="text-align: left" *ngIf="sctionItem.synonyms!==null">
-                                    <li *ngFor="let s of sctionItem.synonyms">{{s}}</li>
+                                    <li *ngFor="let s of sctionItem.synonyms; let i = index ;trackBy:trackByIdx">
+                                        <input type="text" style="border: hidden" [(ngModel)]="sctionItem.synonyms[i]" />
+                                    </li>
                                 </ul>
                                 <div style="margin: 0 auto;width: 100%" *ngIf="updateTime===false">
                                     <button (click)="addFormule()" class="p-button-raised p-button-success"
