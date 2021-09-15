@@ -9,6 +9,7 @@ export class Inscription {
     public nom: string;
     public prenom: string;
     public gmail: string;
+    public username: string;
     public numero: string;
     public age: number;
     public login: string;
