@@ -54,7 +54,13 @@ public save(review: number){
   this.service.Save().subscribe(
         data => {
           this.viewDialog = false;
-          this.router.navigate(['/pages/etudiantcours']);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'Course Finish',
+            life: 3000,
+
+          });
         });
   }
 }
