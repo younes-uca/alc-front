@@ -1,7 +1,7 @@
 <p-dialog [(visible)]="editDialogDict" [modal]="true" [style]="{width: '700px', height:'300px' }"
           header="Edit Dictionary" styleClass="p-fluid">
     <ng-template pTemplate="p-field">
-
+        <p-toast></p-toast>
         <div class="p-field">
             <label for="word">Word</label>
             <input style="font-size: 20px" [(ngModel)]="selected.word" id="word" pInputText type="text"></div>

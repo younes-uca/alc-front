@@ -59,7 +59,7 @@ export class DictionaryEditComponent implements OnInit {
             this.messageService.add({
                 severity: 'success',
                 summary: 'Successful',
-                detail: 'Sections Deleted',
+                detail: 'Word Edited',
                 life: 3000
             });
         }, error => {
@@ -89,7 +89,7 @@ export class DictionaryEditComponent implements OnInit {
             this.messageService.add({
                 severity: 'success',
                 summary: 'Successful',
-                detail: 'Section Deleted',
+                detail: 'Word Deleted',
                 life: 3000
             });
         });

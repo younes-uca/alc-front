@@ -105,7 +105,7 @@ export class DictionaryCreateComponent implements OnInit {
             this.messageService.add({
                 severity: 'success',
                 summary: 'Successful',
-                detail: 'Sections Deleted',
+                detail: 'Word Added',
                 life: 3000
             });
         }, error => {
