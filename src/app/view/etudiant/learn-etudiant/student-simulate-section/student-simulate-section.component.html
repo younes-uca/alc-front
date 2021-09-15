@@ -1,8 +1,7 @@
 <div class=" card" style="background-color: transparent">
     <div class="p-grid">
         <p-toast></p-toast>
-        <div class="p-col">
-
+        <div *ngIf="showVocabulary===false" class="p-col">
             <div class="product-grid-item " style="background-color: white">
                 <div class="product-grid-item-content" >
                     <div class="product-name" style="margin-bottom: 15px; background-color: #1BA7AF; color: white"><h1>{{this.selectedsection.libelle}}</h1>
@@ -64,16 +63,17 @@
                         pButton
                         pRipple style="margin-left: 360px; width: 120px"
                         type="button"></button>
-                <button  (click)="finish()" *ngIf="this.selectedReview.review == null"
-                         [style.visibility]="((this.selectedsection.numeroOrder < this.itemssection2.length))? 'hidden':'visible'"
+                <button (click)="finish()"
+                         [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'hidden':'visible'"
                          class="p-button-rounded" icon="pi pi-check" label="Finish" pButton pRipple
                         style=" width: 130px;  position: absolute;right: 15px;"
                         type="button"></button>
             </div>
-
-
         </div>
 
+        <div *ngIf="showVocabulary===true" class="p-col">
+            <app-vocabulary-section (someEvent)="return($event)"></app-vocabulary-section>
+        </div>
         <!-- <div class="p-col-2 card">
              <h5>Categorie</h5>
              <p-timeline [value]="itemssection2">
@@ -175,5 +175,4 @@
     <app-dictionary-create></app-dictionary-create>
     <app-dictionary-edit></app-dictionary-edit>
     <app-translate></app-translate>
-    <app-etudiant-review-view></app-etudiant-review-view>
 </div>

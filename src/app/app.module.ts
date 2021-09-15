@@ -253,6 +253,8 @@ import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etud
 import {SyntheseSessionHistoryComponent} from './view/Prof/synthese-session/synthese-session-history/synthese-session-history.component';
 
 import { RecommendationTeacherComponent } from './view/Prof/recommendation-teacher/recommendation-teacher.component';
+import { VocabularySectionComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section.component';
+import { VocabularySectionItemComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section-item/vocabulary-section-item.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
@@ -506,7 +508,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         TranslateComponent,
         SyntheseSessionCoursListComponent,
         EtudiantReviewViewComponent,
-        RecommendationTeacherComponent
+        RecommendationTeacherComponent,
+        VocabularySectionComponent,
+        VocabularySectionItemComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

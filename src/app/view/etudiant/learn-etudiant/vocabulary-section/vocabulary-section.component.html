@@ -1,4 +1,4 @@
-<p-card *ngIf="showItems" [style]="{width:'60%',margin:'0 auto',marginTop:'10px'}"
+<p-card *ngIf="showItems" [style]="{width:'100%',textAlign:'center'}"
         class="p-d-block p-mx-auto">
     <div style="position: relative;width: 100%">
         <h5>Learn the words</h5>
@@ -7,7 +7,7 @@
     <div>
         <p-progressBar [value]="progressBarValue" [showValue]=false></p-progressBar>
     </div>
-    <app-image-item [current]="currentItem"></app-image-item>
+    <app-vocabulary-section-item [current]="currentItem"></app-vocabulary-section-item>
     <div *ngIf="showNext" style="margin-top: 10px;text-align: center">
         <button
                 *ngIf="fliped===false"
@@ -31,7 +31,7 @@
                 type="button"></button>
     </div>
 </p-card>
-<p-card *ngIf="showStart" [style]="{width:'60%',margin:'0 auto',marginTop:'30px',textAlign:'center'}"
+<p-card *ngIf="showStart" [style]="{width:'100%',textAlign:'center'}"
         class="p-d-block p-mx-auto">
     <div class="p-grid " style="width: 100%">
         <div class="p-col-6" style="text-align: center">
@@ -60,7 +60,7 @@
         </div>
     </div>
 </p-card>
-<p-card *ngIf="showEnd" [style]="{width:'60%',margin:'0 auto',marginTop:'30px',textAlign:'center'}"
+<p-card *ngIf="showEnd" [style]="{width:'100%',textAlign:'center'}"
         class="p-d-block p-mx-auto">
     <div class="p-grid " style="width: 100%">
         <div class="p-col-6 " style="text-align: center;position: relative">
