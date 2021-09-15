@@ -86,6 +86,7 @@ import {QuizTakeComponent} from './view/etudiant/Quiz/quiz-take/quiz-take.compon
 import {SectionItemComponent} from './view/admin/learn/section-item/section-item.component';
 import {ViewQuizEtudiantComponent} from './view/admin/view-quiz-etudiant/view-quiz-etudiant.component';
 import {SectionItemPreviewComponent} from './view/admin/learn/section-item-preview/section-item-preview.component';
+import {RecommendationTeacherComponent} from './view/Prof/recommendation-teacher/recommendation-teacher.component';
 
 
 @NgModule({
@@ -130,6 +131,7 @@ import {SectionItemPreviewComponent} from './view/admin/learn/section-item-previ
                     {path: 'pages/faq-student-contact', component: FaqStudentContactComponent},
                     {path: 'pages/faq-student-contact-list', component: FaqStudentContactListeComponent},
                     {path: 'pages/login-admin', component: LoginAdminComponent},
+                    {path: 'view/Recommendation-teacher', component: RecommendationTeacherComponent},
                     {path: 'pages/login-prof', component: LoginProfComponent},
                     {path: 'pages/login-etudiant', component: LoginEtudiantComponent},
                     {path: 'pages/quiz-create', component: QuizCreateComponent},
