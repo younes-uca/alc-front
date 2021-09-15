@@ -7,6 +7,7 @@ export class SectionItemModel {
     public translation: string;
     public explanation: string;
     public example: string;
+    public synonyms: string[];
     public section: Section;
 
 

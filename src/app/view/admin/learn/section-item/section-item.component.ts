@@ -146,6 +146,7 @@ export class SectionItemComponent implements OnInit {
             this.sctionItem.translation=data.translation
             this.sctionItem.example=data.example
             this.sctionItem.explanation=data.explanation
+            this.sctionItem.synonyms=data.synonyms
         });
     }
 }
