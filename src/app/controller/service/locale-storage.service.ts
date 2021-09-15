@@ -16,7 +16,7 @@ export class LocaleStorageService {
   }
 
   getToken() {
-    return localStorage.getItem("token");
+    return localStorage.getItem('token');
   }
 
   getUser() {
