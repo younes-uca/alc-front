@@ -67,13 +67,13 @@ export class InscriptionAdminComponent implements OnInit {
                     detail: 'Registration added',
                     life: 3000
                 });
-                document.getElementById('log-pass').style.visibility = 'hidden';
-                document.getElementById('log-pass').style.height = '0%';
-                document.getElementById('log-pass').style.width = '0%';
             }, error => {
-                document.getElementById('log-pass').style.visibility = 'visible';
-                document.getElementById('log-pass').style.height = '100%';
-                document.getElementById('log-pass').style.width = '100%';
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Warning',
+                    detail: 'Registration canceled',
+                    life: 3000
+                });
             });
     }
 }

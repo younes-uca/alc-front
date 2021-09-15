@@ -75,33 +75,32 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<p-toast></p-toast>
+<div class="main">
 
-<div class="main" style=" height:30% ; width: 28% ; margin-left: 60% ">
-    <p-card header="Registration form" >
-        <div class="form-group-1" >
-
-            <input type="text" name="lastname" id="Lastname"  pInputText placeholder="Lastname" [(ngModel)]="selected.nom" required />
-            <input type="text" name="UserName" id="UserName"  pInputText placeholder="Email" required [(ngModel)]="selected.login"/>
-            <input type="tel" name="phone_number" id="phone_number"  pInputText placeholder="phone number" required [(ngModel)]="selected.numero"/>
-            <div class="p-field" >
-                <p-dropdown [(ngModel)]="selected.parcours" [options]="parcoursList"
-                            optionLabel="libelle" name="libelle" autoWidth="false" placeholder="--Please choose Parcours--" [style]="{'width': '100%'}" ></p-dropdown>
+    <div class="container">
+        <form method="POST" class="appointment-form" id="appointment-form">
+            <h2>Registration form</h2>
+            <div class="form-group-1">
+                <input type="text" name="Firstname" id="Firstname" placeholder="Firstname" [(ngModel)]="selected.prenom" required />
+                <input type="text" name="lastname" id="Lastname" placeholder="Lastname" [(ngModel)]="selected.nom" required />
+                <input type="text" name="UserName" id="UserName" placeholder="UserName" required [(ngModel)]="selected.login"/>
+                <input type="email" name="gmail" id="gmail" placeholder="email" required [(ngModel)]="selected.gmail"/>
+                <input type="password" name="Password" id="Password" placeholder="Password" required [(ngModel)]="selected.password"/>
+                <input type="number" name="age" id="age" placeholder="age" required [(ngModel)]="selected.age"/>
+                <input type="tel" name="phone_number" id="phone_number" placeholder="phone number" required [(ngModel)]="selected.numero"/>
+                <input type="text" name="Address" id="Address" placeholder="Address" required [(ngModel)]="selected.address"/>
+                <input type="text" name="City" id="City" placeholder="City" required [(ngModel)]="selected.ville"/>
+                <div class="p-field" style="margin-bottom: 25px">
+                    <p-dropdown [(ngModel)]="selected.parcours" [options]="parcoursList"
+                                 optionLabel="libelle" name="libelle" autoWidth="false" placeholder="--Please choose Parcours--" [style]="{'width': '100%'}" ></p-dropdown>
+                </div>
             </div>
-
-            <button pButton pRipple type="button" label="S'INSCRIRE"
-                    class="p-button-warning"  (click)="save()" style="width: 100%">
-
-            </button>
-            <div>
-                <p style="margin-top: 2%">En cliquant, vous acceptez l'accord</p>
+            <div class="form-submit" >
+                <input type="button" name="submit" id="submit" class="submit" value="Submit" (click)="save()"/>
             </div>
-            <div  style="visibility: hidden; height: 20%; width: 0 ; " id="log-pass" >
-                <p-message severity="error" text="Username or Password invalid" ></p-message></div>
-
-        </div>
-    </p-card>
-
-
+        </form>
+    </div>
 
 </div>
 
