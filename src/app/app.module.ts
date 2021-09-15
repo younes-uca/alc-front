@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -249,7 +249,9 @@ import {ViewQuizEtudiantComponent} from './view/admin/view-quiz-etudiant/view-qu
 import {SectionItemListComponent} from './view/admin/learn/section-item/section-item-list/section-item-list.component';
 import {SectionItemPreviewComponent} from './view/admin/learn/section-item-preview/section-item-preview.component';
 import {ImageItemComponent} from './view/admin/learn/section-item-preview/image-item/image-item.component';
-import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/translate/translate.component';
+import {TranslateComponent} from './view/etudiant/learn-etudiant/Dictionnary/translate/translate.component';
+import {LocaleStorageService} from './controller/service/locale-storage.service';
+import {HttpInterceptorService} from './controller/service/http-interceptor.service';
 
 
 @NgModule({
@@ -504,7 +506,8 @@ import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/t
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, MessageService, ConfirmationService
+        PhotoService, ProductService, MenuService, MessageService, ConfirmationService, LocaleStorageService,
+        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
     ],
     bootstrap: [AppComponent]
 })

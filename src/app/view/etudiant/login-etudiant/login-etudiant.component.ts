@@ -5,6 +5,9 @@ import {Prof} from '../../../controller/model/prof.model';
 import {Admin} from '../../../controller/model/admin.model';
 import {Etudiant} from '../../../controller/model/etudiant.model';
 import {Router} from '@angular/router';
+import {UserService} from '../../../controller/service/user.service';
+import {User} from '../../../controller/model/user.model';
+import {LocaleStorageService} from '../../../controller/service/locale-storage.service';
 
 @Component({
     selector: 'app-login-etudiant',
@@ -14,49 +17,9 @@ import {Router} from '@angular/router';
 export class LoginEtudiantComponent implements OnInit {
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-                private service: LoginService, private router: Router
+                private service: UserService, private router: Router, private localeStorageService: LocaleStorageService
     ) {
 
-    }
-
-    private _role: string;
-
-    get role(): string {
-        return this._role;
-    }
-
-    set role(value: string) {
-        this._role = value;
-    }
-
-    private _login: string;
-
-    get login(): string {
-        return this._login;
-    }
-
-    set login(value: string) {
-        this._login = value;
-    }
-
-    private _password: string;
-
-    get password(): string {
-        return this._password;
-    }
-
-    set password(value: string) {
-        this._password = value;
-    }
-
-    private _correct: boolean;
-
-    get correct(): boolean {
-        return this._correct;
-    }
-
-    set correct(value: boolean) {
-        this._correct = value;
     }
 
     get model(): any[] {
@@ -67,39 +30,20 @@ export class LoginEtudiantComponent implements OnInit {
         this.service.model = value;
     }
 
-    get prof(): Prof {
-        return this.service.prof;
+
+    get user(): User {
+        return this.service.user;
     }
 
-    set prof(value: Prof) {
-        this.service.prof = value;
+    set user(value: User) {
+        this.service.user = value;
     }
 
-    get admin(): Admin {
-        return this.service.admin;
-    }
-
-    set admin(value: Admin) {
-        this.service.admin = value;
-    }
-
-    get etudiant(): Etudiant {
-        return this.service.etudiant;
-    }
-
-    set etudiant(value: Etudiant) {
-        this.service.etudiant = value;
-    }
-
-    public findEtudiant() {
-
-        this.service.findEtudiant(this.login, this.password).subscribe(
+    public signin() {
+        this.service.signin().subscribe(
             data => {
-                this.etudiant = data;
-                this.admin = null;
-                this.prof = null;
-                console.log(this.etudiant);
-                this.correct = true;
+                this.localeStorageService.set('user', data.user);
+                this.localeStorageService.set('token', data.token);
                 this.model = [
                     {label: 'Courses ', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/etudiantparcours']},
                     {label: 'FAQ ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-student']},
@@ -110,8 +54,6 @@ export class LoginEtudiantComponent implements OnInit {
                 this.router.navigate(['/pages/etudiantparcours']);
             },
             error => {
-                document.getElementById('log-pass').style.visibility = 'visible';
-                this.correct = false;
             });
     }
 
