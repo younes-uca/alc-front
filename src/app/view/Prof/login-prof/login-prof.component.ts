@@ -102,13 +102,13 @@ export class LoginProfComponent implements OnInit {
                 console.log(this.prof);
                 this.model = [
                     {label: 'HomeTeacher', icon: 'pi pi-fw pi-home', routerLink: ['/pages/home']},
-                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/view/recommendat']},
+                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/view/Recommendation-teacher']},
+// {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/view/recommendat']},
                     {label: 'Salary', icon: 'pi pi-fw pi-money-bill', routerLink: ['/pages/salary']},
                     {label: 'Parcours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/courses']},
                     {label: 'Classes', icon: 'pi pi-fw pi-table', routerLink: ['/pages/classes']},
                     // tslint:disable-next-line:max-line-length
                     {label: 'Synthese-Session-Cours', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/synthese']},
-                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/Recommendation-teacher']},
                     {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
                     {label: 'News', icon: 'pi pi-fw pi-clock', routerLink: ['/pages/news-teacher']},
                     {label: 'FAQ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-teacher']},
