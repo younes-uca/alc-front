@@ -61,10 +61,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+<p-toast></p-toast>
 <div class="main">
 
-    <div class="container" style="width: 1000px ; background-color: #0e88b3 ; height: 570px">
+    <div class="container" style="width: 70% ; background-color: #0e88b3 ; height: 100%">
         <form method="POST" class="appointment-form" id="appointment-form" >
             <h2 style="color: white"> A quelle vitesse pouvez-vouz commencer ?</h2>
             <div class="p-grid p-fluid">
@@ -95,7 +95,7 @@
                 <div class="p-field p-col-12 p-md-3">
 
                     <span class="p-float-label">
-    <input [(ngModel)]="selectedProf.nom" id="float-input" type="text" >
+    <input [(ngModel)]="selectedProf.nom" id="float-input" pInputText type="text" >
     <label for="float-input">FirstName</label>
 </span>
 
@@ -103,20 +103,21 @@
 
                 <div class="p-field p-col-12 p-md-3">
                      <span class="p-float-label">
-                    <input type="text" name="UserName" id="UserName"  required [(ngModel)]="selectedProf.login"/>
+                    <input type="text" name="UserName" id="UserName" pInputText required [(ngModel)]="selectedProf.login"/>
                 <label for="float-input">Username</label>
                      </span></div>
                 <div class="p-field p-col-12 p-md-3" >
                       <span class="p-float-label">
-                    <input type="tel" name="phone_number" id="phone_number"  required [(ngModel)]="selectedProf.numero"/>
-                            <label for="float-input">phone number</label>
+                    <input type="tel" name="phone_number" id="phone_number" pInputText required [(ngModel)]="selectedProf.numero"/>
+                          <label  for="float-input">phone number</label>
+
                       </span>
 
                 </div>
                 <div class="p-field p-col-12 p-md-3" >
                     <div class="form-submit" >
                         <input type="submit" name="submit" id="submit"
-                               style="width: 220px ; height: 20px ; color: white ;
+                               style="width: 90% ;  color: white ;
                             background-color: orangered" class="submit" value="Soumettre Votre Candidature" (click)="save()"/>
 
                     </div>

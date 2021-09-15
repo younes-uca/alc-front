@@ -53,23 +53,18 @@ export class InscriptionProfComponent implements OnInit {
         this.submitted = true;
         this.service.save().subscribe(
             data => {
-                this.selectedProf = new Prof();
-                console.log('meryem');
                 this.messageService.add({
-                    severity: 'success',
-                    summary: 'Successful',
-                    detail: 'Inscription added',
-                    life: 3000
-                });
-                document.getElementById('log-pass').style.visibility = 'hidden';
-                document.getElementById('log-pass').style.height = '0%';
-                document.getElementById('log-pass').style.width = '0%';
-                this.router.navigate(['/']);
-            }, error => {
-                document.getElementById('log-pass').style.visibility = 'visible';
-                document.getElementById('log-pass').style.height = '100%';
-                document.getElementById('log-pass').style.width = '100%';
+                severity: 'success',
+                summary: 'Successful',
+                detail: 'Registration added',
+                life: 3000,
+
             });
+                console.log('meryem');
+            }, error => {
+                console.log('erreur');
+            });
+        this.selectedProf = new Prof();
     }
 
     findAllCategorieProf() {
