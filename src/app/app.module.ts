@@ -251,6 +251,8 @@ import {SectionItemPreviewComponent} from './view/admin/learn/section-item-previ
 import {ImageItemComponent} from './view/admin/learn/section-item-preview/image-item/image-item.component';
 import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/translate/translate.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { VocabularySectionComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section.component';
+import { VocabularySectionItemComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section-item/vocabulary-section-item.component';
 
 
 @NgModule({
@@ -501,7 +503,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         SectionItemComponent,
         DictionaryEditComponent,
         ViewQuizEtudiantComponent,
-        TranslateComponent
+        TranslateComponent,
+        VocabularySectionComponent,
+        VocabularySectionItemComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -35,6 +35,7 @@ export class SafePipe implements PipeTransform {
     styleUrls: ['./student-simulate-section.component.scss']
 })
 export class StudentSimulateSectionComponent implements OnInit {
+    showVocabulary: boolean;
     nodes: TreeNode[];
     menu: MenuItem[];
     srcImg: string;
@@ -323,6 +324,7 @@ export class StudentSimulateSectionComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.showVocabulary=false
         this.dictionnaryService.FindAllWord().subscribe(
             data => {
                 this.itemsDict = data;
@@ -469,10 +471,7 @@ export class StudentSimulateSectionComponent implements OnInit {
     set TranslateSynonymeDialog(value: boolean) {
         this.dictionnaryService.TranslateSynonymeDialog = value;
     }
-    Vocab(section: Section) {
-        this.sectionItemService.sectionSelected=section;
-        this.router.navigate(['/pages/preview-section-items']);
-    }
+
 
     PreviousSection() {
         this.service.affichelistSection().subscribe(
@@ -607,4 +606,18 @@ export class StudentSimulateSectionComponent implements OnInit {
         }
     }
 
+    Vocab(section: Section) {
+        this.sectionItemService.sectionSelected = section;
+
+        this.sectionItemService.getSectionItems().subscribe(data => {
+            this.sectionItemService.sectionSelected.sectionItems = data;
+            console.log(data);
+            this.showVocabulary=true
+        });
+
+    }
+
+    return($event: string) {
+        this.showVocabulary=false
+    }
 }

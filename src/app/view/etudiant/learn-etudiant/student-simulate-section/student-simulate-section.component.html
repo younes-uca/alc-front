@@ -1,7 +1,6 @@
 <div class=" card" style="background-color: transparent">
     <div class="p-grid">
-        <div class="p-col">
-
+        <div *ngIf="showVocabulary===false" class="p-col">
             <div class="product-grid-item " style="background-color: white">
                 <div class="product-grid-item-content" >
                     <div class="product-name" style="margin-bottom: 15px; background-color: #1BA7AF; color: white"><h1>{{this.selectedsection.libelle}}</h1>
@@ -69,10 +68,11 @@
                         style=" width: 130px;  position: absolute;right: 15px;"
                         type="button"></button>
             </div>
-
-
         </div>
 
+        <div *ngIf="showVocabulary===true" class="p-col">
+            <app-vocabulary-section (someEvent)="return($event)"></app-vocabulary-section>
+        </div>
         <!-- <div class="p-col-2 card">
              <h5>Categorie</h5>
              <p-timeline [value]="itemssection2">
