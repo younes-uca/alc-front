@@ -63,6 +63,12 @@ export class InscriptionProfComponent implements OnInit {
             });
                 console.log('meryem');
             }, error => {
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Warning',
+                    detail: 'Registration canceled',
+                    life: 3000
+                });
                 console.log('erreur');
             });
         this.selectedProf = new Prof();

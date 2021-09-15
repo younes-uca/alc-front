@@ -71,9 +71,7 @@
                 <input type="password" name="Password" id="Password" placeholder="Password" required [(ngModel)]="selected.password"/>
                 <input type="tel" name="phone_number" id="phone_number" placeholder="Phone number" required [(ngModel)]="selected.numero"/>
                 <input type="text" name="Address" id="Address" placeholder="Address" required [(ngModel)]="selected.addresse"/>
-                <div  style="visibility: hidden; height: 0; width: 0;" id="log-pass" >
-                    <p-message severity="error" text="Username or Password invalid" autoWidth="false" ></p-message></div>
-            </div>
+                </div>
             <div class="form-submit" style="margin-top: 10px">
                 <input type="submit" name="submit" id="submit" class="submit" value="Submit" (click)="save()" />
             </div>
