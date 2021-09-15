@@ -1,46 +1,3 @@
-<!--<div class="col-md-8 mt-lg-5"  style="margin-left: 140px;">
-    <div class="card" id="card" >
-        <div class="card-header">
-            <output id="quizGrammar">Quiz</output>
-        </div>
-        <div class="card-body" id="quiz">
-            <div class="start" id="start">
-                <div><h3>Preview quiz</h3></div><br>
-                <div>Quiz will start at 05/08/2021</div><br>
-                <div>And will end at 05/08/2021</div><br>
-                <div>You have 1 hour</div><br>
-                <div>Good luck</div><br>
-
-                <button pButton pRipple class="p-button-rounded p-mr-2" id="btn-start" label="Start" (click)="start()"></button>
-                <button pButton pRipple class="p-button-rounded p-mr-2" id="btn-update" label="Update this question" (click)="openUpdate()"></button>
-            </div>
-
-            <div class="question" id="question">
-                <p-progressBar [value]="numQuestion*100/items.length"></p-progressBar>
-
-                <br><br><br><output><B>{{selected.numero}} - {{selected.libelle}} </B></output>
-
-                <div *ngFor="let r of reponses" class="question_answer" id="div-{{r.id}}">
-                    <input type="{{this.type}}" (click)="selectionChanged($event,r)" value="{{r.id}}" [(ngModel)]="selectedValue" name="groupname" ngModel>
-                    <label>{{r.lib}}</label><br>
-                </div>
-            </div>
-
-            <div class="card-body2" id="finish">
-                <output>You finish this quiz</output><br>
-                <output id="congratulations">Congratulations</output><br>
-                <output id="hard-luck">Hard-luck next time</output><br>
-            </div>
-
-
-        </div>
-        <div class="card-footer">
-            <button pButton pRipple class="p-button-rounded p-mr-2" id="btn-next" style="background-color: #0C8990" label="{{this.button}}" (click)="next()"></button>
-        </div>
-    </div>
-</div>
--->
-
 <div class="p-grid" id="header">
     <div class="p-col-6">{{this.selected.typeDeQuestion.lib}}</div>
     <div class="p-col-6">{{this.selected.numero}} out of {{this.items.length}}</div>
@@ -71,31 +28,40 @@
     <div class="p-col">
         <div class="p-grid" id="bodyRadio">
             <div class="p-col-6" id="question">
-                <h3 style="margin-top: 100px;margin-bottom: 100px; text-align: center">{{this.question1}} <span
-                        id="AnswerCorrect"
-                        style="color: #1af045"> {{this.correctAnswers[0].lib}} </span> {{this.question2}}</h3>
+                <h3 style="margin-top: 100px;margin-bottom: 100px; text-align: center">{{this.question1}} <span id="myAnswer" style="color: #1af045">{{this.correctAnswers[0].lib}} </span> {{this.question2}}</h3>
+                <h3 id="translate-choix-unique" style="text-align: right"> {{this.translate}}</h3>
             </div>
-            <div class="p-col-6" id="answers">
+            <div class="p-col-6" id="answers" >
                 <div style="margin: 50px 50px">
-                    <div *ngFor="let r of reponses" id="answers-radio">
-                        <input [(ngModel)]="selectedValue" [attr.disabled]="true" name="groupname" type="radio"
-                               value="{{r.id}}">
+                    <div  *ngFor="let r of reponses" id="answers-radio">
+                        <input class="option-input radio" type="radio" value="{{r.id}}" [(ngModel)]="selectedValue" disabled name="groupname">
                         <label>{{r.lib}}</label><br>
                     </div>
                 </div>
             </div>
 
-            <div id="mistake" style="background-color: white; width: 100%">
-        <span class="p-float-label" style="margin-left: 10%; margin-bottom: 20px">
-            <textarea [(ngModel)]="this.selected.libelle" [disabled]="true" id="float-input-correct-mistake" pInputTextarea
-                      rows="1"></textarea>
-            <h3 style="color: black; font-family: 'Goudy Old Style';"> The correct answer :  <span
-                    style="color: #1af045; font-family: 'Goudy Old Style';">{{this.trueAnswerCorrectMistake}}</span></h3>
-        </span>
+            <div style="background-color: white; width: 100%" id="mistake">
+                <!--<h3 style="margin-top: 100px;margin-bottom: 20px; text-align: center">{{this.selected.libelle}} </h3>-->
+                <span class="p-float-label" style="margin-left: 10%; margin-bottom: 20px; margin-top: 100px">
+                    <!--<textarea id="float-input-correct-mistake" [disabled]="disable? true: null" [(ngModel)]="this.selected.libelle" (keyup)="correctMistake()" pInputTextarea></textarea>-->
+                    <div id="div-output">
+                        <output *ngFor="let i of numberofword" id="output-correct-mistake"> <span id="span-output-{{i}}" [style.color]="answerCorrectOrFalse[i]? '#0a80bb' : 'red'" [style.textDecoration]="answerCorrectOrFalse[i]? 'none' : 'line-through'" >  {{this.questionanswers[i]}} </span> <span id="span-correct-{{i}}" class="span-correct" [style.visibility]="answerCorrectOrFalse[i]? 'hidden' : 'visible'"> {{this.correctanswers[i]}} </span> </output>
+                        <h3 id="translate-correct-mistake" style="text-align: right"> {{this.translate}}</h3>
+                    </div>
+                </span>
             </div>
-            <div id="button-next" style="margin-left: 40%; margin-top: 50px">
-                <button (click)="start()" class="p-button-outlined p-button-success" label="Next" pButton pRipple style="width: 200px;"
-                        type="button"></button>
+            <div class="p-col-6" id="on-off-question" style="background: white;">
+                <h3 id="question-on-off" style="margin-top: 100px;margin-bottom: 100px; text-align: center">{{this.selected.libelle}}</h3>
+                <h3 id="translate-on-off" style="text-align: right"> {{this.translate}}</h3>
+            </div>
+            <div class="p-col-6" id="on-off-answer" >
+                <div style="margin: 50px 50px">
+                    <output style="margin-left: 20px; margin-right: 10px; font-size: 30px; font-family: 'Goudy Old Style'">False </output><p-inputSwitch [(ngModel)]="on_off"></p-inputSwitch> <output style="margin-left: 10px; font-size: 30px; font-family: 'Goudy Old Style'">True</output>
+
+                </div>
+            </div>
+            <div style="margin-left: 40%; margin-top: 50px">
+                <button pButton pRipple type="button" style="width: 200px;" label="{{this.button}}" (click)="start()" class="p-button-outlined p-button-success"></button>
             </div>
 
         </div>

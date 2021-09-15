@@ -457,6 +457,11 @@ export class QuizEtudiantService {
   {
     return this.http.delete<QuizEtudiant>(this.url + 'quizEtudiant/id/' + quizEtudiant.id);
   }
+
+  public findMyAnswerEtudiant(quizEtudiant: QuizEtudiant, question: Question): Observable<Array<ReponseEtudiant>>
+  {
+    return this.http.get<Array<ReponseEtudiant>>(this.url + 'reponseEtudiant/creteria/quizEtudiant/id/' + quizEtudiant.id + '/question/id/' + question.id);
+  }
 ///////////////////
   public findAllQuizEtudiant(): Observable<Array<QuizEtudiant>>
   {

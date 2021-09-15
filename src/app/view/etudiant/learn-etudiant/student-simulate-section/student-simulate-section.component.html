@@ -63,7 +63,8 @@
                         pButton
                         pRipple style="margin-left: 360px; width: 120px"
                         type="button"></button>
-                <button (click)="finish()" *ngIf="this.selectedReview.review == null"
+                <button  *ngIf="this.selectedReview.review == null"
+                        (click)="finish()"
                          [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'hidden':'visible'"
                          class="p-button-rounded" icon="pi pi-check" label="Finish" pButton pRipple
                         style=" width: 130px;  position: absolute;right: 15px;"
