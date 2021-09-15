@@ -253,6 +253,7 @@ import { EtudiantReviewViewComponent } from './view/etudiant/learn-etudiant/etud
 import {SyntheseSessionHistoryComponent} from './view/Prof/synthese-session/synthese-session-history/synthese-session-history.component';
 
 import { RecommendationTeacherComponent } from './view/Prof/recommendation-teacher/recommendation-teacher.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -342,7 +343,7 @@ import { RecommendationTeacherComponent } from './view/Prof/recommendation-teach
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-
+        ScrollingModule
     ],
     declarations: [
         AppComponent,

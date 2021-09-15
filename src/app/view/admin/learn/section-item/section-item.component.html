@@ -14,89 +14,103 @@
                 </div>
             </p-toolbar>
         </div>
-        <div class="card" style="text-align: center">
-            <div class="p-grid">
-                <div class="p-col-5 p-d-flex p-ai-center p-jc-center">
-                    <div class="p-fluid" style="width: 100%;text-align: center;margin-left: 20px">
-                        <h5>Image Upload</h5>
-                        <div class="p-field">
+    </div>
+    <div class="p-col-12 ">
+        <div class="p-grid">
+            <div class="p-col-8 p-d-block p-mx-auto" style="text-align: center">
+                <div class="card">
+                    <div class="p-grid">
+                        <div class="p-col-5 p-d-flex p-ai-center p-jc-center">
+                            <div class="p-fluid" style="width: 100%;text-align: center;margin-left: 20px">
+                                <h5>Image Upload</h5>
+                                <div class="p-field">
                          <span class="p-float-label">
                              <input (change)="convert()" [(ngModel)]="imageUrl" id="image-url" pInputText
                                     type="text">
                              <label for="image-url">Image Url</label>
                          </span>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-item-content">
-                                <div>
-                                    <img class="product-image" src="{{sctionItem.imageUrl}}"/>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-item-content">
+                                        <div>
+                                            <img class="product-image" src="{{sctionItem.imageUrl}}"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="p-col-1">
-                    <p-divider layout="vertical">
-                    </p-divider>
-                </div>
-                <div class="p-col-5 p-d-flex p-ai-center p-jc-center">
-                    <div class="p-fluid" style="width: 100%;text-align: center;margin-left: 20px">
-                        <h5>Image Description</h5>
-                        <span class="p-float-label" style="margin-bottom: 30px">
-                             <input [(ngModel)]="sctionItem.response" id="response-input" pInputText type="text">
+                        <div class="p-col-1">
+                            <p-divider layout="vertical">
+                            </p-divider>
+                        </div>
+                        <div class="p-col-5 p-d-flex p-ai-center p-jc-center">
+                            <div class="p-fluid" style="width: 100%;text-align: center;margin-left: 20px">
+                                <h5>Image Description</h5>
+                                <span class="p-float-label" style="margin-bottom: 30px">
+                             <input [(ngModel)]="sctionItem.response" id="response-input" pInputText type="text"
+                                    (change)="translate()">
                              <label for="response-input">Response</label>
                         </span>
-                        <span class="p-float-label" style="margin-bottom: 30px">
+                                <span class="p-float-label" style="margin-bottom: 30px">
                             <input [(ngModel)]="sctionItem.translation" id="translation-input" pInputText type="text">
                             <label for="translation-input">Translation</label>
                         </span>
-                        <span class="p-float-label" style="margin-bottom: 30px">
+                                <span class="p-float-label" style="margin-bottom: 30px">
                             <textarea [(ngModel)]="sctionItem.explanation" cols="30" id="explanation-input"
                                       pInputTextarea
                                       rows="5"></textarea>
                             <label for="explanation-input">Explanation</label>
                         </span>
-                        <span class="p-float-label" style="margin-bottom: 30px">
+                                <span class="p-float-label" style="margin-bottom: 30px">
                             <textarea [(ngModel)]="sctionItem.example" cols="30" id="example-input" pInputTextarea
                                       rows="5"></textarea>
                             <label for="example-input">Examples</label>
                         </span>
-                        <div style="margin: 0 auto;width: 100%">
-                            <button (click)="addFormule()" class="p-button-raised p-button-success" icon="pi pi-check"
-                                    iconPos="right"
-                                    label="Submit" pButton style="width: 30%"
-                                    type="button"></button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="card" style="text-align: center">
-            <p-carousel orientation="vertical" [style]="{'max-width':'400px', 'margin-top':'2em'}" verticalViewPortHeight="352px" [numVisible]="1" [numScroll]="1" [value]="sectionItemList" class="p-carousel">
-                <ng-template pTemplate="header">
-                    <h3>List Of Section Items</h3>
-                </ng-template>
-                <ng-template let-product pTemplate="item">
-                    <div class="product-item2">
-                        <div class="product-item-content2">
-                            <div class="p-mb-3">
-                                <img [alt]="product.imageUrl" [src]="product.imageUrl" class="product-image2"/>
-                            </div>
-                            <div>
-                                <h4 class="p-mb-1">{{product.response}}</h4>
-                                <div class="car-buttons p-mt-5">
-                                    <p-button (click)="update(product)" icon="pi pi-undo"
-                                              styleClass="p-button p-button-rounded p-mr-2" type="button"></p-button>
-                                    <p-button (click)="delete(product)" icon="pi pi-times"
-                                              styleClass="p-button-danger p-button-rounded p-mr-2"
-                                              type="button"></p-button>
+                                <h6 style="text-align: left">Synonyms</h6>
+                                <ul style="text-align: left" *ngIf="sctionItem.synonyms!==null">
+                                    <li *ngFor="let s of sctionItem.synonyms">{{s}}</li>
+                                </ul>
+                                <div style="margin: 0 auto;width: 100%" *ngIf="updateTime===false">
+                                    <button (click)="addFormule()" class="p-button-raised p-button-success"
+                                            icon="pi pi-check"
+                                            iconPos="right"
+                                            label="Submit" pButton style="width: 30%"
+                                            type="button"></button>
+                                </div>
+                                <div style="margin: 0 auto;width: 100%" *ngIf="updateTime===true">
+                                    <button (click)="addFormule()" class="p-button-raised p-button-primary"
+                                            icon="pi pi-undo"
+                                            iconPos="right"
+                                            label="Update" pButton style="width: 30%"
+                                            type="button"></button>
+                                    <button (click)="delete()" class="p-button-raised p-button-danger"
+                                            icon="pi pi-times"
+                                            iconPos="right"
+                                            label="Delete" pButton style="width: 30%;margin-left: 7px"
+                                            type="button"></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </ng-template>
-            </p-carousel>
+                </div>
+            </div>
+            <div class="p-col-4 p-d-block p-mx-auto">
+                <div class="card">
+                    <cdk-virtual-scroll-viewport itemSize="100">
+
+                        <li *ngFor="let p of sectionItemList;" class="hvr-radial-out animated lightSpeedIn item-wrap"
+                            (click)="update(p)">
+                            <div class="thumbnail-wrap">
+                                <img src="{{p.imageUrl}}"/>
+                            </div>
+                            <div class="info-wrap">
+                                <h4>{{p.response}}</h4>
+                            </div>
+                        </li>
+
+                    </cdk-virtual-scroll-viewport>
+                </div>
+            </div>
         </div>
     </div>
 </div>

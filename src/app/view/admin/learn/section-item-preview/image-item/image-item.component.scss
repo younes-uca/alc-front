@@ -16,14 +16,29 @@ h1 {
   -webkit-filter: blur(8px);
 
   /* Full height */
-  width: 50%;
-  height: 400px;
+  width: 30%;
+  height: 200px;
   margin: 0 auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
+
+.bg-image-no-blur{
+  /* The image used */
+
+  /* Full height */
+  width: 30%;
+  height: 200px;
+  margin: 0 auto;
+
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+

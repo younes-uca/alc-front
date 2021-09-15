@@ -1,21 +1,16 @@
-<p-card>
-    <div [style.background-image]="'url(' + current.imageUrl + ')'" class="bg-image" id="imageDiv">
-        <!--
-                <img src="https://drive.google.com/uc?export=view&id=1k_v1w04p_9JkbPZdPwjTGRY-00IktME4" style="object-fit: cover;">
-        -->
+<p-card [style]="{width:'70%',margin:'0 auto',marginTop:'7px'}">
+    <div *ngIf="fliped===false" [style.background-image]="'url(' + current.imageUrl + ')'" class="bg-image" id="imageDiv">
     </div>
-    <div class="p-inputgroup" id="divStudentResponse" style="width: 40%;margin:0 auto">
-        <input [(ngModel)]="cureentResponse" id="inputStudentResponse" pInputText placeholder="Enter your answer"
-               type="text">
-        <button (click)="checkResponse()" class="p-button-success p-mr-3" icon="pi pi-check" id="buttonStudentResponse" pButton
-                pRipple type="button"></button>
+    <div *ngIf="fliped===true" [style.background-image]="'url(' + current.imageUrl + ')'" class="bg-image-no-blur" id="imageDiv2">
     </div>
-    <div id="diveMessage" style="width: 40%;margin:0 auto;">
-        <p-messages></p-messages>
+    <div  id="divStudentResponse" style="width: auto;margin:0 auto;margin-top: 15px;text-align: center">
+        <i class="pi pi-volume-up p-mr-2 p-d-inline" style="font-size: 1.5rem; cursor: pointer;color: greenyellow" (click)="sound(current.response)"></i>
+        <h2 class="p-d-inline">{{current.response}}</h2>
+        <h3 id="translateShow" style="margin-top: 10px;visibility: hidden">{{current.translation}}</h3>
     </div>
-    <div *ngIf="selected" id="diveShow" style="width: 80%;margin:0 auto;">
+
+    <div id="infoDiv" class="card"  style="width: 100%;margin:0 auto;margin-top: 7px;background: #F6F6F6;visibility: hidden">
         <p-accordion>
-            <p-accordionTab [selected]="false" header="More Detail" id="moreDetail">
                 <div class="p-text-left">
                     <h5>Response</h5>
                     <p>{{current.response}}</p>
@@ -26,8 +21,8 @@
                     <h5>Example</h5>
                     <p>{{current.example}}s</p>
                 </div>
-            </p-accordionTab>
         </p-accordion>
     </div>
+
 
 </p-card>
