@@ -53,6 +53,7 @@ export class InscriptionProfComponent implements OnInit {
         this.submitted = true;
         this.service.save().subscribe(
             data => {
+                this.selectedProf = new Prof();
                 this.messageService.add({
                 severity: 'success',
                 summary: 'Successful',
