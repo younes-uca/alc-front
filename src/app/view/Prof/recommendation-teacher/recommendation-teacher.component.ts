@@ -50,9 +50,15 @@ export class RecommendationTeacherComponent implements OnInit {
     this.service.save().subscribe(data => {
       // @ts-ignore
       this.items.push({...data});
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Successful',
+        detail: 'Recommendation added',
+        life: 3000,
+
+      });
       console.log(this.selected);
       console.log('meryem');
-      this.selected.prof.id = this.serviceUser.prof.id;
       this.selected = new RecommendTeacher();
 
     });
