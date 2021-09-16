@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {LoginService} from '../../../controller/service/login.service';
-import {Prof} from '../../../controller/model/prof.model';
-import {Admin} from '../../../controller/model/admin.model';
-import {Etudiant} from '../../../controller/model/etudiant.model';
 import {Router} from '@angular/router';
+import {LocaleStorageService} from '../../../controller/service/locale-storage.service';
+import {UserService} from '../../../controller/service/user.service';
+import {User} from '../../../controller/model/user.model';
 
 @Component({
     selector: 'app-login-admin',
@@ -14,40 +13,11 @@ import {Router} from '@angular/router';
 export class LoginAdminComponent implements OnInit {
 
     constructor(private messageService: MessageService, private confirmationService: ConfirmationService,
-                private service: LoginService, private router: Router) {
+                private service: UserService, private router: Router, private localeStorageService: LocaleStorageService) {
 
     }
 
-    private _role: string;
-
-    get role(): string {
-        return this._role;
-    }
-
-    set role(value: string) {
-        this._role = value;
-    }
-
-    private _login: string;
-
-    get login(): string {
-        return this._login;
-    }
-
-    set login(value: string) {
-        this._login = value;
-    }
-
-    private _password: string;
-
-    get password(): string {
-        return this._password;
-    }
-
-    set password(value: string) {
-        this._password = value;
-    }
-
+    // tslint:disable-next-line:variable-name
     private _correct: boolean;
 
     get correct(): boolean {
@@ -58,6 +28,14 @@ export class LoginAdminComponent implements OnInit {
         this._correct = value;
     }
 
+    get user(): User {
+        return this.service.user;
+    }
+
+    set user(value: User) {
+        this.service.user = value;
+    }
+
     get model(): any[] {
         return this.service.model;
     }
@@ -66,37 +44,13 @@ export class LoginAdminComponent implements OnInit {
         this.service.model = value;
     }
 
-    get prof(): Prof {
-        return this.service.prof;
-    }
-
-    set prof(value: Prof) {
-        this.service.prof = value;
-    }
-
-    get admin(): Admin {
-        return this.service.admin;
-    }
-
-    set admin(value: Admin) {
-        this.service.admin = value;
-    }
-
-    get etudiant(): Etudiant {
-        return this.service.etudiant;
-    }
-
-    set etudiant(value: Etudiant) {
-        this.service.etudiant = value;
-    }
 
     public findAdmin() {
-        this.service.findAdmin(this.login, this.password).subscribe(
+        this.service.signin().subscribe(
             data => {
-                this.admin = data;
-                this.prof = null;
-                this.etudiant = null;
-                console.log(this.admin);
+                this.localeStorageService.set('token', data.token);
+                this.localeStorageService.set('user', data.user);
+                console.log(data);
                 this.correct = true;
                 this.model = [
                     {label: 'Manage Parcours', icon: 'pi pi-fw pi-table', routerLink: ['/pages/parcours']},
@@ -108,8 +62,7 @@ export class LoginAdminComponent implements OnInit {
                     {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/pages/faq-admin']},
                     {label: 'FAQ List', icon: 'pi pi-fw pi-info-circle', routerLink: ['/pages/faq-admin-list']},
                     {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
-                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/schedule']},
-                    {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/schedule']}
                 ];
                 this.router.navigate(['pages/parcours']);
                 //  document.getElementById('log-pass').style.visibility = 'hidden';

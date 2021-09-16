@@ -34,6 +34,7 @@
         </div>
         <ul class="layout-menu">
             <li *ngFor="let item of model; let i = index;" [index]="i" [item]="item" [root]="true" app-menuitem></li>
+            <li *ngIf="localeStorageService.getToken()" [item]="{label: 'LogOut ', icon: 'pi pi-fw pi-sign-out'}" app-menuitem (click)="service.logout()"></li>
         </ul>
     </div>
 </div>

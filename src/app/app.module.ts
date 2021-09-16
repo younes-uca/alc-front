@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -256,6 +256,8 @@ import { RecommendationTeacherComponent } from './view/Prof/recommendation-teach
 import { VocabularySectionComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section.component';
 import { VocabularySectionItemComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section-item/vocabulary-section-item.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {LocaleStorageService} from './controller/service/locale-storage.service';
+import {HttpInterceptorService} from './controller/service/http-interceptor.service';
 
 
 @NgModule({
@@ -515,7 +517,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, MessageService, ConfirmationService
+        PhotoService, ProductService, MenuService, MessageService, ConfirmationService, LocaleStorageService,
+        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
     ],
     bootstrap: [AppComponent]
 })

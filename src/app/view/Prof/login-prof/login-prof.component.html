@@ -11,8 +11,8 @@
                     <!-- <h:panelGroup> -->
                     <label>Login</label>
                     <div class="login-input">
-                        <input [(ngModel)]="login" autofocus id="login" pInputText required type="text"/>
-                        <small *ngIf="!login" class="p-invalid">Login is required.</small>
+                        <input [(ngModel)]="user.username" autofocus id="login" pInputText required type="text"/>
+                        <small *ngIf="!user.username" class="p-invalid">Login is required.</small>
                     </div>
                     <!-- </h:panelGroup> -->
                 </div>
@@ -20,8 +20,8 @@
                     <!-- <h:panelGroup> -->
                     <label>Password</label>
                     <div class="login-input">
-                        <input #prt [(ngModel)]="password" autofocus id="password" pInputText required type="password"/>
-                        <small *ngIf="!password" class="p-invalid">Password is required.</small>
+                        <input #prt [(ngModel)]="user.password" autofocus id="password" pInputText required type="password"/>
+                        <small *ngIf="!user.password" class="p-invalid">Password is required.</small>
                         <p-message id="log-pass" severity="error" style="visibility: hidden"
                                    text="Login or Password invalid"></p-message>
                     </div>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="p-col-12 p-sm-6 p-md-6">
-                    <button (click)="findEtudiant()" icon="pi pi-check" label="Sign In" pButton type="button"></button>
+                    <button (click)="signin()" icon="pi pi-check" label="Sign In" pButton type="button"></button>
                 </div>
             </div>
         </div>

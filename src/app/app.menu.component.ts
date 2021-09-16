@@ -6,6 +6,8 @@ import {LoginService} from './controller/service/login.service';
 import {Prof} from './controller/model/prof.model';
 import {Admin} from './controller/model/admin.model';
 import {Etudiant} from './controller/model/etudiant.model';
+import {UserService} from './controller/service/user.service';
+import {LocaleStorageService} from './controller/service/locale-storage.service';
 
 @Component({
     selector: 'app-menu',
@@ -35,7 +37,8 @@ export class AppMenuComponent implements OnInit {
 
     // model: any[];
 
-    constructor(public app: AppComponent, public appMain: AppMainComponent, private service: LoginService) {
+    constructor(public app: AppComponent, public appMain: AppMainComponent, private service: UserService,
+                private localeStorageService: LocaleStorageService) {
     }
 
     get model(): any[] {
@@ -44,30 +47,6 @@ export class AppMenuComponent implements OnInit {
 
     set model(value: any[]) {
         this.service.model = value;
-    }
-
-    get prof(): Prof {
-        return this.service.prof;
-    }
-
-    set prof(value: Prof) {
-        this.service.prof = value;
-    }
-
-    get admin(): Admin {
-        return this.service.admin;
-    }
-
-    set admin(value: Admin) {
-        this.service.admin = value;
-    }
-
-    get etudiant(): Etudiant {
-        return this.service.etudiant;
-    }
-
-    set etudiant(value: Etudiant) {
-        this.service.etudiant = value;
     }
 
     ngOnInit() {
