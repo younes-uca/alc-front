@@ -308,15 +308,7 @@ public ReviewExist(){
         });
 }
     public finish() {
-        this.selectedEtudiantCours.etudiant.id = this.loginService.etudiant.id;
-        console.log(this.selectedEtudiantCours.etudiant.id);
-        this.selectedEtudiantCours.cours.id = this.selectedcours.id;
-        console.log(this.selectedEtudiantCours.cours.id);
-        this.service.saveEtudiantCours().subscribe(data => {
-            // @ts-ignore
-            this.itemsEtudiantCours.push({...data});
-            this.viewDialog = true;
-        });
+        this.viewDialog = true;
     }
 
     public openCreateDict() {

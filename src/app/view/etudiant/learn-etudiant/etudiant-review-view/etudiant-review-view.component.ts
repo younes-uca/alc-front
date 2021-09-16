@@ -17,7 +17,7 @@ import {Etudiant} from '../../../../controller/model/etudiant.model';
 export class EtudiantReviewViewComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private router: Router, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
+  constructor(private messageService: MessageService, private serviceParcours: ParcoursService, private router: Router, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
   get selectedcours(): Cours {
     return this.serviceCours.selectedcours;
   }
@@ -53,6 +53,13 @@ public save(review: number){
   this.selected.etudiant = this.loginService.etudiant;
   this.service.Save().subscribe(
         data => {
+          this.serviceParcours.selectedEtudiantCours.etudiant.id = this.loginService.etudiant.id;
+          this.serviceParcours.selectedEtudiantCours.cours.id = this.selectedcours.id;
+          this.serviceParcours.saveEtudiantCours().subscribe(data => {
+            // @ts-ignore
+            this.serviceParcours.itemsEtudiantCours.push({...data});
+
+          });
           this.viewDialog = false;
           this.messageService.add({
             severity: 'success',
