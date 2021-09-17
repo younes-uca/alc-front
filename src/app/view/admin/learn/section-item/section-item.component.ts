@@ -44,6 +44,7 @@ export class SectionItemComponent implements OnInit {
     }
 
     openPreview() {
+
         if (this.sectionItemList.length === 0) {
             this.messageService.add({
                 severity: 'error',
