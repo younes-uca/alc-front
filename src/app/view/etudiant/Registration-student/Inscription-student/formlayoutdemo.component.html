@@ -85,12 +85,7 @@
                 <input type="text" name="Firstname" id="Firstname" placeholder="Firstname" [(ngModel)]="selected.prenom" required />
                 <input type="text" name="lastname" id="Lastname" placeholder="Lastname" [(ngModel)]="selected.nom" required />
                 <input type="email" name="gmail" id="gmail" placeholder="email" required [(ngModel)]="selected.login"/>
-                <input type="password" name="Password" id="Password" placeholder="Password" required [(ngModel)]="selected.password"/>
                 <input type="tel" name="phone_number" id="phone_number" placeholder="phone number" required [(ngModel)]="selected.numero"/>
-                <div class="p-field" style="margin-bottom: 25px">
-                    <p-dropdown [(ngModel)]="selected.parcours" [options]="parcoursList"
-                                 optionLabel="libelle" name="libelle" autoWidth="false" placeholder="--Please choose Parcours--" [style]="{'width': '100%'}" ></p-dropdown>
-                </div>
             </div>
             <div class="form-submit" >
                 <input type="button" name="submit" id="submit" class="submit" value="Submit" (click)="save()"/>
