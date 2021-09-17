@@ -86,9 +86,7 @@ export class SectionItemPreviewComponent implements OnInit {
     }
 
     endShow() {
-        this.showItems = false;
-        this.showStart = false;
-        this.showEnd = true;
+        this.router.navigate(['/pages/create-section-items']);
     }
 
     finish() {
