@@ -58,8 +58,10 @@ export class InscriptionProfComponent implements OnInit {
                 life: 3000,
 
             });
+                this.selectedProf = new Prof();
                 console.log('meryem');
             }, error => {
+                this.selectedProf = new Prof();
                 this.messageService.add({
                     severity: 'error',
                     summary: 'Warning',

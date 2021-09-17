@@ -8,4 +8,5 @@ export class EtudiantReview {
     public etudiant = new Etudiant();
     public prof = new Prof();
     public review: number;
+    public comment: string;
 }

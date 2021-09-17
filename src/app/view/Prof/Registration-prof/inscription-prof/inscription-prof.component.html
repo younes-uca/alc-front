@@ -100,10 +100,15 @@
 </span>
 
                 </div>
+                <div class="p-field p-col-12 p-md-3">
 
+                    <span class="p-float-label">
+    <input [(ngModel)]="selectedProf.prenom" id="lastName" required pInputText type="text" >
+    <label for="float-input">LastName</label>
+</span></div>
                 <div class="p-field p-col-12 p-md-3">
                      <span class="p-float-label">
-                    <input type="email" name="UserName" id="UserName" pInputText required [(ngModel)]="selectedProf.login"/>
+                    <input type="email" name="mail" id="mail" pInputText required [(ngModel)]="selectedProf.login"/>
                 <label for="float-input">E-mail</label>
                      </span></div>
                 <div class="p-field p-col-12 p-md-3" >
@@ -114,15 +119,15 @@
                       </span>
 
                 </div>
-                <div class="p-field p-col-12 p-md-3" style="float: inside">
-                    <div class="form-submit" style="float: right" >
-                        <button type="button" name="submit" style="color: white; background-color: firebrick" id="submit" class="submit"  (click)="save()">Soumettre Votre Candidature</button>
-                    </div>
-
-                </div>
 
             </div>
 
+            <div  style="float: inside">
+                <div class="form-submit" style="float: right" >
+                    <button type="button" name="submit" style="color: white; background-color: firebrick" id="submit" class="submit"  (click)="save()">Soumettre Votre Candidature</button>
+                </div>
+
+            </div>
 
 
         </form>
