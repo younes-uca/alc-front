@@ -90,7 +90,7 @@
                 </div>
 
             </div>
-            <h4 style="margin-left: 300px ; color: black ">REJOIGNEZ ENGLISHDOM !</h4>
+            <h4 style="text-align: center; color: black ">REJOIGNEZ ENGLISHDOM !</h4>
             <div class="p-grid p-fluid">
                 <div class="p-field p-col-12 p-md-3">
 
@@ -103,22 +103,28 @@
 
                 <div class="p-field p-col-12 p-md-3">
                      <span class="p-float-label">
-                    <input type="text" name="UserName" id="UserName" pInputText required [(ngModel)]="selectedProf.login"/>
-                <label for="float-input">Username</label>
+                    <input type="email" name="UserName" id="UserName" pInputText required [(ngModel)]="selectedProf.login"/>
+                <label for="float-input">E-mail</label>
+                     </span></div>
+                <div class="p-field p-col-12 p-md-3">
+                     <span class="p-float-label">
+                    <input type="password" name="password" id="password" pInputText required [(ngModel)]="selectedProf.password"/>
+                <label for="float-input">Password</label>
                      </span></div>
                 <div class="p-field p-col-12 p-md-3" >
                       <span class="p-float-label">
                     <input type="tel" name="phone_number" id="phone_number" pInputText required [(ngModel)]="selectedProf.numero"/>
-                          <label  for="float-input">phone number</label>
+                          <label  for="float-input">Phone number</label>
 
                       </span>
 
                 </div>
-                <div class="p-field p-col-12 p-md-3" >
-                    <div class="form-submit" >
-                        <input type="button" name="submit" style="color: white; background-color: firebrick" id="submit" class="submit" value="Soumettre Votre Candidature" (click)="save()"/>
-                    </div>
 
+
+            </div>
+            <div  style="float: inside">
+                <div class="form-submit" style="float: right" >
+                    <button type="button" name="submit" style="color: white; background-color: firebrick" id="submit" class="submit"  (click)="save()">Soumettre Votre Candidature</button>
                 </div>
 
             </div>
