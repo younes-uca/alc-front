@@ -101,13 +101,13 @@ export class LoginEtudiantComponent implements OnInit {
                 console.log(this.etudiant);
                 this.correct = true;
                 this.model = [
-                    {label: 'Courses ', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/etudiantparcours']},
+                    {label: 'Courses ', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/etudiantcours']},
                     {label: 'FAQ ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-student']},
                     {label: 'News ', icon: 'pi pi-fw pi-clock', routerLink: ['/pages/news-student']},
                     {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/scheduleStudent']},
                     {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
                 ];
-                this.router.navigate(['/pages/etudiantparcours']);
+                this.router.navigate(['/pages/etudiantcours']);
             },
             error => {
                 document.getElementById('log-pass').style.visibility = 'visible';

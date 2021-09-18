@@ -10,6 +10,7 @@ import {Centre} from '../model/centre.model';
 import {Observable} from 'rxjs';
 import {Vocabulary} from '../model/vocabulary.model';
 import {EtudiantCours} from '../model/etudiant-cours.model';
+import {LoginService} from './login.service';
 
 
 @Injectable({
@@ -36,7 +37,7 @@ export class ParcoursService {
         this._index = value;
     }
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private user: LoginService ) {
     }
 
     private _selectedparcours: Parcours;
@@ -781,6 +782,9 @@ export class ParcoursService {
 
     public afficheCours(): Observable<Array<Cours>> {
         return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/order/id/' + this.selectedparcours.id);
+    }
+    public afficheCoursStudent(): Observable<Array<Cours>> {
+        return this.http.get<Array<Cours>>('http://localhost:8036/learn/cours/order/id/' + this.user.etudiant.parcours.id);
     }
 
     affichelistSection(): Observable<Array<Section>> {

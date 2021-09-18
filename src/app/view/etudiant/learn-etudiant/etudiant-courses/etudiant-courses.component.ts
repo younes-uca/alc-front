@@ -188,6 +188,10 @@ export class EtudiantCoursesComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.service.afficheCoursStudent().subscribe(
+            data => {
+                this.selectesscours = data;
+            });
         this.review.findReview(this.selectedcours.id).subscribe(
             data => {
                 this.selectedReview = data;
