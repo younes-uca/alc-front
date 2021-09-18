@@ -13,7 +13,19 @@ export class EtudiantReviewService {
   constructor(private http: HttpClient, private user: LoginService,  private service: ParcoursService) { }
   private _viewDialog: boolean;
   private _selected: EtudiantReview;
+  private _selectedReview: EtudiantReview;
 
+
+  get selectedReview(): EtudiantReview {
+    if (this._selectedReview == null){
+      this._selectedReview = new EtudiantReview();
+    }
+    return this._selectedReview;
+  }
+
+  set selectedReview(value: EtudiantReview) {
+    this._selectedReview = value;
+  }
 
   public Save(): Observable<EtudiantReview> {
 

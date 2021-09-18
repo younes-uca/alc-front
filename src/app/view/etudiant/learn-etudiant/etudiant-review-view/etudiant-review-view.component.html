@@ -8,31 +8,32 @@
 
         <div class="p-grid p-fluid p-col">
             <div class="p-field p-col">
-                <p style="font-size: 60px; cursor: pointer" (click)="save(1)" >😡</p>
+                <p class="emoji" style="font-size: 60px; cursor: pointer" (click)="emoji(1)">😡</p>
         </div>
         <div class="p-field p-col">
-                <p style="font-size: 60px; cursor: pointer" (click)="save(2)">😣</p>
+                <p class="emoji" style="font-size: 60px; cursor: pointer" (click)="emoji(2)">😣</p>
             </div>
             <div class="p-field p-col">
-                <p style="font-size: 60px; cursor: pointer" (click)="save(3)" >😏</p>
+                <p class="emoji"style="font-size: 60px; cursor: pointer" (click)="emoji(3)" >😏</p>
             </div>
             <div class="p-field p-col">
-                <p style="font-size: 60px; cursor: pointer" (click)="save(4)">🙂</p>
+                <p class="emoji" style="font-size: 60px; cursor: pointer" (click)="emoji(4)">🙂</p>
             </div>
             <div class="p-field p-col">
-                <p style="font-size: 60px; cursor: pointer" (click)="save(5)">😀</p>
+                <p class="emoji" style="font-size: 60px; cursor: pointer" (click)="emoji(5)">😀</p>
 
             </div>
         </div>
 
         <div class=" p-col">
-            <textarea [ngModel]="selected.comment" placeholder="Commemt" autoResize="true" autofocus pInputTextarea
+            <textarea [(ngModel)]="comment" placeholder="Commemt" autoResize="true" autofocus pInputTextarea
                       required type="text"></textarea>
         </div>
-
     </ng-template>
 
     <ng-template pTemplate="footer">
+        <p-button (click)="save()" icon="pi pi-check" iconPos="right" label="Submit"></p-button>
+
         <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
                 pRipple></button>
     </ng-template>

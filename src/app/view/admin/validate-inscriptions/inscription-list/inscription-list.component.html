@@ -60,9 +60,6 @@
                         <th pSortableColumn="mail">E-mail
                             <p-sortIcon field="mail"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="Age">Age
-                            <p-sortIcon field="Age"></p-sortIcon>
-                        </th>
                         <th>Validate Registration</th>
                         <th>View Details</th>
                         <th>Delete Registration</th>
@@ -77,8 +74,7 @@
                         <td>{{inscription.nom}}</td>
                         <td>{{inscription.prenom}}</td>
                         <td>{{inscription.address}}</td>
-                        <td>{{inscription.gmail}}</td>
-                        <td>{{inscription.age}}</td>
+                        <td>{{inscription.login}}</td>
                         <td>
                             <button (click)="edit(inscription)"  [style.visibility]="(inscription.etatInscription.libelle) == 'Validated'?'hidden':'visible'" class=" p-button-success " label="Validate" pButton
                                     pRipple></button></td>

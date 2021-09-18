@@ -15,9 +15,9 @@ import {Etudiant} from '../../../../controller/model/etudiant.model';
   styleUrls: ['./etudiant-review-view.component.scss']
 })
 export class EtudiantReviewViewComponent implements OnInit {
-
+  comment: string;
   // tslint:disable-next-line:max-line-length
-  constructor(private messageService: MessageService, private serviceParcours: ParcoursService, private router: Router, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
+  constructor(private messageService: MessageService, private review: EtudiantReviewService, private serviceParcours: ParcoursService, private router: Router, private loginService: LoginService, private service: EtudiantReviewService, private serviceCours: ParcoursService) { }
   get selectedcours(): Cours {
     return this.serviceCours.selectedcours;
   }
@@ -42,16 +42,22 @@ export class EtudiantReviewViewComponent implements OnInit {
   set viewDialog(value: boolean) {
     this.service.viewDialog = value;
   }
+  get selectedReview(): EtudiantReview {
+    return this.review.selectedReview;
+  }
 
+  set selectedReview(value: EtudiantReview) {
+    this.review.selectedReview = value;
+  }
   public hideViewDialog() {
     this.viewDialog = false;
   }
-public save(review: number){
-  console.log(review);
-  this.selected.review = review;
-  this.selected.cours = this.selectedcours;
-  this.selected.etudiant = this.loginService.etudiant;
-  this.service.Save().subscribe(
+  public save(){
+    console.log(this.comment);
+    this.selected.comment = this.comment;
+    this.selected.cours = this.selectedcours;
+    this.selected.etudiant = this.loginService.etudiant;
+    this.service.Save().subscribe(
         data => {
           this.serviceParcours.selectedEtudiantCours.etudiant.id = this.loginService.etudiant.id;
           this.serviceParcours.selectedEtudiantCours.cours.id = this.selectedcours.id;
@@ -61,6 +67,10 @@ public save(review: number){
 
           });
           this.viewDialog = false;
+          this.review.findReview(this.selectedcours.id).subscribe(
+              data => {
+                this.selectedReview = data;
+              });
           this.messageService.add({
             severity: 'success',
             summary: 'Successful',
@@ -69,5 +79,10 @@ public save(review: number){
 
           });
         });
+  }
+
+public emoji(review: number){
+  console.log(review);
+  this.selected.review = review;
   }
 }

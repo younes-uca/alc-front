@@ -336,14 +336,14 @@ public ReviewExist(){
         this.filteredDict = filtered;
     }
     get selectedReview(): EtudiantReview {
-        return this.review.selected;
+        return this.review.selectedReview;
     }
 
     set selectedReview(value: EtudiantReview) {
-        this.review.selected = value;
+        this.review.selectedReview = value;
     }
     ngOnInit(): void {
-        this.showVocabulary=false
+        this.showVocabulary=false;
         this.review.findReview(this.selectedcours.id).subscribe(
             data => {
                 this.selectedReview = data;
