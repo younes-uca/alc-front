@@ -57,6 +57,7 @@ export class EtudiantReviewViewComponent implements OnInit {
     this.selected.comment = this.comment;
     this.selected.cours = this.selectedcours;
     this.selected.etudiant = this.loginService.etudiant;
+    this.selected.dateReview = new Date();
     this.service.Save().subscribe(
         data => {
           this.serviceParcours.selectedEtudiantCours.etudiant.id = this.loginService.etudiant.id;
@@ -67,6 +68,11 @@ export class EtudiantReviewViewComponent implements OnInit {
 
           });
           this.viewDialog = false;
+          document.getElementById('5').style.backgroundColor = 'white';
+          document.getElementById('2').style.backgroundColor = 'white';
+          document.getElementById('3').style.backgroundColor = 'white';
+          document.getElementById('4').style.backgroundColor = 'white';
+          document.getElementById('1').style.backgroundColor = 'white';
           this.review.findReview(this.selectedcours.id).subscribe(
               data => {
                 this.selectedReview = data;
@@ -84,5 +90,37 @@ export class EtudiantReviewViewComponent implements OnInit {
 public emoji(review: number){
   console.log(review);
   this.selected.review = review;
+  // tslint:disable-next-line:triple-equals
+  if (review == 1){
+  document.getElementById('1').style.backgroundColor = 'khaki';
+  document.getElementById('2').style.backgroundColor = 'white';
+  document.getElementById('3').style.backgroundColor = 'white';
+  document.getElementById('4').style.backgroundColor = 'white';
+  document.getElementById('5').style.backgroundColor = 'white';
+  }else if (review == 2){
+    document.getElementById('2').style.backgroundColor = 'khaki';
+    document.getElementById('1').style.backgroundColor = 'white';
+    document.getElementById('3').style.backgroundColor = 'white';
+    document.getElementById('4').style.backgroundColor = 'white';
+    document.getElementById('5').style.backgroundColor = 'white';
+  }else if (review == 3){
+    document.getElementById('3').style.backgroundColor = 'khaki';
+    document.getElementById('2').style.backgroundColor = 'white';
+    document.getElementById('1').style.backgroundColor = 'white';
+    document.getElementById('4').style.backgroundColor = 'white';
+    document.getElementById('5').style.backgroundColor = 'white';
+  }else if (review == 4){
+    document.getElementById('4').style.backgroundColor = 'khaki';
+    document.getElementById('2').style.backgroundColor = 'white';
+    document.getElementById('3').style.backgroundColor = 'white';
+    document.getElementById('1').style.backgroundColor = 'white';
+    document.getElementById('5').style.backgroundColor = 'white';
+  }else if (review == 5){
+    document.getElementById('5').style.backgroundColor = 'khaki';
+    document.getElementById('2').style.backgroundColor = 'white';
+    document.getElementById('3').style.backgroundColor = 'white';
+    document.getElementById('4').style.backgroundColor = 'white';
+    document.getElementById('1').style.backgroundColor = 'white';
+  }
   }
 }
