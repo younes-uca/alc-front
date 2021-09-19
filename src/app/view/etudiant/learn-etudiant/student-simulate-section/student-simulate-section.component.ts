@@ -38,7 +38,7 @@ export class SafePipe implements PipeTransform {
     styleUrls: ['./student-simulate-section.component.scss']
 })
 export class StudentSimulateSectionComponent implements OnInit {
-    showVocabulary: boolean;
+    showVocabulary: boolean=false;
     nodes: TreeNode[];
     menu: MenuItem[];
     srcImg: string;
@@ -300,6 +300,7 @@ export class StudentSimulateSectionComponent implements OnInit {
                     },
                 );
             }, error => console.log('erreeeeeeeeeeeeeeeeur'));
+        this.showVocabularyComponent()
     }
 public ReviewExist(){
     this.review.findReview(this.selectedcours.id).subscribe(
@@ -351,7 +352,7 @@ public ReviewExist(){
         this.review.selected = value;
     }
     ngOnInit(): void {
-        this.showVocabulary=false
+
         this.review.findReview(this.selectedcours.id).subscribe(
             data => {
                 this.selectedReview = data;
@@ -410,6 +411,7 @@ public ReviewExist(){
                 }
             },
         ];
+        this.showVocabularyComponent()
     }
 
     public findCoursEtudiant(cours: Cours) {
@@ -548,6 +550,7 @@ public ReviewExist(){
             this.selectedsection.numeroOrder = this.itemssection2.length + 1;
             this.NextSection();
         }
+        this.showVocabularyComponent()
     }
 
     photoURL() {
@@ -635,7 +638,20 @@ public ReviewExist(){
             this.selectedsection.numeroOrder = 0;
             this.PreviousSection();
         }
+
+        this.showVocabularyComponent()
     }
+
+
+    showVocabularyComponent() {
+        if (this.selectedsection.categorieSection.libelle === 'Vocabulary') {
+            this.Vocab(this.selectedsection)
+            this.showVocabulary = true;
+        } else {
+            this.showVocabulary = false;
+        }
+    }
+
 
     Vocab(section: Section) {
         this.sectionItemService.sectionSelected = section;
@@ -651,4 +667,6 @@ public ReviewExist(){
     return($event: string) {
         this.showVocabulary=false
     }
+
+
 }

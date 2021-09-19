@@ -90,55 +90,15 @@ import {AppComponent} from './app.component';
 import {AppCodeModule} from './app.code.component';
 import {AppMainComponent} from './app.main.component';
 import {AppConfigComponent} from './app.config.component';
-import {AppCrudComponent} from './pages/app.crud.component';
-import {AppCalendarComponent} from './pages/app.calendar.component';
-import {AppTimelineDemoComponent} from './pages/app.timelinedemo.component';
-import {AppNotfoundComponent} from './pages/app.notfound.component';
-import {AppErrorComponent} from './pages/app.error.component';
-import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
-import {AppLoginComponent} from './pages/app.login.component';
+
 import {AppMenuComponent} from './app.menu.component';
 import {AppMenuitemComponent} from './app.menuitem.component';
 import {AppRightMenuComponent} from './app.right-menu.component';
 import {AppTopBarComponent} from './app.topbar.component';
 import {AppFooterComponent} from './app.footer.component';
 import {FormLayoutDemoComponent} from './view/etudiant/Registration-student/Inscription-student/formlayoutdemo.component';
-import {FloatLabelDemoComponent} from './demo/view/floatlabeldemo.component';
-import {InvalidStateDemoComponent} from './demo/view/invalidstatedemo.component';
-import {InputDemoComponent} from './demo/view/inputdemo.component';
-import {ButtonDemoComponent} from './demo/view/buttondemo.component';
-import {TableDemoComponent} from './demo/view/tabledemo.component';
-import {ListDemoComponent} from './demo/view/listdemo.component';
-import {TreeDemoComponent} from './demo/view/treedemo.component';
-import {PanelsDemoComponent} from './demo/view/panelsdemo.component';
-import {OverlaysDemoComponent} from './demo/view/overlaysdemo.component';
-import {MediaDemoComponent} from './demo/view/mediademo.component';
-import {MenusDemoComponent} from './demo/view/menusdemo.component';
-import {MessagesDemoComponent} from './demo/view/messagesdemo.component';
-import {MiscDemoComponent} from './demo/view/miscdemo.component';
-import {EmptyDemoComponent} from './demo/view/emptydemo.component';
-import {ChartsDemoComponent} from './demo/view/chartsdemo.component';
-import {FileDemoComponent} from './demo/view/filedemo.component';
-import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
-import {DocumentationComponent} from './demo/view/documentation.component';
-import {DisplayComponent} from './utilities/display.component';
-import {ElevationComponent} from './utilities/elevation.component';
-import {FlexboxComponent} from './utilities/flexbox.component';
-import {GridComponent} from './utilities/grid.component';
-import {IconsComponent} from './utilities/icons.component';
-import {SpacingComponent} from './utilities/spacing.component';
-import {TypographyComponent} from './utilities/typography.component';
-import {TextComponent} from './utilities/text.component';
-import {WidgetsComponent} from './utilities/widgets.component';
 
-import {CountryService} from './demo/service/countryservice';
-import {EventService} from './demo/service/eventservice';
-import {NodeService} from './demo/service/nodeservice';
 import {MenuService} from './app.menu.service';
-import {CustomerService} from './demo/service/customerservice';
-import {PhotoService} from './demo/service/photoservice';
-import {ProductService} from './demo/service/productservice';
-import {IconService} from './demo/service/iconservice';
 
 import {ParcoursEditComponent} from './view/admin/learn/parcours-edit/parcours-edit.component';
 import {CoursListComponent} from './view/admin/learn/cours-list/cours-list.component';
@@ -356,42 +316,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         AppRightMenuComponent,
         AppTopBarComponent,
         AppFooterComponent,
-        DashboardDemoComponent,
         FormLayoutDemoComponent,
-        FloatLabelDemoComponent,
-        InvalidStateDemoComponent,
-        InputDemoComponent,
-        ButtonDemoComponent,
-        TableDemoComponent,
-        ListDemoComponent,
-        TreeDemoComponent,
-        PanelsDemoComponent,
-        OverlaysDemoComponent,
-        MediaDemoComponent,
-        MenusDemoComponent,
-        MessagesDemoComponent,
-        MessagesDemoComponent,
-        MiscDemoComponent,
-        ChartsDemoComponent,
-        EmptyDemoComponent,
-        FileDemoComponent,
-        DocumentationComponent,
-        DisplayComponent,
-        ElevationComponent,
-        FlexboxComponent,
-        GridComponent,
-        IconsComponent,
-        SpacingComponent,
-        TypographyComponent,
-        TextComponent,
-        AppCrudComponent,
-        AppCalendarComponent,
-        AppTimelineDemoComponent,
-        WidgetsComponent,
-        AppNotfoundComponent,
-        AppErrorComponent,
-        AppAccessdeniedComponent,
-        AppLoginComponent,
         LearnComponent,
         ParcoursListComponent,
         ParcoursEditComponent,
@@ -514,8 +439,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, MessageService, ConfirmationService
+         MenuService, MessageService, ConfirmationService
     ],
     bootstrap: [AppComponent]
 })
