@@ -1,0 +1,7 @@
+<div (click)="onMenuClick($event)" class="layout-menu-container">
+    <div class="menu-scroll-content">
+        <ul class="layout-menu">
+            <li *ngFor="let item of model; let i = index;" [index]="i" [item]="item" [root]="true" app-menuitem></li>
+        </ul>
+    </div>
+</div>

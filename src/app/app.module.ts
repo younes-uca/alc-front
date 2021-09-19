@@ -87,18 +87,15 @@ import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 import {AppComponent} from './app.component';
-import {AppCodeModule} from './app.code.component';
-import {AppMainComponent} from './app.main.component';
-import {AppConfigComponent} from './app.config.component';
+import {AppMainComponent} from './public/app.main.component';
 
-import {AppMenuComponent} from './app.menu.component';
-import {AppMenuitemComponent} from './app.menuitem.component';
-import {AppRightMenuComponent} from './app.right-menu.component';
-import {AppTopBarComponent} from './app.topbar.component';
-import {AppFooterComponent} from './app.footer.component';
+import {AppMenuComponent} from './shared/slide-bar/app.menu.component';
+import {AppMenuitemComponent} from './shared/slide-bar/app.menuitem.component';
+import {AppTopBarComponent} from './shared/top-bar/app.topbar.component';
+import {AppFooterComponent} from './shared/footer/app.footer.component';
 import {FormLayoutDemoComponent} from './view/etudiant/Registration-student/Inscription-student/formlayoutdemo.component';
 
-import {MenuService} from './app.menu.service';
+import {MenuService} from './shared/slide-bar/app.menu.service';
 
 import {ParcoursEditComponent} from './view/admin/learn/parcours-edit/parcours-edit.component';
 import {CoursListComponent} from './view/admin/learn/cours-list/cours-list.component';
@@ -140,9 +137,9 @@ import {NewsTeacherListComponent} from './view/Prof/news/news-teacher-list/news-
 import {NewsTeacherViewComponent} from './view/Prof/news/news-teacher-view/news-teacher-view.component';
 import {FaqListComponent} from './view/Prof/faq/faq-list/faq-list.component';
 import {FaqContactComponent} from './view/Prof/faq/faq-contact/faq-contact.component';
-import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
-import {LoginProfComponent} from './view/Prof/login-prof/login-prof.component';
-import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
+import {LoginEtudiantComponent} from './public/login-etudiant/login-etudiant.component';
+import {LoginProfComponent} from './public/login-prof/login-prof.component';
+import {LoginAdminComponent} from './public/login-admin/login-admin.component';
 import {SafePipe1, SectionSimulateComponent} from './view/Prof/learn-teacher/section-simulate/section-simulate.component';
 import {ChooseViewComponent} from './view/Prof/learn-teacher/choose-view/choose-view.component';
 import {InscriptionAdminComponent} from './view/admin/Registration/inscription-admin/inscription-admin.component';
@@ -204,7 +201,6 @@ import {ChatComponent} from './view/Prof/learn-teacher/chat/chat.component';
 import {Chat1Component} from './view/etudiant/learn-etudiant/chat/chat1-component.component';
 import {DictionaryEditComponent} from './view/etudiant/learn-etudiant/Dictionnary/dictionary-edit/dictionary-edit.component';
 import {ViewQuizEtudiantComponent} from './view/admin/view-quiz-etudiant/view-quiz-etudiant.component';
-import {SectionItemListComponent} from './view/admin/learn/section-item/section-item-list/section-item-list.component';
 import {SectionItemPreviewComponent} from './view/admin/learn/section-item-preview/section-item-preview.component';
 import {ImageItemComponent} from './view/admin/learn/section-item-preview/image-item/image-item.component';
 import { TranslateComponent } from './view/etudiant/learn-etudiant/Dictionnary/translate/translate.component';
@@ -216,6 +212,10 @@ import { RecommendationTeacherComponent } from './view/Prof/recommendation-teach
 import { VocabularySectionComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section.component';
 import { VocabularySectionItemComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section-item/vocabulary-section-item.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
+import { AdminComponent } from './view/admin/admin.component';
+import { EtudiantComponent } from './view/etudiant/etudiant.component';
+import { ProfComponent } from './view/prof/prof.component';
 
 
 @NgModule({
@@ -223,7 +223,6 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        AppCodeModule,
         HttpClientModule,
         BrowserAnimationsModule,
         AccordionModule,
@@ -309,11 +308,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ],
     declarations: [
         AppComponent,
+        DashboardDemoComponent,
         AppMainComponent,
         AppMenuComponent,
         AppMenuitemComponent,
-        AppConfigComponent,
-        AppRightMenuComponent,
         AppTopBarComponent,
         AppFooterComponent,
         FormLayoutDemoComponent,
@@ -424,7 +422,6 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         Chat1Component,
         SectionCreateComponent,
         QuizTakeComponent,
-        SectionItemListComponent,
         SectionItemPreviewComponent,
         ImageItemComponent,
         SectionItemComponent,
@@ -435,7 +432,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         EtudiantReviewViewComponent,
         RecommendationTeacherComponent,
         VocabularySectionComponent,
-        VocabularySectionItemComponent
+        VocabularySectionItemComponent,
+        AdminComponent,
+        EtudiantComponent,
+        ProfComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

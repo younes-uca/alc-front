@@ -2,7 +2,7 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {FormLayoutDemoComponent} from './view/etudiant/Registration-student/Inscription-student/formlayoutdemo.component';
 
-import {AppMainComponent} from './app.main.component';
+import {AppMainComponent} from './public/app.main.component';
 import {LearnComponent} from './view/admin/learn/learn.component';
 import {SectionsComponent} from './view/Prof/learn-teacher/sections/sections.component';
 import {CoursesComponent} from './view/Prof/learn-teacher/courses/courses.component';
@@ -18,9 +18,9 @@ import {FaqAnswerComponent} from './view/admin/faq-admin/faq-answer/faq-answer.c
 import {NewsAdminListComponent} from './view/admin/news-admin/news-admin-list/news-admin-list.component';
 import {NewsTeacherListComponent} from './view/Prof/news/news-teacher-list/news-teacher-list.component';
 import {FaqListComponent} from './view/Prof/faq/faq-list/faq-list.component';
-import {LoginAdminComponent} from './view/admin/login-admin/login-admin.component';
-import {LoginProfComponent} from './view/Prof/login-prof/login-prof.component';
-import {LoginEtudiantComponent} from './view/etudiant/login-etudiant/login-etudiant.component';
+import {LoginAdminComponent} from './public/login-admin/login-admin.component';
+import {LoginProfComponent} from './public/login-prof/login-prof.component';
+import {LoginEtudiantComponent} from './public/login-etudiant/login-etudiant.component';
 import {SectionSimulateComponent} from './view/Prof/learn-teacher/section-simulate/section-simulate.component';
 import {InscriptionAdminComponent} from './view/admin/Registration/inscription-admin/inscription-admin.component';
 import {InscriptionProfComponent} from './view/Prof/Registration-prof/inscription-prof/inscription-prof.component';
@@ -53,6 +53,7 @@ import {SectionItemComponent} from './view/admin/learn/section-item/section-item
 import {ViewQuizEtudiantComponent} from './view/admin/view-quiz-etudiant/view-quiz-etudiant.component';
 import {SectionItemPreviewComponent} from './view/admin/learn/section-item-preview/section-item-preview.component';
 import {RecommendationTeacherComponent} from './view/Prof/recommendation-teacher/recommendation-teacher.component';
+import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import {RecommendationTeacherComponent} from './view/Prof/recommendation-teacher
             {
                 path: '', component: AppMainComponent,
                 children: [
+                    {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'pages/DictionaryCreate', component: DictionaryCreateComponent},
                     {path: 'pages/recommendAdmin', component: RecommendAdminComponent},
@@ -112,8 +114,6 @@ import {RecommendationTeacherComponent} from './view/Prof/recommendation-teacher
                     {path: 'inscriptionEtudiant', component: FormLayoutDemoComponent},
                     {path: 'pages/create-section-items', component: SectionItemComponent},
                     {path: 'pages/preview-section-items', component: SectionItemPreviewComponent},
-
-
                 ]
             },
             {path: '**', redirectTo: '/404'},

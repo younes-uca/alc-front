@@ -1,0 +1,50 @@
+/*.home{
+	background-color: black;
+	//border: solid 5px #bf1fed;
+	//opacity: 0.8;
+	color: #0C8990;
+	font: 20px Garamond;
+
+	padding: 0;
+	overflow: hidden;
+	//margin: 0 auto;
+	position: relative;
+	height: 100vh;
+	background-size: cover;
+	//margin-top: -18px;
+	width: 320px;
+	margin-left: -15px;
+}*/
+
+
+.home {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: white;
+}
+
+.home > h1 {
+  font-family: "Goudy Old Style";
+  font-size: 40px;
+}
+
+.home > p {
+  font-family: Garamond;
+  width: 70%;
+  margin-left: 200px;
+  font-size: 20px;
+}
+
+#previous-home {
+  position: absolute;
+  top: 50%;
+}
+
+#next-home {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+}
