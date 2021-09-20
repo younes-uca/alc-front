@@ -256,6 +256,7 @@ import { RecommendationTeacherComponent } from './view/Prof/recommendation-teach
 import { VocabularySectionComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section.component';
 import { VocabularySectionItemComponent } from './view/etudiant/learn-etudiant/vocabulary-section/vocabulary-section-item/vocabulary-section-item.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {ProfReviewViewComponent} from './view/Prof/learn-teacher/prof-review-view/prof-review-view.component';
 
 
 @NgModule({
@@ -510,6 +511,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         EtudiantReviewViewComponent,
         RecommendationTeacherComponent,
         VocabularySectionComponent,
+        ProfReviewViewComponent,
         VocabularySectionItemComponent
     ],
     providers: [

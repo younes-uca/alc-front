@@ -1,11 +1,13 @@
-<p-dialog [(visible)]="viewDialog" [modal]="true" [style]="{width: '700px'}" header="You're opinion"
+<p-dialog [(visible)]="viewDialogProf" [modal]="true" [style]="{width: '700px'}" header="You're opinion"
           styleClass="p-fluid">
     <ng-template pTemplate="content">
 
 
 
-<p style="font-size: 30px">Hello , how did you find today's lesson with this professor</p>
-
+<p style="font-size: 30px">Hello , how did you find today's lesson with this student :
+        <p-dropdown [(ngModel)]="selectedProfReview.etudiant" [options]="students"
+                    optionLabel="nom" name="libelle" autoWidth="false" placeholder="--Please choose Student--" [style]="{'width': '50%', 'float': 'right','marginTop': '1%', 'marginRight': '15%'}" ></p-dropdown>
+        </p>
         <div class="p-grid p-fluid p-col">
             <div class="p-field p-col">
                 <p class="emoji" id="1" style="font-size: 60px; cursor: pointer; text-align: center" (click)="emoji(1)">😡</p>
@@ -26,7 +28,7 @@
         </div>
 
         <div class=" p-col">
-            <textarea [(ngModel)]="comment" placeholder="Comment your opinion" autoResize="true" autofocus pInputTextarea
+            <textarea [(ngModel)]="selectedProfReview.comment" placeholder="Comment your opinion" autoResize="true" autofocus pInputTextarea
                       required type="text"></textarea>
         </div>
     </ng-template>

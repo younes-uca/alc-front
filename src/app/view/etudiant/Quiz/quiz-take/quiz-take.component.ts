@@ -25,6 +25,12 @@ import {Section} from '../../../../controller/model/section.model';
 })
 export class QuizTakeComponent implements OnInit {
 
+  textSeleted: string;
+
+  synonym: any[];
+  value = 0;
+
+  wordDict: any;
   constructor(private service: QuizEtudiantService, private login: LoginService, private messageService: MessageService, private router: Router, private dictionnaryService: DictionaryService, private sanitizer: DomSanitizer, private confirmationService: ConfirmationService, private parcoursservice: ParcoursService, private http: HttpClient, private  vocab: VocabularyService) {
   }
 
@@ -76,6 +82,81 @@ export class QuizTakeComponent implements OnInit {
   totalNote = 0;
   placeholderTypeInput: string;
 
+  get listSynonymes(): Array<any> {
+    return this.dictionnaryService.listSynonymes;
+  }
+
+  set listSynonymes(value: Array<any>) {
+    this.dictionnaryService.listSynonymes = value;
+  }
+  get TranslateSynonymeDialog(): boolean {
+    return this.dictionnaryService.TranslateSynonymeDialog;
+  }
+
+  set TranslateSynonymeDialog(value: boolean) {
+    this.dictionnaryService.TranslateSynonymeDialog = value;
+  }
+
+  get Synonymes(): Array<any> {
+    return this.dictionnaryService.Synonymes;
+  }
+
+  set Synonymes(value: Array<any>) {
+    this.dictionnaryService.Synonymes = value;
+  }
+  public dict() {
+    const selection = window.getSelection();
+    this.textSeleted = selection.toString();
+    this.dictionnaryService.selected = new Dictionary();
+
+    this.dictionnaryService.FindByWord(this.textSeleted).subscribe(
+        data => {
+          this.dictionnaryService.selected = data;
+          this.wordDict = '';
+          this.dictionnaryService.listSynonymes = new Array<any>();
+          // tslint:disable-next-line:triple-equals no-unused-expression
+          if (this.textSeleted.length != 0 && this.dictionnaryService.selected.word == null) {
+            this.dictionnaryService.Translate(this.textSeleted).subscribe(
+                data => {
+                  this.dictionnaryService.Synonymes = data;
+                  this.wordDict = '';
+                  this.j = 0;
+                  this.listSynonymes = new Array<any>();
+                  for ( let i=this.j; i < this.Synonymes.length ; i++){
+                    // tslint:disable-next-line:triple-equals
+                    if(this.Synonymes[i] == '\"'){
+                      this.j = i;
+                      // @ts-ignore
+                      for ( let k=this.j + 1; k < this.Synonymes.length ; k++){
+                        // tslint:disable-next-line:triple-equals
+                        if(this.Synonymes[k] != '\"' && this.Synonymes[k] != ','){
+                          this.wordDict = this.wordDict + this.Synonymes[k];
+                        }else if (this.Synonymes[k] == ',') {
+                          break;
+                        } else
+                        {
+                          this.listSynonymes.push(this.wordDict);
+                          this.wordDict ='';
+                          this.j = k + 1;
+                          break;
+                        }
+                      }
+                    }
+                  }
+                });
+
+            console.log(this.listSynonymes);
+            this.dictionnaryService.selected.word = this.textSeleted;
+            this.submittedDict = false;
+            this.TranslateSynonymeDialog = true;
+            // tslint:disable-next-line:triple-equals
+          } else if (this.textSeleted.length != 0 && this.dictionnaryService.selected.word != null) {
+            this.dictionnaryService.selected.word = this.textSeleted;
+            this.submittedDictEdit = false;
+            this.editDialogDict = true;
+          }
+        });
+  }
   get answerCorrectOrFalse(): Array<boolean> {
     if(this._answerCorrectOrFalse == null)
     {

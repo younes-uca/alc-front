@@ -1,9 +1,10 @@
 <div class=" card">
+    <p-toast></p-toast>
     <div class="p-grid">
         <div class="p-col">
             <div class="product-grid-item ">
                 <div class="product-grid-item-content">
-                    <div class="product-name" style="margin-bottom: 15px; background-color: #1BA7AF; color: white"><h1>-{{this.selectedsection.libelle}}-</h1>
+                    <div class="product-name" style="margin-bottom: 15px; background-color: orange; color: white"><h1>-{{this.selectedsection.libelle}}-</h1>
                     </div>
                     <!-- <iframe *ngIf=" this.selectedsection.libelle != 'Watch the video' && this.selectedsection.urlImage != null"
                                [src]='photoURL() | safe' loading="lazy" width="400" height="200" ></iframe> -->
@@ -40,7 +41,7 @@
                         [style.visibility]="(this.selectedsection.numeroOrder != 1)? 'visible':'hidden'"
                         class="p-button-rounded" icon="pi pi-caret-left" id="previous"
                         label="Previous" pButton pRipple
-                        style="margin-left: 15px; width: 120px"
+                        style="margin-left: 15px; width: 120px; background-color: orange"
                         type="button"></button>
                 <button (click)="quiz()" *ngIf="this.selectedsection.categorieSection.libelle != 'Vocabulary'  "
                         [style.visibility]="(this.selectedQuiz.section.id == this.selectedsection.id )? 'visible':'hidden'"
@@ -48,13 +49,19 @@
                         label="quiz"
                         pButton
                         pRipple
-                        style="position: absolute;margin: 0;left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);top: 50%;  width: 120px" type="button"></button>
+                        style="position: absolute;margin: 0; background-color: orange ;left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);top: 50%;  width: 120px" type="button"></button>
                 <button (click)="NextSection()"
                         [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'visible':'hidden'"
                         class="p-button-rounded" icon="pi pi-caret-right" id="next" label="Next"
                         pButton pRipple
-                        style=" width: 120px;  position: absolute;right: 15px;"
+                        style=" width: 120px ; background-color: orange;  position: absolute;right: 15px;"
                         type="button"></button>
+                <button
+                         (click)="Review()"
+                         [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'hidden':'visible'"
+                         class="p-button-rounded" icon="pi pi-check" label="Review" pButton pRipple
+                         style=" width: 130px; background-color: orange; position: absolute;right: 15px;"
+                         type="button"></button>
 
             </div>
 
@@ -86,7 +93,7 @@
                                 <tr class="timeline">
                                     <li>
                                         <td (click)="Section(section.categorieSection.libelle)"
-                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? '#8b8b90' :'#1BA7AF' "
+                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'orange' :'black' "
                                             style="cursor: pointer; font-weight: 600">
                                             <u>{{section.categorieSection.libelle}}</u>
                                         </td>
@@ -105,4 +112,5 @@
         </div>
     </div>
     <app-dictionary-create></app-dictionary-create>
+    <app-prof-review-view></app-prof-review-view>
 </div>

@@ -119,7 +119,7 @@ body {
     margin: 0px; }
 
 .main {
-    padding: 5% 45%;
+    padding: 7% 45%;
     position: relative;
 
 }
@@ -135,7 +135,7 @@ body {
     -ms-border-radius: 10px; }
 
 .appointment-form {
-    padding: 50px 60px 70px 60px; }
+    padding: 40px 60px 70px 60px; }
 
 input, select {
     width: 100%;

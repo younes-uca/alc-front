@@ -11,6 +11,7 @@ import {QuizService} from '../../../../controller/service/quiz.service';
 import {Router} from '@angular/router';
 import {Dictionary} from '../../../../controller/model/dictionary.model';
 import {DictionaryService} from '../../../../controller/service/dictionary.service';
+import {EtudiantReviewService} from '../../../../controller/service/etudiant-review.service';
 
 @Pipe({name: 'safe'})
 export class SafePipe1 implements PipeTransform {
@@ -36,7 +37,7 @@ export class SectionSimulateComponent implements OnInit {
     word: string;
 
     // tslint:disable-next-line:max-line-length
-    constructor(private messageService: MessageService, private dictionnaryService: DictionaryService, private router: Router, private serviceQuiz: QuizService, private sanitizer: DomSanitizer, private quizService: QuizEtudiantService, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient) {
+    constructor(private messageService: MessageService, private dictionnaryService: DictionaryService, private router: Router, private serviceQuiz: QuizService, private sanitizer: DomSanitizer, private quizService: QuizEtudiantService, private confirmationService: ConfirmationService, private service: ParcoursService, private http: HttpClient, private review: EtudiantReviewService) {
     }
 
     get image(): string {
@@ -46,6 +47,9 @@ export class SectionSimulateComponent implements OnInit {
     // tslint:disable-next-line:adjacent-overload-signatures
     set image(value: string) {
         this.service.image = value;
+    }
+    public Review() {
+        this.review.viewDialogProf = true;
     }
 
     get contenu(): string {

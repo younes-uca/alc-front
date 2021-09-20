@@ -1,10 +1,10 @@
-<div class=" card" style="background-color: transparent">
+<div class=" card" style="background-color: transparent" >
     <div class="p-grid">
         <p-toast></p-toast>
-        <div *ngIf="showVocabulary===false" class="p-col">
+        <div *ngIf="showVocabulary===false" class="p-col" (mouseup)="dict()">
             <div class="product-grid-item " style="background-color: white">
                 <div class="product-grid-item-content" >
-                    <div class="product-name" style="margin-bottom: 15px; background-color: #1BA7AF; color: white"><h1>{{this.selectedsection.libelle}}</h1>
+                    <div class="product-name" style="margin-bottom: 15px; background-color: orange; color: white"><h1>{{this.selectedsection.libelle}}</h1>
                     </div>
                     <!-- <iframe *ngIf=" this.selectedsection.libelle != 'Watch the video' && this.selectedsection.urlImage != null"
                                [src]='photoURL() | safe' loading="lazy" width="400" height="200" ></iframe> -->
@@ -40,7 +40,7 @@
                         [style.visibility]="(this.selectedsection.numeroOrder != 1)? 'visible':'hidden'"
                         class="p-button-rounded" icon="pi pi-caret-left" id="previous"
                         label="Previous" pButton pRipple
-                        style="margin-left: 15px; width: 120px"
+                        style="margin-left: 15px; width: 120px; background-color: orange"
                         type="button"></button>
                 <button *ngIf="this.selectedsection.categorieSection.libelle != 'Vocabulary'  "
                         [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-take']"
@@ -49,25 +49,25 @@
                         id="quiz" label="{{this.passerQuiz}}"
                         pButton
                         pRipple
-                        style="position: absolute;margin: 0;left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);top: 50%;  width: 120px"
+                        style="background-color: orange; position: absolute;margin: 0;left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);top: 50%;  width: 120px"
                         type="button"></button>
                 <button (click)="NextSection()"
                         [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'visible':'hidden'"
                         class="p-button-rounded" icon="pi pi-caret-right" id="next" label="Next"
                         pButton pRipple
-                        style=" width: 120px;  position: absolute;right: 15px;"
+                        style=" width: 120px; background-color: orange; position: absolute;right: 15px;"
                         type="button"></button>
                 <button (click)="Vocab(this.selectedsection)"
                         *ngIf="this.selectedsection.categorieSection.libelle == 'Vocabulary'" class="p-button-rounded"
                         icon="pi pi-caret-right" label="Vocabulary"
                         pButton
-                        pRipple style="margin-left: 360px; width: 120px"
+                        pRipple style="margin-left: 360px; background-color: orange;  width: 120px"
                         type="button"></button>
                 <button  *ngIf="this.selectedReview.review == null"
                         (click)="finish()"
                          [style.visibility]="(this.selectedsection.numeroOrder < this.itemssection2.length)? 'hidden':'visible'"
                          class="p-button-rounded" icon="pi pi-check" label="Finish" pButton pRipple
-                        style=" width: 130px;  position: absolute;right: 15px;"
+                        style=" width: 130px; background-color: orange; position: absolute;right: 15px;"
                         type="button"></button>
             </div>
         </div>
@@ -88,7 +88,7 @@
             <div class="product-grid-item-content" style="margin-top: 0">
                 <div style="margin-top: 0px">
                     <div id="dictionnair"  class="p-inputgroup" style="width: 0%; height: 0px; visibility: hidden; margin-bottom: 10px">
-                    <h5 style="margin-left: 5px; text-align: center"><b style="font-size: 20px; color: #1BA7AF;" >+</b>
+                    <h5 style="margin-left: 5px; text-align: center"><b style="font-size: 20px; color: orange;" >+</b>
                         <u style="color: #8b8b90; margin-left: 10px">{{this.selectedDict.word}}</u> :  {{this.selectedDict.definition}}
                     </h5>
                     </div>
@@ -96,7 +96,7 @@
                         <p-autoComplete (completeMethod)="filterDict($event)" [(ngModel)]="word"
                                         [minLength]="1" [suggestions]="filteredDict"
                                         field="word" ></p-autoComplete>
-                        <button (click)="findByWord()" icon="pi pi-search" pButton pRipple type="button"></button>
+                        <button (click)="findByWord()" style="background-color: orange" icon="pi pi-search" pButton pRipple type="button"></button>
                         <button (click)="openCreateDict()" icon="pi pi-plus" pButton pRipple style="background-color: #8b8b90"
                                 type="button"></button>
                     </div>
@@ -107,7 +107,7 @@
               -->
                 </div>
                 <div class="card" style="margin-top: 15px">
-                    <p-tabMenu [activeItem]="menu[0]" [model]="menu" style="width: 100%;background-color: #1BA7AF"></p-tabMenu>
+                    <p-tabMenu [activeItem]="menu[0]" [model]="menu" style="width: 100%;background-color: orange"></p-tabMenu>
 
 
                     <div id="categoriess" style="width: 100%;margin-top: 15px">
@@ -117,7 +117,7 @@
                                 <tr class="timeline">
                                     <li>
                                         <td (click)="Section(section.categorieSection.libelle)"
-                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? '#8b8b90' :'#1BA7AF' "
+                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'orange' :'black' "
                                             style="cursor: pointer; font-weight: 600;margin-left: 5px; font-size: 15px">
                                             <u>{{section.categorieSection.libelle}}</u></td>
                                     </li>
@@ -134,7 +134,7 @@
                                 <tr>
 
                                     <td (click)="dictEdit(dict)"
-                                        style="font-weight: 800; text-align: center; color: #1BA7AF;cursor: pointer"><b style="font-size: 20px">{{dict.word}} : {{dict.definition}}</b></td>
+                                        style="font-weight: 800; text-align: center; cursor: pointer"><b style="font-size: 20px; color: black;">{{dict.word}}</b> : <b style="font-size: 20px; color: orange;">{{dict.definition}}</b></td>
                                 </tr>
                             </ng-template>
 

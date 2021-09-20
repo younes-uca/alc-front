@@ -1,5 +1,5 @@
-<div class="p-grid">
-    <div class="p-col-9">
+<div class="p-grid" >
+    <div class="p-col-9" (mouseup)="dict()">
         <div class="p-grid" id="header">
             <div class="p-col-6">{{this.selected.typeDeQuestion.lib}}</div>
             <div class="p-col-6">{{this.selected.numero}} out of {{this.items.length}}</div>
@@ -80,7 +80,7 @@
             <button pButton pRipple style="width: 30%; margin-left: 20%; margin-bottom: 50px" icon="pi pi-caret-right" type="button" label="Next Section" (click)="NextSection()" class="p-button-raised p-button-success"></button>
         </div>
     </div>
-    <div class="p-col-3">
+    <div class="p-col-3" (mouseup)="dict()">
         <div class="p-col-3 product-grid-item"  style="width: 100%;">
             <div class="product-grid-item-content" >
                 <div style="margin-top: 20px">
@@ -88,7 +88,7 @@
                     <h5><u style="color: #8b8b90; margin-left: 5px">{{this.selectedDict.word}}</u>  {{this.selectedDict.definition}}</h5>
                     <div class="p-inputgroup" >
                         <p-autoComplete [(ngModel)]="wordDictionnary" [suggestions]="filteredDict" (completeMethod)="filterDict($event)" field="word" [minLength]="1"></p-autoComplete>
-                        <button type="button" pButton pRipple icon="pi pi-search"  (click)="findByWord()" ></button>
+                        <button type="button" pButton pRipple style="background-color: orange"  icon="pi pi-search"  (click)="findByWord()" ></button>
                         <button type="button" pButton pRipple icon="pi pi-plus" style="background-color: #8b8b90" (click)="openCreateDict()" ></button>
                     </div>
                 </div>
@@ -103,8 +103,9 @@
                                 <tr class="timeline">
                                     <li>
                                         <td (click)="Section(section.categorieSection.libelle)"
-                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? '#8b8b90' :'#1BA7AF' "
-                                            style="cursor: pointer; font-weight: 600;margin-left: 5px"><u>{{section.categorieSection.libelle}}</u></td>
+                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? 'orange' :'black' "
+                                            style="cursor: pointer; font-weight: 600;margin-left: 5px; font-size: 15px">
+                                            <u>{{section.categorieSection.libelle}}</u></td>
                                     </li></tr>
                             </ng-template>
                         </p-table>
@@ -116,7 +117,9 @@
                             <ng-template let-dict  pTemplate="body" >
                                 <tr>
 
-                                    <td style="font-weight: 800; text-align: center; color: #1BA7AF;cursor: pointer" (click)="dictEdit(dict)"><b>{{dict.word}}</b></td>
+                                    <td (click)="dictEdit(dict)"
+                                        style="font-weight: 800; text-align: center; cursor: pointer"><b style="font-size: 20px; color: black;">{{dict.word}}</b> : <b style="font-size: 20px; color: orange;">{{dict.definition}}</b></td>
+
                                 </tr>
                             </ng-template>
 
@@ -128,8 +131,10 @@
             </div>
         </div>
     </div>
+    <app-dictionary-create></app-dictionary-create>
+    <app-dictionary-edit></app-dictionary-edit>
+    <app-translate></app-translate>
 </div>
 
-<app-dictionary-create></app-dictionary-create>
-<app-dictionary-edit></app-dictionary-edit>
+
 
