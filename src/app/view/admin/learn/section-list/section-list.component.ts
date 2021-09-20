@@ -202,11 +202,11 @@ export class SectionListComponent implements OnInit {
             data => {
                 this.selectedQuiz = data;
                 if (this.selectedQuiz.section.id == null) {
-                    this.router.navigate(['admin/pages/quiz-create']);
+                    this.router.navigate(['admin/quiz-create']);
                 } else {
                     this.serviceQuiz.refQuiz = this.selectedQuiz.ref;
                     console.log(this.serviceQuiz.refQuiz);
-                    this.router.navigate(['admin/view/quiz-preview']);
+                    this.router.navigate(['admin/quiz-preview']);
                 }
             }, error => {
                 // tslint:disable-next-line:no-unused-expression
@@ -220,7 +220,7 @@ export class SectionListComponent implements OnInit {
         this.sectionItemService.getSectionItems().subscribe(data => {
             this.sectionItemService.sectionSelected.sectionItems = data;
             console.log(data);
-            this.router.navigate(['admin/pages/create-section-items']);
+            this.router.navigate(['admin/create-section-items']);
         });
 
 

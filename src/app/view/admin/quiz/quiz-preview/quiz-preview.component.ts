@@ -875,18 +875,18 @@ export class QuizPreviewComponent implements OnInit {
     }
 
     openUpdate() {
-        this.router.navigate(['admin/pages/quiz-update']);
+        this.router.navigate(['admin/quiz-update']);
     }
 
     viewQuizEtudiant() {
-        this.router.navigate(['admin/pages/view-quiz-etudiant']);
+        this.router.navigate(['admin/view-quiz-etudiant']);
     }
 
     backToParcoursList() {
         if (this.login.prof.nom != null) {
-            this.router.navigate(['admin/pages/courses']);
+            this.router.navigate(['admin/courses']);
         } else {
-            this.router.navigate(['admin/pages/parcours']);
+            this.router.navigate(['admin/parcours']);
         }
     }
 }

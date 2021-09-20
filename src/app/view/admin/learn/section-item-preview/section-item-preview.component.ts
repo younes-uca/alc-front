@@ -92,7 +92,7 @@ export class SectionItemPreviewComponent implements OnInit {
     }
 
     finish() {
-        this.router.navigate(['admin/pages/create-section-items']);
+        this.router.navigate(['admin/create-section-items']);
     }
 
     flip() {
