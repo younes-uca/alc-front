@@ -12,6 +12,6 @@ export class CalendrierProf {
     public daysOfWeek = [];
     public etudiant = new Etudiant();
     public prof = new Prof();
-    // public prof = new Prof();
+    // public prof = new prof();
 
 }

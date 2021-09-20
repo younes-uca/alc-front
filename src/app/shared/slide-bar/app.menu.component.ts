@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {AppComponent} from '../../app.component';
-import {AppMainComponent} from '../../public/app.main.component';
+import {AppMainComponent} from '../../temporal/app.main.component';
 import {LoginService} from '../../controller/service/login.service';
 import {Prof} from '../../controller/model/prof.model';
 import {Admin} from '../../controller/model/admin.model';

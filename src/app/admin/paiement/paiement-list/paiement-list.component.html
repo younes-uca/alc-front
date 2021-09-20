@@ -1,0 +1,86 @@
+<!--<p-table [value]="itemsPaiement">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>prof</th>
+            <th>Nombre de sessions Non payer</th>
+            <th>payer</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-paiement>
+        <tr>
+            <td>{{paiement.prof.nom}} {{paiement.prof.prenom}}</td>
+            <td>{{paiement.nonPaye}}</td>
+            <td><button pButton type="button" class="p-button-raised p-button-rounded" label="payer" (click)="showModalDialog(paiement)" ></button></td>
+
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<p-dialog header="paiement" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+    <label for="">NOMBRE DE SESSION A PAYER:</label>
+    <p-inputNumber [(ngModel)]="val" mode="decimal" [showButtons]="true"  [min]="0" [max]="10" style="margin-left: 10px;"></p-inputNumber>
+    <div class="p-field" style="margin-top: 10px;">
+        <label for="">NOMBRE TOTAL D'HEURES:</label>
+        <input type="text" pInputText id=""  disabled style="margin-left: 30px;"/>
+    </div>
+    <div class="p-field" style="margin-top: 10px;">
+        <label for="">MONTANT A PAYER:</label>
+        <input type="text" pInputText id=""  disabled style="margin-left: 80px;"/>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+
+-->
+<p>Select a professor</p>
+<p-dropdown [(ngModel)]="prof" [options]="profs" optionLabel="nom"></p-dropdown>
+<button (click)="showModalDialog()" icon="pi pi-check" id="button" label="Paye" pButton style="margin-left: 100px"
+        type="button"></button>
+
+<p-table #dt [(selection)]="selectedItems" [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true"
+         [rowHover]="true"
+         [rowsPerPageOptions]="[10,25,50]" [rows]="10" [showCurrentPageReport]="true"
+         [value]="items" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         dataKey="id" styleClass="p-datatable-customers">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th>Date debut</th>
+            <th>Date fin</th>
+            <th>Duree</th>
+            <th>Montant</th>
+        </tr>
+    </ng-template>
+    <ng-template let-sessions pTemplate="body">
+        <tr class="p-selectable-row">
+            <p-tableCheckbox [value]="sessions" style="margin-left: 15px"></p-tableCheckbox>
+            <td>{{sessions.dateDebut}}</td>
+            <td>{{sessions.dateFin}}</td>
+            <td>{{sessions.duree}} h</td>
+            <td>{{sessions.duree * this.prof.categorieProf.lessonRate}} $</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+
+        </tr>
+    </ng-template>
+</p-table>
+<p-dialog [(visible)]="displayModal" [baseZIndex]="10000" [draggable]="false" [modal]="true" [resizable]="false"
+          [style]="{width: '50vw'}" header="paiement">
+    <p>Nombre de sessions : {{this.selectedItems.length}}</p>
+    <p>Duree totale : {{this.duree}} h</p>
+    <p>Montant totale : {{this.duree * this.prof.categorieProf.lessonRate}} $</p>
+
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayModal=false" (onClick)="payer()" icon="pi pi-check" label="Ok"
+                  styleClass="p-button-text"></p-button>
+        <p-button (click)="displayModal=false" icon="pi pi-check" label="Exit" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
