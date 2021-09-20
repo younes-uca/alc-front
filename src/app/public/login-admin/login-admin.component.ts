@@ -99,16 +99,16 @@ export class LoginAdminComponent implements OnInit {
                 console.log(this.admin);
                 this.correct = true;
                 this.model = [
-                    {label: 'Manage Parcours', icon: 'pi pi-fw pi-table', routerLink: ['/pages/parcours']},
-                    {label: 'Inscriptions List', icon: 'pi pi-fw pi-check-square', routerLink: ['/view/inscription']},
-                    {label: 'Student List', icon: 'pi pi-fw pi-list', routerLink: ['/pages/etudiant']},
-                    {label: 'Professor', icon: 'pi pi-fw pi-user', routerLink: ['/view/teacherLists']},
-                    {label: 'Professor Recommendation', icon: 'pi pi-fw pi-user-plus', routerLink: ['/pages/recommendAdmin']},
-                    {label: 'Paiement', icon: 'pi pi-fw pi-wallet', routerLink: ['/pages/paiement']},
-                    {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/pages/faq-admin']},
-                    {label: 'FAQ List', icon: 'pi pi-fw pi-info-circle', routerLink: ['/pages/faq-admin-list']},
-                    {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/news-admin']},
-                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/schedule']},
+                    {label: 'Manage Parcours', icon: 'pi pi-fw pi-table', routerLink: ['/admin/pages/parcours']},
+                    {label: 'Inscriptions List', icon: 'pi pi-fw pi-check-square', routerLink: ['/admin/view/inscription']},
+                   // {label: 'Student List', icon: 'pi pi-fw pi-list', routerLink: ['/pages/etudiant']},
+                    {label: 'Professor', icon: 'pi pi-fw pi-user', routerLink: ['/admin/view/teacherLists']},
+                    {label: 'Professor Recommendation', icon: 'pi pi-fw pi-user-plus', routerLink: ['/admin/pages/recommendAdmin']},
+                    {label: 'Paiement', icon: 'pi pi-fw pi-wallet', routerLink: ['/admin/pages/paiement']},
+                    {label: 'FAQ ANSWER', icon: 'pi pi-fw pi-reply', routerLink: ['/admin/pages/faq-admin']},
+                    {label: 'FAQ List', icon: 'pi pi-fw pi-info-circle', routerLink: ['/admin/pages/faq-admin-list']},
+                    {label: 'CREATE NEWS', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/admin/pages/news-admin']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/admin/pages/schedule']},
                     {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
                 ];
                 this.router.navigate(['admin/pages/parcours']);

@@ -400,7 +400,7 @@ export class QuizCreateComponent implements OnInit {
     }
 
     openPreview() {
-        this.router.navigate(['/view/quiz-preview']);
+        this.router.navigate(['admin/view/quiz-preview']);
     }
 
     private initCol() {

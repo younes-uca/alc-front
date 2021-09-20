@@ -778,7 +778,7 @@ export class QuizPreviewComponent implements OnInit {
         this.selectedDict = new Dictionary();
     }
 
-    public Section(libelle: string){
+    /*public Section(libelle: string){
         this.service.findQuizEtudiant(this.etudiant, this.selectedQuiz).subscribe(
             data => {
                 this.quizEtudiant = data;
@@ -808,7 +808,7 @@ export class QuizPreviewComponent implements OnInit {
                 );
             },error => console.log('erreeeeeeeeeeeeeeeeur') );
         this.router.navigate(['/pages/etudiantsimulatesections']);
-    }
+    }*/
 
     public dictEdit(dict: Dictionary){
         this.selectedDictionnary = dict;
@@ -861,52 +861,6 @@ export class QuizPreviewComponent implements OnInit {
         );
     }
 
-    NextSection() {
-        this.parcoursservice.affichelistSection().subscribe(
-            data => {
-                this.itemssection2 = data;
-                // tslint:disable-next-line:no-shadowed-variable
-            });
-        this.selectedsection.numeroOrder = this.selectedsection.numeroOrder + 1;
-        // tslint:disable-next-line:triple-equals
-        if (this.selectedsection.numeroOrder <= this.itemssection2.length) {
-            this.parcoursservice.afficheOneSection2().subscribe(
-                data => {
-                    this.selectedsection = data;
-                    this.service.findQuizBySectionId(this.selectedsection).subscribe(
-                        data => {
-                            this.selectedQuiz = data;
-
-                            this.service.findQuizEtudiant(this.login.etudiant, this.selectedQuiz).subscribe(
-                                data => {
-                                    this.quizEtudiantList = data;
-                                    this.service.findAllQuestions(this.selectedQuiz.ref).subscribe(
-                                        dataQuestions => {
-                                            if(data.questionCurrent > dataQuestions.length){
-                                                this.passerQuiz = 'View Quiz';
-                                                this.quizView = true;
-                                            }
-                                            else {
-                                                this.passerQuiz = 'Continue Quiz';
-                                                this.quizView = false;
-                                            }
-                                        }
-                                    );
-                                },error =>
-                                {
-                                    this.passerQuiz = 'Take Quiz';
-                                    this.quizView = false;
-                                }
-                            );
-                        },
-                    );
-                });
-            this.router.navigate(['/pages/etudiantsimulatesections']);
-        } /*else {
-      this.selectedsection.numeroOrder = 0;
-      this.PreviousSection();
-    }*/
-    }
 
     findQuestionByNumber(numero: number) {
         this.numQuestion = numero - 1;
@@ -921,18 +875,18 @@ export class QuizPreviewComponent implements OnInit {
     }
 
     openUpdate() {
-        this.router.navigate(['/pages/quiz-update']);
+        this.router.navigate(['admin/pages/quiz-update']);
     }
 
     viewQuizEtudiant() {
-        this.router.navigate(['/pages/view-quiz-etudiant']);
+        this.router.navigate(['admin/pages/view-quiz-etudiant']);
     }
 
     backToParcoursList() {
         if (this.login.prof.nom != null) {
-            this.router.navigate(['/pages/courses']);
+            this.router.navigate(['admin/pages/courses']);
         } else {
-            this.router.navigate(['/pages/parcours']);
+            this.router.navigate(['admin/pages/parcours']);
         }
     }
 }

@@ -411,7 +411,7 @@ export class QuizUpdateComponent implements OnInit {
                     detail: 'Quiz Created',
                     life: 3000
                 });
-                this.router.navigate(['/pages/parcours']);
+                this.router.navigate(['admin/pages/parcours']);
             }
         );
     }
@@ -507,7 +507,7 @@ export class QuizUpdateComponent implements OnInit {
     }
 
     openPreview() {
-        this.router.navigate(['/view/quiz-preview']);
+        this.router.navigate(['admin/view/quiz-preview']);
     }
 
     private initCol() {

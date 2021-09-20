@@ -52,7 +52,7 @@ export class SectionItemComponent implements OnInit {
                 life: 3000
             });
         } else {
-            this.router.navigate(['/pages/preview-section-items']);
+            this.router.navigate(['admin/pages/preview-section-items']);
         }
     }
 
@@ -69,7 +69,7 @@ export class SectionItemComponent implements OnInit {
                     if (data === 1) {
                         this.idsList = [];
                         this.sectionSelected = null;
-                        this.router.navigate(['/pages/parcours']);
+                        this.router.navigate(['admin/pages/parcours']);
                     } else {
                         this.messageService.add({
                             severity: 'error',
