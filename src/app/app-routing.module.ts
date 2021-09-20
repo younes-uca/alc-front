@@ -54,13 +54,18 @@ import {ViewQuizEtudiantComponent} from './view/admin/view-quiz-etudiant/view-qu
 import {SectionItemPreviewComponent} from './view/admin/learn/section-item-preview/section-item-preview.component';
 import {RecommendationTeacherComponent} from './view/Prof/recommendation-teacher/recommendation-teacher.component';
 import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
+import {AdminComponent} from './view/admin/admin.component';
 
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            {
-                path: '', component: AppMainComponent,
+            {path:'admin',component: AdminComponent,
+                children:[
+                    {path: 'pages/parcours', component: LearnComponent},
+                ]
+            },
+            {path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'pages/etudiant', component: EtudiantsComponent},
@@ -76,7 +81,6 @@ import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
                     {path: 'view/recommendat', component: RecommendComponent},
                     {path: 'view/home-teacher', component: HomeTeacherComponent},
                     {path: 'pages/home', component: HomeComponent},
-                    {path: 'pages/parcours', component: LearnComponent},
                     {path: 'pages/classes', component: ClassRoomListComponent},
                     {path: 'pages/salary', component: SalaryComponent},
                     {path: 'pages/courses', component: EdCoursesComponent},
@@ -116,6 +120,7 @@ import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
                     {path: 'pages/preview-section-items', component: SectionItemPreviewComponent},
                 ]
             },
+
             {path: '**', redirectTo: '/404'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

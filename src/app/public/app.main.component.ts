@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';
 import {MenuService} from '../shared/slide-bar/app.menu.service';
 import {AppComponent} from '../app.component';
@@ -6,6 +6,9 @@ import {AppComponent} from '../app.component';
 @Component({
     selector: 'app-main',
     templateUrl: './app.main.component.html',
+})
+@Injectable({
+    providedIn: 'root' // just before your class
 })
 export class AppMainComponent {
 

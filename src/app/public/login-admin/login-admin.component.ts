@@ -111,7 +111,7 @@ export class LoginAdminComponent implements OnInit {
                     {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/pages/schedule']},
                     {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
                 ];
-                this.router.navigate(['pages/parcours']);
+                this.router.navigate(['admin/pages/parcours']);
                 //  document.getElementById('log-pass').style.visibility = 'hidden';
             }, error => {
                 document.getElementById('log-pass').style.visibility = 'visible';
