@@ -82,7 +82,7 @@
                             <p-tableCheckbox [value]="synthese"></p-tableCheckbox>
                         </td>
                         <td><!-- <img src="" alt="drapeau">-->
-                            <a (click)="setetat(3)" href="http://localhost:4200/#/pages/etat">{{synthese.nom}}</a>
+                            <p class="nom">{{synthese.nom}}</p>
                             <p class="nom"> {{synthese.prenom}}</p>
                         </td>
                         <td><p class="bold">{{synthese.datedebutinscription}} </p>
@@ -96,7 +96,7 @@
                         </td>
                         <td><p class="bold "> </p>
                             <a (click)="incrementer(synthese)" class="button_class"
-                               href="http://localhost:4200/#/pages/synthese">ADD CLASS</a>
+                               routerLink="/prof/synthese">ADD CLASS</a>
                         </td>
                         <td><p>{{synthese.parcours.libelle}}</p>
                             <p class="bold"> Lesson {{synthese.parcours.length}}</p>

@@ -56,6 +56,7 @@ import {RecommendationTeacherComponent} from './prof/recommendation-teacher/reco
 import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
 import {AdminComponent} from './admin/admin.component';
 import {PublicComponent} from './public/public.component';
+import {ProfComponent} from './prof/prof.component';
 
 
 @NgModule({
@@ -68,7 +69,6 @@ import {PublicComponent} from './public/public.component';
                     {path: 'preview-section-items', component: SectionItemPreviewComponent},
                     {path: 'quiz-preview', component: QuizPreviewComponent},
                     {path: 'quiz-create', component: QuizCreateComponent},
-                    {path: 'courses', component: EdCoursesComponent},
                     {path: 'quiz-update', component: QuizUpdateComponent},
                     {path: 'view-quiz-etudiant', component: ViewQuizEtudiantComponent},
                     {path: 'inscription', component: InscriptionsComponent},
@@ -79,6 +79,24 @@ import {PublicComponent} from './public/public.component';
                     {path: 'faq-admin-list', component: FaqAdminListComponent},
                     {path: 'news-admin', component: NewsAdminListComponent},
                     {path: 'schedule', component: ScheduleAdminComponent},
+                    {path: 'faq-create', component: FaqCreateComponent},
+                ]
+            },
+            {path:'prof',component: ProfComponent,
+                children:[
+                    {path: 'home', component: HomeComponent},
+                    {path: 'courses', component: EdCoursesComponent},
+                    {path: 'recommendation-teacher', component: RecommendationTeacherComponent},
+                    {path: 'salary', component: SalaryComponent},
+                    {path: 'classes', component: ClassRoomListComponent},
+                    {path: 'synthese', component: SyntheseSessionComponent},
+                    {path: 'schedule', component: ScheduleComponent},
+                    {path: 'news-teacher', component: NewsTeacherListComponent},
+                    {path: 'faq-teacher', component: FaqListComponent},
+                    {path: 'faq-teacher-answer', component: FaqContactListComponent},
+                    {path: 'sections-simulate', component: SectionSimulateComponent},
+                    {path: 'sections', component: SectionsComponent},
+                    {path: 'cours', component: CoursesComponent},
                 ]
             },
             {path:'',component: PublicComponent,
@@ -98,35 +116,20 @@ import {PublicComponent} from './public/public.component';
                     {path: 'pages/etudiant', component: EtudiantsComponent},
                     {path: 'pages/DictionaryCreate', component: DictionaryCreateComponent},
                     {path: 'pages/session', component: SessionCoursComponent},
-                    {path: 'pages/synthese', component: SyntheseSessionComponent},
                     {path: 'view/recommendation', component: RecommendationComponent},
                     {path: 'view/recommendat', component: RecommendComponent},
                     {path: 'view/home-teacher', component: HomeTeacherComponent},
-                    {path: 'pages/home', component: HomeComponent},
-                    {path: 'pages/classes', component: ClassRoomListComponent},
-                    {path: 'pages/salary', component: SalaryComponent},
                     {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
                     {path: 'pages/etudiantparcours', component: EtudiantParcoursComponent},
                     {path: 'pages/etudiantsimulatesections', component: StudentSimulateSectionComponent},
-                    {path: 'pages/cours', component: CoursesComponent},
-                    {path: 'pages/sections', component: SectionsComponent},
-                    {path: 'pages/sectionsSimulate', component: SectionSimulateComponent},
-                    {path: 'pages/faq-create', component: FaqCreateComponent},
                     {path: 'pages/faq-admin-list', component: FaqAdminListComponent},
-                    {path: 'pages/news-teacher', component: NewsTeacherListComponent},
                     {path: 'pages/news-student', component: NewsEtudiantListComponent},
-                    {path: 'pages/faq-teacher', component: FaqListComponent},
-                    {path: 'pages/faq-teacher-answer', component: FaqContactListComponent},
                     {path: 'pages/faq-student', component: FaqStudentListComponent},
                     {path: 'pages/faq-student-contact', component: FaqStudentContactComponent},
                     {path: 'pages/faq-student-contact-list', component: FaqStudentContactListeComponent},
-                    {path: 'view/Recommendation-teacher', component: RecommendationTeacherComponent},
                     {path: 'pages/quiz-take', component: QuizTakeComponent},
                     {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
-                    {path: 'view/schedule', component: ScheduleComponent},
                     {path: 'pages/scheduleStudent', component: ScheduleStudentComponent},
-
-
                 ]
             },
 

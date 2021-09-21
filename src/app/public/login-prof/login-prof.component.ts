@@ -101,20 +101,18 @@ export class LoginProfComponent implements OnInit {
                 this.correct = true;
                 console.log(this.prof);
                 this.model = [
-                    {label: 'HomeTeacher', icon: 'pi pi-fw pi-home', routerLink: ['/pages/home']},
-                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/view/Recommendation-teacher']},
-// {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/view/recommendat']},
-                    {label: 'Salary', icon: 'pi pi-fw pi-money-bill', routerLink: ['/pages/salary']},
-                    {label: 'Parcours', icon: 'pi pi-fw pi-list', routerLink: ['/pages/courses']},
-                    {label: 'Classes', icon: 'pi pi-fw pi-table', routerLink: ['/pages/classes']},
-                    // tslint:disable-next-line:max-line-length
-                    {label: 'Synthese-Session-Cours', icon: 'pi pi-fw pi-briefcase', routerLink: ['/pages/synthese']},
-                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/view/schedule']},
-                    {label: 'News', icon: 'pi pi-fw pi-clock', routerLink: ['/pages/news-teacher']},
-                    {label: 'FAQ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/pages/faq-teacher']},
+                    {label: 'HomeTeacher', icon: 'pi pi-fw pi-home', routerLink: ['/prof/home']},
+                    {label: 'Recommend A teacher', icon: 'pi pi-fw pi-comment', routerLink: ['/prof/recommendation-teacher']},
+                    {label: 'Salary', icon: 'pi pi-fw pi-money-bill', routerLink: ['/prof/salary']},
+                    {label: 'Parcours', icon: 'pi pi-fw pi-list', routerLink: ['/prof/courses']},
+                    {label: 'Classes', icon: 'pi pi-fw pi-table', routerLink: ['/prof/classes']},
+                    {label: 'Synthese-Session-Cours', icon: 'pi pi-fw pi-briefcase', routerLink: ['/prof/synthese']},
+                    {label: 'Schedule', icon: 'pi pi-fw pi-calendar-times', routerLink: ['/prof/schedule']},
+                    {label: 'News', icon: 'pi pi-fw pi-clock', routerLink: ['/prof/news-teacher']},
+                    {label: 'FAQ', icon: 'pi pi-fw pi-question-circle', routerLink: ['/prof/faq-teacher']},
                     {label: 'LogOut ', icon: 'pi pi-fw pi-sign-out', routerLink: ['']},
                 ];
-                this.router.navigate(['/pages/home']);
+                this.router.navigate(['prof/home']);
             }, error => {
                 document.getElementById('log-pass').style.visibility = 'visible';
                 this.correct = false;
