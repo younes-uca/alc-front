@@ -27,6 +27,7 @@ export class EtudiantReviewViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selected = new EtudiantReview();
   }
   get selected(): EtudiantReview {
     return this.service.selected;
