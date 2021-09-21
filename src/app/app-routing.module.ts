@@ -2,7 +2,6 @@ import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {FormLayoutDemoComponent} from './public/Inscription-student/formlayoutdemo.component';
 
-import {AppMainComponent} from './temporal/app.main.component';
 import {LearnComponent} from './admin/learn/learn.component';
 import {SectionsComponent} from './prof/learn-teacher/sections/sections.component';
 import {CoursesComponent} from './prof/learn-teacher/courses/courses.component';
@@ -10,7 +9,6 @@ import {EdCoursesComponent} from './prof/learn-teacher/parcours/ed-courses.compo
 import {SalaryComponent} from './prof/salary-teacher/salary/salary.component';
 import {HomeComponent} from './prof/home/home.component';
 import {InscriptionsComponent} from './admin/validate-inscriptions/inscriptions.component';
-import {EtudiantsComponent} from './prof/etudiants/etudiants.component';
 import {ScheduleComponent} from './prof/schedule/schedule.component';
 import {QuizPreviewComponent} from './admin/quiz/quiz-preview/quiz-preview.component';
 import {ClassRoomListComponent} from './prof/Classes/profclasses/class-room-list/class-room-list.component';
@@ -24,12 +22,8 @@ import {LoginEtudiantComponent} from './public/login-etudiant/login-etudiant.com
 import {SectionSimulateComponent} from './prof/learn-teacher/section-simulate/section-simulate.component';
 import {InscriptionAdminComponent} from './public/inscription-admin/inscription-admin.component';
 import {InscriptionProfComponent} from './public/inscription-prof/inscription-prof.component';
-import {HomeTeacherComponent} from './prof/home-teacher/home-teacher.component';
-import {RecommendationComponent} from './prof/recommend/recommendation/recommendation.component';
-import {RecommendComponent} from './prof/recommend/recommend.component';
 import {QuizCreateComponent} from './admin/quiz/quiz-create/quiz-create.component';
 import {QuizEtudiantViewComponent} from './etudiant/Quiz/quiz-etudiant-view/quiz-etudiant-view.component';
-import {SessionCoursComponent} from './prof/session-cours/session-cours.component';
 import {SyntheseSessionComponent} from './prof/synthese-session/synthese-session.component';
 import {ProfesseurListComponent} from './admin/professeur/professeur-list/professeur-list.component';
 import {EtudiantParcoursComponent} from './etudiant/learn-etudiant/etudiant-parcours/etudiant-parcours.component';
@@ -40,9 +34,7 @@ import {FaqCreateComponent} from './admin/faq-admin/faq-create/faq-create.compon
 import {FaqStudentListComponent} from './etudiant/FAQ-etudiant/faq-student/faq-student-list/faq-student-list.component';
 import {FaqAdminListComponent} from './admin/faq-admin/faq-admin-list/faq-admin-list.component';
 import {FaqContactListComponent} from './prof/faq/faq-contact-list/faq-contact-list.component';
-import {FaqStudentContactComponent} from './etudiant/FAQ-etudiant/faq-student-contact/faq-student-contact.component';
 import {FaqStudentContactListeComponent} from './etudiant/FAQ-etudiant/faq-student-contact-liste/faq-student-contact-liste.component';
-import {DictionaryCreateComponent} from './etudiant/learn-etudiant/Dictionnary/dictionary-create/dictionary-create.component';
 import {NewsEtudiantListComponent} from './etudiant/news-etudiant/news-etudiant-list/news-etudiant-list.component';
 import {PaiementComponent} from './admin/paiement/paiement.component';
 import {ScheduleAdminComponent} from './admin/schedule-admin/schedule-admin.component';
@@ -111,8 +103,6 @@ import {EtudiantComponent} from './etudiant/etudiant.component';
                     {path: 'etudiant-cours', component: EtudiantCoursesComponent},
                     {path: 'quiz-view', component: QuizEtudiantViewComponent},
                     {path: 'quiz-take', component: QuizTakeComponent},
-
-
                 ]
             },
             {path:'',component: PublicComponent,
@@ -126,7 +116,6 @@ import {EtudiantComponent} from './etudiant/etudiant.component';
                     {path: 'public/inscriptionEtudiant', component: FormLayoutDemoComponent},
                 ]
             },
-
             {path: '**', redirectTo: '/404'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

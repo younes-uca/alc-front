@@ -87,7 +87,6 @@ import {TreeTableModule} from 'primeng/treetable';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 import {AppComponent} from './app.component';
-import {AppMainComponent} from './temporal/app.main.component';
 
 import {AppMenuComponent} from './shared/slide-bar/app.menu.component';
 import {AppMenuitemComponent} from './shared/slide-bar/app.menuitem.component';
@@ -310,7 +309,6 @@ import { PublicComponent } from './public/public.component';
     declarations: [
         AppComponent,
         DashboardDemoComponent,
-        AppMainComponent,
         AppMenuComponent,
         AppMenuitemComponent,
         AppTopBarComponent,
