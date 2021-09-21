@@ -158,12 +158,12 @@ import {RecommendListComponent} from './prof/recommend/recommend-list/recommend-
 import {RecommendViewComponent} from './prof/recommend/recommend-view/recommend-view.component';
 import {QuizCreateComponent} from './admin/quiz/quiz-create/quiz-create.component';
 import {QuizEtudiantViewComponent} from './etudiant/Quiz/quiz-etudiant-view/quiz-etudiant-view.component';
-import {SessionCoursEditComponent} from './admin/session-cours/session-cours-edit/session-cours-edit.component';
-import {SessionCoursCreateComponent} from './admin/session-cours/session-cours-create/session-cours-create.component';
+import {SessionCoursEditComponent} from './prof/session-cours/session-cours-edit/session-cours-edit.component';
+import {SessionCoursCreateComponent} from './prof/session-cours/session-cours-create/session-cours-create.component';
 import {SyntheseSessionComponent} from './prof/synthese-session/synthese-session.component';
-import {SessionCoursViewComponent} from './admin/session-cours/session-cours-view/session-cours-view.component';
-import {SessionCoursListComponent} from './admin/session-cours/session-cours-list/session-cours-list.component';
-import {SessionCoursComponent} from './admin/session-cours/session-cours.component';
+import {SessionCoursViewComponent} from './prof/session-cours/session-cours-view/session-cours-view.component';
+import {SessionCoursListComponent} from './prof/session-cours/session-cours-list/session-cours-list.component';
+import {SessionCoursComponent} from './prof/session-cours/session-cours.component';
 import {SyntheseSessionCoursListComponent} from './prof/synthese-session/synthese-session-cours-list/synthese-session-cours-list.component';
 import {SyntheseSessionCoursEditComponent} from './prof/synthese-session/synthese-session-cours-edit/synthese-session-cours-edit.component';
 import {SyntheseSessionCoursCreateComponent} from './prof/synthese-session/synthese-session-cours-create/synthese-session-cours-create.component';

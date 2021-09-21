@@ -43,7 +43,7 @@
                         style="margin-left: 15px; width: 120px"
                         type="button"></button>
                 <button *ngIf="this.selectedsection.categorieSection.libelle != 'Vocabulary'  "
-                        [routerLink]="quizView? ['/pages/quiz-view']: ['/pages/quiz-take']"
+                        [routerLink]="quizView? ['/etudiant/quiz-view']: ['/etudiant/quiz-take']"
                         [style.visibility]="(this.selectedQuiz.section.id == this.selectedsection.id )? 'visible':'hidden'"
                         class="p-button-rounded"
                         id="quiz" label="{{this.passerQuiz}}"

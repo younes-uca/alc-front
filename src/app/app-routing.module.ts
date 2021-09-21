@@ -29,7 +29,7 @@ import {RecommendationComponent} from './prof/recommend/recommendation/recommend
 import {RecommendComponent} from './prof/recommend/recommend.component';
 import {QuizCreateComponent} from './admin/quiz/quiz-create/quiz-create.component';
 import {QuizEtudiantViewComponent} from './etudiant/Quiz/quiz-etudiant-view/quiz-etudiant-view.component';
-import {SessionCoursComponent} from './admin/session-cours/session-cours.component';
+import {SessionCoursComponent} from './prof/session-cours/session-cours.component';
 import {SyntheseSessionComponent} from './prof/synthese-session/synthese-session.component';
 import {ProfesseurListComponent} from './admin/professeur/professeur-list/professeur-list.component';
 import {EtudiantParcoursComponent} from './etudiant/learn-etudiant/etudiant-parcours/etudiant-parcours.component';
@@ -57,6 +57,7 @@ import {DashboardDemoComponent} from './public/landing/dashboarddemo.component';
 import {AdminComponent} from './admin/admin.component';
 import {PublicComponent} from './public/public.component';
 import {ProfComponent} from './prof/prof.component';
+import {EtudiantComponent} from './etudiant/etudiant.component';
 
 
 @NgModule({
@@ -99,6 +100,21 @@ import {ProfComponent} from './prof/prof.component';
                     {path: 'cours', component: CoursesComponent},
                 ]
             },
+            {path:'etudiant',component: EtudiantComponent,
+                children:[
+                    {path: 'etudiant-parcours', component: EtudiantParcoursComponent},
+                    {path: 'faq-student', component: FaqStudentListComponent},
+                    {path: 'news-student', component: NewsEtudiantListComponent},
+                    {path: 'schedule-student', component: ScheduleStudentComponent},
+                    {path: 'etudiant-simulate-sections', component: StudentSimulateSectionComponent},
+                    {path: 'faq-student-contact-list', component: FaqStudentContactListeComponent},
+                    {path: 'etudiant-cours', component: EtudiantCoursesComponent},
+                    {path: 'quiz-view', component: QuizEtudiantViewComponent},
+                    {path: 'quiz-take', component: QuizTakeComponent},
+
+
+                ]
+            },
             {path:'',component: PublicComponent,
                 children:[
                     {path: '', component: DashboardDemoComponent},
@@ -108,28 +124,6 @@ import {ProfComponent} from './prof/prof.component';
                     {path: 'public/inscriptionAdmin', component: InscriptionAdminComponent},
                     {path: 'public/inscriptionTeacher', component: InscriptionProfComponent},
                     {path: 'public/inscriptionEtudiant', component: FormLayoutDemoComponent},
-                ]
-            },
-            {path: '', component: AppMainComponent,
-                children: [
-                    {path: 'temp', component: DashboardDemoComponent},
-                    {path: 'pages/etudiant', component: EtudiantsComponent},
-                    {path: 'pages/DictionaryCreate', component: DictionaryCreateComponent},
-                    {path: 'pages/session', component: SessionCoursComponent},
-                    {path: 'view/recommendation', component: RecommendationComponent},
-                    {path: 'view/recommendat', component: RecommendComponent},
-                    {path: 'view/home-teacher', component: HomeTeacherComponent},
-                    {path: 'pages/etudiantcours', component: EtudiantCoursesComponent},
-                    {path: 'pages/etudiantparcours', component: EtudiantParcoursComponent},
-                    {path: 'pages/etudiantsimulatesections', component: StudentSimulateSectionComponent},
-                    {path: 'pages/faq-admin-list', component: FaqAdminListComponent},
-                    {path: 'pages/news-student', component: NewsEtudiantListComponent},
-                    {path: 'pages/faq-student', component: FaqStudentListComponent},
-                    {path: 'pages/faq-student-contact', component: FaqStudentContactComponent},
-                    {path: 'pages/faq-student-contact-list', component: FaqStudentContactListeComponent},
-                    {path: 'pages/quiz-take', component: QuizTakeComponent},
-                    {path: 'pages/quiz-view', component: QuizEtudiantViewComponent},
-                    {path: 'pages/scheduleStudent', component: ScheduleStudentComponent},
                 ]
             },
 

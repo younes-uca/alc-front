@@ -23,7 +23,7 @@
                 <ng-template let-cours pTemplate="body">
                     <tr>
 
-                        <td (click)="FindSectionOneByOne(cours)" routerLink="/pages/etudiantsimulatesections"
+                        <td (click)="FindSectionOneByOne(cours)" routerLink="/etudiant/etudiant-simulate-sections"
                             [style.color]="(this.selectedReview.review != null)? 'green':'black'"><u style="cursor: pointer">{{cours.libelle}}</u></td>
                         <td>{{cours.nombreSectionFinalise + cours.nombreSectionEnCours}}</td>
 

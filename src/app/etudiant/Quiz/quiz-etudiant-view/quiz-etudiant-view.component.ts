@@ -962,7 +962,7 @@ export class QuizEtudiantViewComponent implements OnInit {
                         },
                     );
                 });
-            this.router.navigate(['/pages/etudiantsimulatesections']);
+            this.router.navigate(['/etudiant/etudiant-simulate-sections']);
         } /*else {
       this.selectedsection.numeroOrder = 0;
       this.PreviousSection();
