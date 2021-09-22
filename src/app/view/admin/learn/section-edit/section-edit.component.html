@@ -51,7 +51,15 @@
         </div>
         <div class="p-field">
             <label for="urlVideo"> Url Video </label>
-            <input [(ngModel)]="selectedsection.urlVideo" autofocus id="urlVideo" pInputText required type="text"/>
+            <input (change)="urlvideo()"  [(ngModel)]="selectedsection.urlVideo" autofocus id="urlVideo" pInputText required type="text"/>
+        </div>
+        <div class="p-field">
+            <label >Video start time (h:mm:ss)</label>
+            <p-calendar timeOnly="true" dataType="string" placeholder="Leave it blank if not needed" [defaultDate]="defaultDate" [(ngModel)]="starttime" [showSeconds]="true" ></p-calendar>
+        </div>
+        <div class="p-field">
+            <label >Video end time (h:mm:ss)</label>
+            <p-calendar timeOnly="true" dataType="string" placeholder="Leave it blank if not needed" [defaultDate]="defaultDate" [(ngModel)]="endtime" [showSeconds]="true"></p-calendar>
         </div>
     </ng-template>
 

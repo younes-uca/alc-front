@@ -255,3 +255,31 @@ tr.timeline > li:before {
   border-style: solid;
   border-color: #1af045 transparent transparent transparent;
 }
+#tooltiptext-input {
+  visibility: hidden;
+  width: 120px;
+  background-color: #1af045;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  //bottom: 80%;
+  //left: 50%;
+  margin-top: -40px;
+  margin-left: -120px;
+}
+
+#tooltiptext-input::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1af045 transparent transparent transparent;
+}

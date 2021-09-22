@@ -44,6 +44,8 @@ export class QuizEtudiantViewComponent implements OnInit {
     question2 = '';
     debutBlink = 0;
     finBlink = 0;
+    debutPlaceholder = 0;
+    finPlaceholder = 0;
     answer = '_____';
     answerCorrect = '';
     isSelected: boolean;
@@ -74,6 +76,12 @@ export class QuizEtudiantViewComponent implements OnInit {
     totalNote = 0;
     myAnswerEtudiant : Array<ReponseEtudiant>;
     isCorrect: boolean;
+    reponseRadio: string;
+    reponseInput: string;
+    disableInput = true;
+    input_true_false: boolean;
+    string_input = '';
+    son = '';
 
     get answerCorrectOrFalse(): Array<boolean> {
         if(this._answerCorrectOrFalse == null)
@@ -447,7 +455,7 @@ export class QuizEtudiantViewComponent implements OnInit {
         this.quizEtudiant = new QuizEtudiant();
         this.service.findQuizEtudiant(this.login.etudiant, this.selectedQuiz).subscribe(data => this.quizEtudiant = data);
         this.start();
-        /*this.dictionnaryService.FindAllWord().subscribe(
+        this.dictionnaryService.FindAllWord().subscribe(
             data => {
                 this.itemsDict = data;
             });
@@ -487,7 +495,7 @@ export class QuizEtudiantViewComponent implements OnInit {
                     document.getElementById('wrd').style.height = '100%';
                     document.getElementById('chat').style.visibility = 'hidden';
                 }},
-        ];*/
+        ];
     }
 
     //////////////////Start/////////
@@ -501,6 +509,8 @@ export class QuizEtudiantViewComponent implements OnInit {
         this.next = false;
         this.on_off = false;
         this.isCorrect = true;
+        this.input_true_false = true;
+        this.disableInput = false;
         this.answerCorrectOrFalse = new Array<boolean>();
         document.getElementById('translate-correct-mistake').style.visibility = 'hidden';
         document.getElementById('translate-on-off').style.visibility = 'hidden';
@@ -536,6 +546,8 @@ export class QuizEtudiantViewComponent implements OnInit {
             document.getElementById('answers').style.height = '0px';
             document.getElementById('mistake').style.visibility = 'hidden';
             document.getElementById('mistake').style.height = '0px';
+            document.getElementById('type-input').style.visibility = 'hidden';
+            document.getElementById('type-input').style.height = '0px';
             document.getElementById('header').style.visibility = 'hidden';
             document.getElementById('div-output').style.visibility = 'hidden';
             document.getElementById('output-correct-mistake').style.visibility = 'hidden';
@@ -563,8 +575,6 @@ export class QuizEtudiantViewComponent implements OnInit {
 
 
                         if (this.selected.typeDeQuestion.ref == 't1') {
-                            console.log(this.quizEtudiant);
-                            console.log(this.selected);
                             this.service.findMyAnswerEtudiant(this.quizEtudiant, this.selected).subscribe(
                                 data => {
                                     this.myAnswerEtudiant = data;
@@ -574,8 +584,8 @@ export class QuizEtudiantViewComponent implements OnInit {
                                     } else {
                                         this.isCorrect = false;
                                     }
+                                    this.reponseRadio = this.myAnswerEtudiant[0].reponse.lib;
                                 });
-
                             for(let i = 0 ; i < this.myanswers.length ; i++)
                             {
                                 this.answerCorrectOrFalse.push(true);
@@ -596,6 +606,8 @@ export class QuizEtudiantViewComponent implements OnInit {
                             document.getElementById('on-off-question').style.height = '0px';
                             document.getElementById('on-off-answer').style.visibility = 'hidden';
                             document.getElementById('on-off-answer').style.height = '0px';
+                            document.getElementById('type-input').style.visibility = 'hidden';
+                            document.getElementById('type-input').style.height = '0px';
                             this.isSelected = false;
                             for (let i = 0; i < this.selected.libelle.length; i++) {
                                 if (this.selected.libelle[i] == '.' && this.selected.libelle[i + 1] == '.' && this.selected.libelle[i + 2] == '.') {
@@ -629,11 +641,96 @@ export class QuizEtudiantViewComponent implements OnInit {
                             );
                         }
 
-
-
-
-
-
+                        else if (this.selected.typeDeQuestion.ref == 't3') {
+                            for(let i = 0 ; i < this.questionanswers.length ; i++)
+                            {
+                                this.answerCorrectOrFalse.push(true);
+                            }
+                            this.question1 = '';
+                            this.question2 = '';
+                            document.getElementById('type-input').style.visibility = 'visible';
+                            document.getElementById('type-input').style.height = 'auto';
+                            document.getElementById('mistake').style.visibility = 'hidden';
+                            document.getElementById('div-output').style.visibility = 'hidden';
+                            document.getElementById('mistake').style.height = '0px';
+                            document.getElementById('question').style.visibility = 'hidden';
+                            document.getElementById('question').style.height = '0px';
+                            document.getElementById('answers').style.visibility = 'hidden';
+                            document.getElementById('answers').style.height = '0px';
+                            document.getElementById('on-off-question').style.visibility = 'hidden';
+                            document.getElementById('on-off-question').style.height = '0px';
+                            document.getElementById('on-off-answer').style.visibility = 'hidden';
+                            document.getElementById('on-off-answer').style.height = '0px';
+                            this.isSelected = false;
+                            this.disable = true;
+                            this.button = 'Next';
+                            this.string_input = '';
+                            this.disableInput = true;
+                            this.service.findMyAnswerEtudiant(this.quizEtudiant, this.selected).subscribe(
+                                data => {
+                                    this.myAnswerEtudiant = data;
+                                    if(this.myAnswerEtudiant[0].answer == this.correctAnswers[0].lib)
+                                    {
+                                        this.input_true_false = true;
+                                        document.getElementById('type-question-input').style.color = '#1af045';
+                                        document.getElementById('type-question-input').style.textDecoration = 'none';
+                                    } else {
+                                        this.input_true_false = false;
+                                        document.getElementById('type-question-input').style.color = 'red';
+                                        document.getElementById('type-question-input').style.textDecoration = 'line-through';
+                                    }
+                                    this.reponseInput = this.myAnswerEtudiant[0].answer;
+                                });
+                            for (let i = 0; i < this.selected.libelle.length; i++) {
+                                if (this.selected.libelle[i] == '.' && this.selected.libelle[i + 1] == '.' && this.selected.libelle[i + 2] == '.') {
+                                    this.debutBlink = i;
+                                    for (let j = i + 2; j < this.selected.libelle.length; j++) {
+                                        if (this.selected.libelle[j] != '.') {
+                                            this.debutPlaceholder = j;
+                                            break;
+                                        }
+                                    }
+                                    for (let j = this.debutPlaceholder; j < this.selected.libelle.length; j++) {
+                                        if (this.selected.libelle[j] == '.') {
+                                            this.finPlaceholder = j;
+                                            break;
+                                        }
+                                    }
+                                    for (let j = this.finPlaceholder; j < this.selected.libelle.length; j++) {
+                                        if (this.selected.libelle[j] != '.') {
+                                            this.finBlink = j;
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            for (let i = 0; i < this.debutBlink; i++) {
+                                this.question1 = this.question1 + this.selected.libelle[i];
+                            }
+                            for (let i = this.finBlink; i < this.selected.libelle.length; i++) {
+                                this.question2 = this.question2 + this.selected.libelle[i];
+                            }
+                            for (let i = 0; i < this.debutBlink; i++) {
+                                this.string_input = this.string_input + this.selected.libelle[i];
+                            }
+                            this.string_input = this.string_input + this.correctAnswers[0].lib;
+                            for (let i = this.debutPlaceholder; i < this.finPlaceholder; i++) {
+                            }
+                            for (let i = this.finBlink; i < this.selected.libelle.length; i++) {
+                                this.string_input = this.string_input + this.selected.libelle[i];
+                            }
+                            this.son = this.string_input;
+                            this.service.translate(this.string_input).subscribe(
+                                data => {
+                                    this.translate = data;
+                                }
+                            );
+                            for(let i = 0 ; i < this.questionanswers.length ; i++)
+                            {
+                                this.answerCorrectOrFalse.push(true);
+                            }
+                        }
 
                         else if (this.selected.typeDeQuestion.ref == 't4') {
                             for(let i = 0 ; i < this.questionanswers.length ; i++)
@@ -653,6 +750,8 @@ export class QuizEtudiantViewComponent implements OnInit {
                             document.getElementById('mistake').style.height = 'auto';
                             document.getElementById('div-output').style.visibility = 'visible';
                             document.getElementById('div-output').style.height = 'auto';
+                            document.getElementById('type-input').style.visibility = 'hidden';
+                            document.getElementById('type-input').style.height = '0px';
                             document.getElementById('on-off-question').style.visibility = 'hidden';
                             document.getElementById('on-off-question').style.height = '0px';
                             document.getElementById('on-off-answer').style.visibility = 'hidden';
@@ -727,33 +826,38 @@ export class QuizEtudiantViewComponent implements OnInit {
                                                     continue;
                                                 }
                                             }
+                                            console.log(this.myanswers)
+                                            for (let i = 0; i < this.myanswers.length; i++) {
+
+                                                if (this.myanswers[i] == this.correctanswers[i] && this.myanswers[i] == this.questionanswers[i]) {
+                                                    this.answerCorrectOrFalse.push(true);
+                                                    console.log('etat ' + i + ' = 0')
+                                                    document.getElementById('span-output-' + i).style.color = '#0a80bb';
+                                                    document.getElementById('span-output-' + i).style.textDecoration = 'none';
+                                                    document.getElementById('span-correct-' + i).style.visibility = 'hidden';
+                                                } else if (this.myanswers[i] == this.correctanswers[i] && this.myanswers[i] != this.questionanswers[i]) {
+                                                    this.answerCorrectOrFalse.push(true);
+                                                    console.log('etat ' + i + ' = 1')
+                                                    document.getElementById('span-output-' + i).style.color = '#1af045';
+                                                    document.getElementById('span-output-' + i).style.textDecoration = 'none';
+                                                    document.getElementById('span-correct-' + i).style.visibility = 'hidden';
+                                                } else {
+                                                    this.answerCorrectOrFalse.push(false);
+                                                    console.log('etat ' + i + ' = -1')
+                                                    document.getElementById('span-output-' + i).style.color = 'red';
+                                                    document.getElementById('span-output-' + i).style.textDecoration = 'line-through';
+                                                    document.getElementById('span-correct-' + i).style.visibility = 'visible';
+                                                }
+                                            }
+                                            this.service.translate(this.correctAnswers[0].lib).subscribe(
+                                                data => {
+                                                    this.translate = data;
+                                                    console.log(this.translate);
+                                                }
+                                            );
                                         });
                                     //this.isChecked = true;
-                                    for (let i = 0; i < this.myanswers.length; i++) {
 
-                                        if (this.myanswers[i] == this.correctanswers[i] && this.myanswers[i] == this.questionanswers[i]) {
-                                            this.answerCorrectOrFalse.push(true);
-                                            document.getElementById('span-output-' + i).style.color = '#0a80bb';
-                                            document.getElementById('span-output-' + i).style.textDecoration = 'none';
-                                            document.getElementById('span-correct-' + i).style.visibility = 'hidden';
-                                        } else if (this.myanswers[i] == this.correctanswers[i] && this.myanswers[i] != this.questionanswers[i]) {
-                                            this.answerCorrectOrFalse.push(true);
-                                            document.getElementById('span-output-' + i).style.color = '#1af045';
-                                            document.getElementById('span-output-' + i).style.textDecoration = 'none';
-                                            document.getElementById('span-correct-' + i).style.visibility = 'hidden';
-                                        } else {
-                                            this.answerCorrectOrFalse.push(false);
-                                            document.getElementById('span-output-' + i).style.color = 'red';
-                                            document.getElementById('span-output-' + i).style.textDecoration = 'line-through';
-                                            document.getElementById('span-correct-' + i).style.visibility = 'visible';
-                                        }
-                                    }
-                                    this.service.translate(this.correctAnswers[0].lib).subscribe(
-                                        data => {
-                                            this.translate = data;
-                                            console.log(this.translate);
-                                        }
-                                    );
                                     document.getElementById('translate-correct-mistake').style.visibility = 'visible';
                                 }
                             );
@@ -764,17 +868,32 @@ export class QuizEtudiantViewComponent implements OnInit {
 
 
                         else if (this.selected.typeDeQuestion.ref == 't5') {
-                            for(let i = 0 ; i < this.myanswers.length ; i++)
+                            this.answerCorrectOrFalse = new Array<boolean>();
+                            for(let i = 0 ; i < this.questionanswers.length ; i++)
                             {
                                 this.answerCorrectOrFalse.push(true);
                             }
+                            for (let i = 0; i < this.myanswers.length; i++) {
+                                console.log('000000000000000000000');
+                                document.getElementById('span-output-' + i).style.color = '#0a80bb';
+                                document.getElementById('span-output-' + i).style.textDecoration = 'none';
+                                document.getElementById('span-correct-' + i).style.visibility = 'hidden';
+                                console.log('heyyyyyyyyyyyyyyyy');
+                            }
                             this.correctMistakeAnswer = null;
-                            if(this.correctAnswers[0].lib == 'true'){
-                                this.on_off = true;
-                            }
-                            else if(this.correctAnswers[0].lib == 'false'){
-                                this.on_off = false;
-                            }
+                            this.service.findMyAnswerEtudiant(this.quizEtudiant, this.selected).subscribe(
+                                data => {
+                                    this.myAnswerEtudiant = data;
+                                    if(this.myAnswerEtudiant[0].reponse.lib == 'true'){
+                                        this.on_off = true;
+                                        console.log('raha s7i7a');
+                                    }
+                                    else if(this.myAnswerEtudiant[0].reponse.lib == 'false'){
+                                        this.on_off = false;
+                                        console.log('raha ghalta');
+                                    }
+                                });
+                            console.log(this.correctAnswers[0].lib)
                             this.service.translate(this.selected.libelle).subscribe(
                                 data => {
                                     this.translate = data;
@@ -786,6 +905,8 @@ export class QuizEtudiantViewComponent implements OnInit {
                             document.getElementById('on-off-answer').style.height = 'auto';
                             document.getElementById('translate-on-off').style.visibility = 'visible';
                             document.getElementById('question-on-off').style.color = 'black';
+                            document.getElementById('type-input').style.visibility = 'hidden';
+                            document.getElementById('type-input').style.height = '0px';
                             document.getElementById('mistake').style.visibility = 'hidden';
                             document.getElementById('mistake').style.height = '0px';
                             document.getElementById('question').style.visibility = 'hidden';
@@ -793,12 +914,7 @@ export class QuizEtudiantViewComponent implements OnInit {
                             document.getElementById('answers').style.visibility = 'hidden';
                             document.getElementById('answers').style.height = '0px';
                             document.getElementById('div-output').style.visibility = 'hidden';
-                            document.getElementById('output-correct-mistake').style.visibility = 'hidden';
-                            this.answerCorrectOrFalse = new Array<boolean>();
-                            for(let i = 0 ; i < this.questionanswers.length ; i++)
-                            {
-                                this.answerCorrectOrFalse.push(true);
-                            }
+                            //document.getElementById('output-correct-mistake').style.visibility = 'hidden';
                             this.isChecked = false;
                         }
                     }
