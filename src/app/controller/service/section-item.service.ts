@@ -14,6 +14,16 @@ export class SectionItemService {
     }
 
     private _host = environment.sectionItemUrl;
+    private _showVocabulary:boolean
+
+
+    get showVocabulary(): boolean {
+        return this._showVocabulary;
+    }
+
+    set showVocabulary(value: boolean) {
+        this._showVocabulary = value;
+    }
 
     get host(): string {
         return this._host;

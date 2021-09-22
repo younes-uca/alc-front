@@ -38,7 +38,6 @@ export class SafePipe implements PipeTransform {
     styleUrls: ['./student-simulate-section.component.scss']
 })
 export class StudentSimulateSectionComponent implements OnInit {
-    showVocabulary: boolean=false;
     nodes: TreeNode[];
     menu: MenuItem[];
     srcImg: string;
@@ -71,6 +70,15 @@ export class StudentSimulateSectionComponent implements OnInit {
 
     set viewDialog(value: boolean) {
         this.review.viewDialog = value;
+    }
+
+
+    get showVocabulary(): boolean {
+        return this.sectionItemService.showVocabulary;
+    }
+
+    set showVocabulary(value: boolean) {
+        this.sectionItemService.showVocabulary = value;
     }
 
     public view(EtudiantReview: EtudiantReview) {
@@ -272,6 +280,11 @@ export class StudentSimulateSectionComponent implements OnInit {
         this.service.afficheSection(libelle).subscribe(
             data => {
                 this.selectedsection = data;
+                if (data.categorieSection.libelle === 'Vocabulary') {
+                    this.Vocab(data);
+                } else {
+                    this.showVocabulary=false
+                }
                 this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
                     data => {
                         this.selectedQuiz = data;
@@ -300,7 +313,6 @@ export class StudentSimulateSectionComponent implements OnInit {
                     },
                 );
             }, error => console.log('erreeeeeeeeeeeeeeeeur'));
-        this.showVocabularyComponent()
     }
 public ReviewExist(){
     this.review.findReview(this.selectedcours.id).subscribe(
@@ -411,7 +423,6 @@ public ReviewExist(){
                 }
             },
         ];
-        this.showVocabularyComponent()
     }
 
     public findCoursEtudiant(cours: Cours) {
@@ -518,6 +529,11 @@ public ReviewExist(){
             this.service.afficheOneSection2().subscribe(
                 data => {
                     this.selectedsection = data;
+                    if (data.categorieSection.libelle === 'Vocabulary') {
+                        this.Vocab(data)
+                    }else {
+                        this.showVocabulary=false
+                    }
                     this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
                         data => {
                             this.selectedQuiz = data;
@@ -550,7 +566,6 @@ public ReviewExist(){
             this.selectedsection.numeroOrder = this.itemssection2.length + 1;
             this.NextSection();
         }
-        this.showVocabularyComponent()
     }
 
     photoURL() {
@@ -603,8 +618,14 @@ public ReviewExist(){
         // tslint:disable-next-line:triple-equals
         if (this.selectedsection.numeroOrder <= this.itemssection2.length) {
             this.service.afficheOneSection2().subscribe(
-                data => {
+                async data => {
                     this.selectedsection = data;
+                    if (data.categorieSection.libelle === 'Vocabulary') {
+                        this.Vocab(data)
+                    }else {
+                        this.showVocabulary=false
+                    }
+
                     this.quizService.findQuizBySectionId(this.selectedsection).subscribe(
                         data => {
                             this.selectedQuiz = data;
@@ -615,18 +636,16 @@ public ReviewExist(){
                                     console.log(this.quizEtudiantList);
                                     this.quizService.findAllQuestions(this.selectedQuiz.ref).subscribe(
                                         dataQuestions => {
-                                            if(data.questionCurrent > dataQuestions.length){
+                                            if (data.questionCurrent > dataQuestions.length) {
                                                 this.passerQuiz = 'View Quiz';
                                                 this.quizView = true;
-                                            }
-                                            else {
+                                            } else {
                                                 this.passerQuiz = 'Continue Quiz';
                                                 this.quizView = false;
                                             }
                                         }
                                     );
-                                },error =>
-                                {
+                                }, error => {
                                     this.passerQuiz = 'Take Quiz';
                                     this.quizView = false;
                                 }
@@ -639,11 +658,11 @@ public ReviewExist(){
             this.PreviousSection();
         }
 
-        this.showVocabularyComponent()
     }
 
 
-    showVocabularyComponent() {
+   async showVocabularyComponent() {
+        console.log("hadi kaat3yeett: "+this.selectedsection.categorieSection.libelle);
         if (this.selectedsection.categorieSection.libelle === 'Vocabulary') {
             this.Vocab(this.selectedsection)
             this.showVocabulary = true;

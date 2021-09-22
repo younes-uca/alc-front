@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {AppComponent} from '../../app.component';
-import {AppMainComponent} from '../../temporal/app.main.component';
 import {MenuItem} from 'primeng/api';
 import {LoginService} from '../../controller/service/login.service';
 import {PublicComponent} from '../../public/public.component';

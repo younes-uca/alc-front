@@ -43,21 +43,7 @@ export class SectionItemPreviewComponent implements OnInit {
     }
 
 
-    previousItem() {
-        const index = this.listItems.indexOf(this.currentItem);
-        if (index > 0) {
-            if (index - 1 >= 0) {
-                this.showNext = true;
-                this.currentItem = this.listItems[index - 1];
-                this.child.reloadComponent();
-                this.showPrevious = true;
-                this.showfinish = false;
-            }
-            if (index - 1 === 0) {
-                this.showPrevious = false;
-            }
-        }
-    }
+
 
     nextItem() {
         const index = this.listItems.indexOf(this.currentItem);
@@ -79,21 +65,13 @@ export class SectionItemPreviewComponent implements OnInit {
         }
     }
 
-    startItem() {
-        this.showItems = true;
-        this.showStart = false;
-        this.showEnd = false;
-    }
+
 
     endShow() {
-        this.showItems = false;
-        this.showStart = false;
-        this.showEnd = true;
-    }
-
-    finish() {
         this.router.navigate(['admin/create-section-items']);
     }
+
+
 
     flip() {
         this.fliped=true

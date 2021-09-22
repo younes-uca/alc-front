@@ -21,7 +21,6 @@ export class VocabularySectionComponent implements OnInit {
   showPrevious: boolean;
   showNext: boolean;
   showfinish: boolean;
-  showStart: boolean;
   showEnd: boolean;
   showItems: boolean;
   currentIndex:number
@@ -39,8 +38,8 @@ export class VocabularySectionComponent implements OnInit {
     this.calculProgressBarValue(this.currentIndex)
     this.showNext = true;
     this.showPrevious = false;
-    this.showStart = true;
-    this.showItems = false;
+
+    this.showItems = true;
     this.showEnd = false;
     this.fliped=false
   }
@@ -82,15 +81,10 @@ export class VocabularySectionComponent implements OnInit {
     }
   }
 
-  startItem() {
-    this.showItems = true;
-    this.showStart = false;
-    this.showEnd = false;
-  }
+
 
   endShow() {
     this.showItems = false;
-    this.showStart = false;
     this.showEnd = true;
   }
 
