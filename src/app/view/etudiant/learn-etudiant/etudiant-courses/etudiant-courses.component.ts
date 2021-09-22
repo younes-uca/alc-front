@@ -34,6 +34,7 @@ export class EtudiantCoursesComponent implements OnInit {
         this.review.selected = value;
     }
     public FindSectionOneByOne(cour: Cours) {
+        this.service.selectedEtudiantCours.dateDebut = new Date();
         this.selectedcours = cour;
         let i = 0;
         i = i + 1;

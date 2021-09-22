@@ -61,6 +61,7 @@ export class EtudiantReviewViewComponent implements OnInit {
     this.selected.dateReview = new Date();
     this.service.Save().subscribe(
         data => {
+          this.serviceParcours.selectedEtudiantCours.dateFin = new Date();
           this.serviceParcours.selectedEtudiantCours.etudiant.id = this.loginService.etudiant.id;
           this.serviceParcours.selectedEtudiantCours.cours.id = this.selectedcours.id;
           this.serviceParcours.saveEtudiantCours().subscribe(data => {
