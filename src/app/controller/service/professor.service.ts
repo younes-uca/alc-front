@@ -6,6 +6,7 @@ import {Prof} from '../model/prof.model';
 import {Paiement} from '../model/paiement.model';
 import {SessionCours} from '../model/session-cours.model';
 import {LoginService} from './login.service';
+import {EtudiantCours} from '../model/etudiant-cours.model';
 
 
 @Injectable({
@@ -31,13 +32,16 @@ export class ProfessorService {
         this._items = value;
     }
 
-    private _itemsSession: Array<SessionCours>;
+    private _itemsSession: Array<EtudiantCours>;
 
-    get itemsSession(): Array<SessionCours> {
+    get itemsSession(): Array<EtudiantCours> {
+        if (this._itemsSession == null){
+            this._itemsSession = new Array<EtudiantCours>();
+        }
         return this._itemsSession;
     }
 
-    set itemsSession(value: Array<SessionCours>) {
+    set itemsSession(value: Array<EtudiantCours>) {
         this._itemsSession = value;
     }
 
@@ -161,11 +165,11 @@ export class ProfessorService {
         this._paiement = value;
     }
 
-    public afficheSession(id: number): Observable<Array<SessionCours>> {
-        return this.http.get<Array<SessionCours>>('http://localhost:8036/learn/session/prof/id/' + id);
+    public afficheSession(id: number): Observable<Array<EtudiantCours>> {
+        return this.http.get<Array<EtudiantCours>>('http://localhost:8036/learn/etudiantCours/prof/id/' + id);
     }
-    public afficheSessionStd(id: number): Observable<Array<SessionCours>> {
-        return this.http.get<Array<SessionCours>>('http://localhost:8036/learn/session/prof/id/' + this.user.prof.id + '/etudiant/id/' + id );
+    public afficheSessionStd(id: number): Observable<Array<EtudiantCours>> {
+        return this.http.get<Array<EtudiantCours>>('http://localhost:8036/learn/etudiantCours/prof/id/' + this.user.prof.id + '/etudiant/id/' + id );
     }
     /*paiement*/
     public paiementProf(): Observable<Array<Paiement>> {
@@ -204,8 +208,8 @@ export class ProfessorService {
         return this.http.post<Paiement>('http://localhost:8036/learn/paiement/', paiement);
     }
 
-    public findSessionNonPayer(id: number): Observable<Array<SessionCours>> {
-        return this.http.get<Array<SessionCours>>('http://localhost:8036/learn/prof/sessionNonPayer/prof/id/' + id);
+    public findSessionNonPayer(id: number): Observable<Array<EtudiantCours>> {
+        return this.http.get<Array<EtudiantCours>>('http://localhost:8036/learn/prof/sessionNonPayer/prof/id/' + id);
     }
 
     public findIndexById(id: number): number {

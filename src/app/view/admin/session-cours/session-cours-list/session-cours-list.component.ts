@@ -3,6 +3,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
 import {ProfessorService} from '../../../../controller/service/professor.service';
+import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 
 @Component({
     selector: 'app-session-cours-list',
@@ -26,19 +27,19 @@ export class SessionCoursListComponent implements OnInit {
         this.serviceprof.viewDialogProf = value;
     }
 
-    get itemsSession(): Array<SessionCours> {
+    get itemsSession(): Array<EtudiantCours> {
         return this.serviceprof.itemsSession;
     }
 
-    set itemsSession(value: Array<SessionCours>) {
+    set itemsSession(value: Array<EtudiantCours>) {
         this.serviceprof.itemsSession = value;
     }
 
-    get selected(): SessionCours {
+    get selected(): EtudiantCours {
         return this.service.selected;
     }
 
-    set selected(value: SessionCours) {
+    set selected(value: EtudiantCours) {
         this.service.selected = value;
     }
 
@@ -94,16 +95,16 @@ export class SessionCoursListComponent implements OnInit {
         return this.service.findByCriteria().subscribe(data => this.itemsSession = data);
     }
 
-    public delete(selected: SessionCours) {
+    public delete(selected: EtudiantCours) {
         this.selected = selected;
         this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + selected.reference + '?',
+            message: 'Are you sure you want to delete ' + selected.cours.libelle + '?',
             header: 'Confirm',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.service.deleteByReference().subscribe(data => {
                     this.itemsSession = this.itemsSession.filter(val => val.id !== this.selected.id);
-                    this.selected = new SessionCours();
+                    this.selected = new EtudiantCours();
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Successful',
@@ -136,17 +137,17 @@ export class SessionCoursListComponent implements OnInit {
     }
 
     public openCreate() {
-        this.selected = new SessionCours();
+        this.selected = new EtudiantCours();
         this.submitted = false;
         this.createDialog = true;
     }
 
-    public edit(sessionCours: SessionCours) {
+    public edit(sessionCours: EtudiantCours) {
         this.selected = {...sessionCours};
         this.editDialog = true;
     }
 
-    public view(sessionCours: SessionCours) {
+    public view(sessionCours: EtudiantCours) {
         this.selected = {...sessionCours};
         this.viewDialog = true;
     }

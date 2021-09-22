@@ -6,28 +6,29 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Etudiant} from '../model/etudiant.model';
 import {Prof} from '../model/prof.model';
+import {EtudiantCours} from '../model/etudiant-cours.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SessionCoursService {
 
-    private url = environment.baseUrl + 'session/';
+    private url = environment.baseUrl + 'etudiantCours/';
 
     // }
     constructor(private http: HttpClient) {
     }
 
-    private _items: Array<SessionCours>;
+    private _items: Array<EtudiantCours>;
 
-    get items(): Array<SessionCours> {
+    get items(): Array<EtudiantCours> {
         if (this._items == null) {
-            this._items = new Array<SessionCours>();
+            this._items = new Array<EtudiantCours>();
         }
         return this._items;
     }
 
-    set items(value: Array<SessionCours>) {
+    set items(value: Array<EtudiantCours>) {
         this._items = value;
     }
 
@@ -75,16 +76,16 @@ export class SessionCoursService {
         this._itemsEtudiant = value;
     }
 
-    private _selected: SessionCours;
+    private _selected: EtudiantCours;
 
-    get selected(): SessionCours {
+    get selected(): EtudiantCours {
         if (this._selected == null) {
-            this._selected = new SessionCours();
+            this._selected = new EtudiantCours();
         }
         return this._selected;
     }
 
-    set selected(value: SessionCours) {
+    set selected(value: EtudiantCours) {
         this._selected = value;
     }
 
@@ -141,12 +142,12 @@ export class SessionCoursService {
         this._submitted = value;
     }
 
-    findByCriteria(): Observable<Array<SessionCours>> {
-        return this.http.post<Array<SessionCours>>('http://localhost:8036/learn/session/search', this.selected);
+    findByCriteria(): Observable<Array<EtudiantCours>> {
+        return this.http.post<Array<EtudiantCours>>('http://localhost:8036/learn/session/search', this.selected);
     }
 
-    public findAll(): Observable<Array<SessionCours>> {
-        return this.http.get<Array<SessionCours>>(this.url);
+    public findAll(): Observable<Array<EtudiantCours>> {
+        return this.http.get<Array<EtudiantCours>>(this.url);
     }
 
     public findAllProf(): Observable<Array<Prof>> {
@@ -161,8 +162,8 @@ export class SessionCoursService {
         return this.http.post<SessionCours>(this.url, this.selected);
     }
 
-    public edit(): Observable<SessionCours> {
-        return this.http.put<SessionCours>(this.url, this.selected);
+    public edit(): Observable<EtudiantCours> {
+        return this.http.put<EtudiantCours>(this.url, this.selected);
     }
 
     public update(session: SessionCours): Observable<SessionCours> {

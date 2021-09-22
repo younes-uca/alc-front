@@ -4,6 +4,7 @@ import {SessionCoursService} from '../../../../controller/service/session-cours.
 import {SessionCours} from '../../../../controller/model/session-cours.model';
 import {Prof} from '../../../../controller/model/prof.model';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
+import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 
 @Component({
     selector: 'app-session-cours-edit',
@@ -31,11 +32,11 @@ export class SessionCoursEditComponent implements OnInit {
         this.service.itemsEtudiant = value;
     }
 
-    get selected(): SessionCours {
+    get selected(): EtudiantCours {
         return this.service.selected;
     }
 
-    set selected(value: SessionCours) {
+    set selected(value: EtudiantCours) {
         this.service.selected = value;
     }
 
@@ -55,11 +56,11 @@ export class SessionCoursEditComponent implements OnInit {
         this.service.submitted = value;
     }
 
-    get items(): Array<SessionCours> {
+    get items(): Array<EtudiantCours> {
         return this.service.items;
     }
 
-    set items(value: Array<SessionCours>) {
+    set items(value: Array<EtudiantCours>) {
         this.service.items = value;
     }
 
@@ -90,7 +91,7 @@ export class SessionCoursEditComponent implements OnInit {
             });
         }
         this.editDialog = false;
-        this.selected = new SessionCours();
+        this.selected = new EtudiantCours();
     }
 
     public hideEditDialog() {

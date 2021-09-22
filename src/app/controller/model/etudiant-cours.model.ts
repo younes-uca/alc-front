@@ -7,4 +7,6 @@ export class EtudiantCours {
     public cours = new Cours();
     public etudiant = new Etudiant();
     public prof = new Prof();
+    public dateDebut: string;
+    public dateFin: string;
 }

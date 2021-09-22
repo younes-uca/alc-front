@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
+import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 
 @Component({
     selector: 'app-session-cours-view',
@@ -13,11 +14,11 @@ export class SessionCoursViewComponent implements OnInit {
     constructor(private messageService: MessageService, private service: SessionCoursService) {
     }
 
-    get selected(): SessionCours {
+    get selected(): EtudiantCours {
         return this.service.selected;
     }
 
-    set selected(value: SessionCours) {
+    set selected(value: EtudiantCours) {
         this.service.selected = value;
     }
 

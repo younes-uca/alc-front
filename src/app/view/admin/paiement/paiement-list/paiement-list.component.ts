@@ -4,6 +4,7 @@ import {ProfessorService} from '../../../../controller/service/professor.service
 import {Prof} from '../../../../controller/model/prof.model';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
+import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 
 @Component({
     selector: 'app-paiement-list',
@@ -29,11 +30,11 @@ export class PaiementListComponent implements OnInit {
         this.service.paiement = value;
     }
 
-    get items(): Array<SessionCours> {
+    get items(): Array<EtudiantCours> {
         return this.sessionService.items;
     }
 
-    set items(value: Array<SessionCours>) {
+    set items(value: Array<EtudiantCours>) {
         this.sessionService.items = value;
     }
 
@@ -45,11 +46,11 @@ export class PaiementListComponent implements OnInit {
         this.sessionService.selectedItems = value;
     }
 
-    get selected(): SessionCours {
+    get selected(): EtudiantCours {
         return this.sessionService.selected;
     }
 
-    set selected(value: SessionCours) {
+    set selected(value: EtudiantCours) {
         this.sessionService.selected = value;
     }
 

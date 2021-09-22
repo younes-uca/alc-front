@@ -4,6 +4,7 @@ import {MessageService} from 'primeng/api';
 import {SessionCoursService} from '../../../../controller/service/session-cours.service';
 import {Prof} from '../../../../controller/model/prof.model';
 import {Etudiant} from '../../../../controller/model/etudiant.model';
+import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 
 @Component({
     selector: 'app-session-cours-create',
@@ -15,11 +16,11 @@ export class SessionCoursCreateComponent implements OnInit {
     constructor(private messageService: MessageService, private service: SessionCoursService) {
     }
 
-    get selected(): SessionCours {
+    get selected(): EtudiantCours {
         return this.service.selected;
     }
 
-    set selected(value: SessionCours) {
+    set selected(value: EtudiantCours) {
         this.service.selected = value;
     }
 
@@ -56,11 +57,11 @@ export class SessionCoursCreateComponent implements OnInit {
         this.service.itemsEtudiant = value;
     }
 
-    get items(): Array<SessionCours> {
+    get items(): Array<EtudiantCours> {
         return this.service.items;
     }
 
-    set items(value: Array<SessionCours>) {
+    set items(value: Array<EtudiantCours>) {
         this.service.items = value;
     }
 
@@ -75,6 +76,7 @@ export class SessionCoursCreateComponent implements OnInit {
     public save() {
         this.submitted = true;
         this.service.save().subscribe(data => {
+            // @ts-ignore
             this.items.push({...data});
             // tslint:disable-next-line:no-shadowed-variable
             this.service.findAll().subscribe(data => this.items = data);
@@ -86,7 +88,7 @@ export class SessionCoursCreateComponent implements OnInit {
             });
         });
         this.createDialog = false;
-        this.selected = new SessionCours();
+        this.selected = new EtudiantCours();
     }
 
     public findAllProf() {
