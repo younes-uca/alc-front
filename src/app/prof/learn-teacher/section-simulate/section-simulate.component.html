@@ -2,7 +2,7 @@
     <div class="p-grid">
         <div class="p-col">
             <div class="product-grid-item ">
-                <div class="product-grid-item-content">
+                <div *ngIf="showVocabulary===false" class="product-grid-item-content">
                     <div class="product-name" style="margin-bottom: 15px; background-color: #1BA7AF; color: white"><h1>-{{this.selectedsection.libelle}}-</h1>
                     </div>
                     <!-- <iframe *ngIf=" this.selectedsection.libelle != 'Watch the video' && this.selectedsection.urlImage != null"
@@ -32,6 +32,9 @@
                                 style=" background-color: white;white-space: pre-wrap; font-family: Great Vibes, cursive; font-size: 200%;line-height: 60px; text-align: left ;margin-left: 50px ;">{{this.selectedsection.contenu}}</h3>
                         </div>
                     </div>
+                </div>
+                <div *ngIf="showVocabulary===true" class="p-col">
+                    <app-vocabulary-section-prof (someEvent)="return($event)"></app-vocabulary-section-prof>
                 </div>
             </div>
 

@@ -216,6 +216,8 @@ import { AdminComponent } from './admin/admin.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
 import { ProfComponent } from './prof/prof.component';
 import { PublicComponent } from './public/public.component';
+import { VocabularySectionProfComponent } from './prof/learn-teacher/vocabulary-section-prof/vocabulary-section-prof.component';
+import { VocabularySectionItemProfComponent } from './prof/learn-teacher/vocabulary-section-prof/vocabulary-section-item-prof/vocabulary-section-item-prof.component';
 
 
 @NgModule({
@@ -435,7 +437,9 @@ import { PublicComponent } from './public/public.component';
         AdminComponent,
         EtudiantComponent,
         ProfComponent,
-        PublicComponent
+        PublicComponent,
+        VocabularySectionProfComponent,
+        VocabularySectionItemProfComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

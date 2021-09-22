@@ -5,6 +5,7 @@ import {Cours} from '../../../controller/model/cours.model';
 import {Section} from '../../../controller/model/section.model';
 import {Quiz} from '../../../controller/model/quiz.model';
 import {QuizEtudiantService} from '../../../controller/service/quiz-etudiant.service';
+import {SectionItemService} from '../../../controller/service/section-item.service';
 
 @Component({
     selector: 'app-choose-view',
@@ -16,7 +17,7 @@ export class ChooseViewComponent implements OnInit {
     img = '';
 
     // tslint:disable-next-line:max-line-length
-    constructor(private quizService: QuizEtudiantService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService) {
+    constructor(private sectionItemService: SectionItemService,private quizService: QuizEtudiantService, private messageService: MessageService, private confirmationService: ConfirmationService, private service: ParcoursService) {
     }
 
     get image(): string {
@@ -95,7 +96,27 @@ export class ChooseViewComponent implements OnInit {
         this.service.affichelistSection().subscribe(
             data => {
                 this.selectessection = data;
+
             });
+    }
+
+    get showVocabulary(): boolean {
+        return this.sectionItemService.showVocabulary;
+    }
+
+    set showVocabulary(value: boolean) {
+        this.sectionItemService.showVocabulary = value;
+    }
+
+    Vocab(section: Section) {
+        this.sectionItemService.sectionSelected = section;
+
+        this.sectionItemService.getSectionItems().subscribe(data => {
+            this.sectionItemService.sectionSelected.sectionItems = data;
+            console.log(data);
+            this.showVocabulary = true;
+        });
+
     }
 
     public FindSectionOneByOne(cour: Cours) {
@@ -111,6 +132,11 @@ export class ChooseViewComponent implements OnInit {
         this.service.afficheOneSection().subscribe(
             data => {
                 this.selectedsection = data;
+                if (data.categorieSection.libelle === 'Vocabulary') {
+                    this.Vocab(data);
+                } else {
+                    this.showVocabulary=false
+                }
                 this.quizService.findQuizBySection(this.selectedsection.id).subscribe(data => {
                     this.selectedQuiz = data;
                 });
