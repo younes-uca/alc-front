@@ -1,0 +1,60 @@
+<p-card *ngIf="showItems" [style]="{width:'100%',textAlign:'center'}"
+        class="p-d-block p-mx-auto">
+    <div style="position: relative;width: 100%">
+        <h5>Learn the words</h5>
+        <h6 style="position: absolute;right: 15px;">{{currentIndex}} out of {{listItems.length}}</h6>
+    </div>
+    <div>
+        <p-progressBar [value]="progressBarValue" [showValue]=false></p-progressBar>
+    </div>
+    <app-vocabulary-section-item-prof [current]="currentItem"></app-vocabulary-section-item-prof>
+    <div *ngIf="showNext" style="margin-top: 10px;text-align: center">
+        <button
+                *ngIf="fliped===false"
+                (click)="flip()"
+                class="p-button-rounded p-button-success" icon="pi pi-refresh" id="flip" label="Flip"
+                pButton pRipple
+                type="button"></button>
+        <button
+                (click)="nextItem()"
+                *ngIf="fliped===true"
+                class="p-button-rounded" icon="pi pi-caret-right" id="next" label="Next"
+                pButton pRipple
+                type="button"></button>
+    </div>
+    <div *ngIf="showfinish" style="margin-top: 10px;text-align: center">
+        <button
+                (click)="endShow()"
+
+                class="p-button-rounded p-button-danger" icon="pi pi-power-off" id="finish" label="Finish"
+                pButton pRipple
+                type="button"></button>
+    </div>
+</p-card>
+
+<p-card *ngIf="showEnd" [style]="{width:'100%',textAlign:'center'}"
+        class="p-d-block p-mx-auto">
+    <div class="p-grid " style="width: 100%">
+        <div class="p-col-6 " style="text-align: center;position: relative">
+            <div class="outer">
+                <div class="middle">
+                    <div class="inner">
+                        <h1 style="font-family: Comic Sans MS, Comic Sans, cursive;font-size: 40px;margin-bottom: 60px">
+                            Train Your Mind To See The Good
+                            In Every Situation
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="p-col-6 bg-image">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <img class="product-image" src="../../../../../assets/Done.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-card>
+
