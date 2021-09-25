@@ -5,10 +5,8 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost:8036/learn/',
-  sectionItemUrl:'http://localhost:8036/learn/sectionItem/',
-  translationHost:'http://localhost:8036/learn/TranslateEnAr/text/translationFeatures/'
-  sectionItemUrl:'http://localhost:8036/learn/sectionItem/',
-  translationHost:'http://localhost:8036/learn/TranslateEnAr/text/translationFeatures/',
+  sectionItemUrl: 'http://localhost:8036/learn/sectionItem/',
+  translationHost: 'http://localhost:8036/learn/TranslateEnAr/text/translationFeatures/',
   urlsocket: 'localhost:8036'
 };
 
