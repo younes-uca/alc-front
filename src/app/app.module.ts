@@ -404,6 +404,7 @@ import {ProfReviewViewComponent} from './view/Prof/learn-teacher/prof-review-vie
         ClassRoomListComponent,
         EtudiantssViewComponent,
         HomeComponent,
+        SyntheseSessionCoursListComponent,
         QuizViewComponent,
         EtudiantCreateComponent,
         EtudiantEditComponent,

@@ -7,6 +7,7 @@ import {Prof} from '../../../../controller/model/prof.model';
 import {SessionCours} from '../../../../controller/model/session-cours.model';
 import {ProfessorService} from '../../../../controller/service/professor.service';
 import {SyntheseSessionCoursService} from '../../../../controller/service/synthese-session-cours.service';
+import {EtudiantCours} from '../../../../controller/model/etudiant-cours.model';
 @Component({
     selector: 'app-synthese-session-cours-list',
     templateUrl: './synthese-session-cours-list.component.html',
@@ -123,11 +124,11 @@ export class SyntheseSessionCoursListComponent implements OnInit {
         });
 
     }
-    get itemsSession(): Array<SessionCours> {
+    get itemsSession(): Array<EtudiantCours> {
         return this.servicePrf.itemsSession;
     }
 
-    set itemsSession(value: Array<SessionCours>) {
+    set itemsSession(value: Array<EtudiantCours>) {
         this.servicePrf.itemsSession = value;
     }
     get viewDialogProf(): boolean {
