@@ -41,9 +41,7 @@
             </div>
 
             <div style="background-color: white; width: 100%" id="mistake">
-                <!--<h3 style="margin-top: 100px;margin-bottom: 20px; text-align: center">{{this.selected.libelle}} </h3>-->
                 <span class="p-float-label" style="margin-left: 10%; margin-bottom: 20px; margin-top: 100px">
-                    <!--<textarea id="float-input-correct-mistake" [disabled]="disable? true: null" [(ngModel)]="this.selected.libelle" (keyup)="correctMistake()" pInputTextarea></textarea>-->
                     <div id="div-output">
                         <output *ngFor="let i of numberofword" id="output-correct-mistake"> <span id="span-output-{{i}}" [style.color]="answerCorrectOrFalse[i]? '#0a80bb' : 'red'" [style.textDecoration]="answerCorrectOrFalse[i]? 'none' : 'line-through'" >  {{this.questionanswers[i]}} </span> <span id="span-correct-{{i}}" class="span-correct" [style.visibility]="answerCorrectOrFalse[i]? 'hidden' : 'visible'"> {{this.correctanswers[i]}} </span> </output>
                         <h3 id="translate-correct-mistake" style="text-align: right"> {{this.translate}}</h3>
@@ -59,6 +57,10 @@
                     <output style="margin-left: 20px; margin-right: 10px; font-size: 30px; font-family: 'Goudy Old Style'">False </output><p-inputSwitch [(ngModel)]="on_off"></p-inputSwitch> <output style="margin-left: 10px; font-size: 30px; font-family: 'Goudy Old Style'">True</output>
 
                 </div>
+            </div>
+            <div id="type-input" style="background-color: white; width: 100%; ">
+                <h3 style="text-align: center; margin-top: 100px; margin-bottom: 100px">{{this.question1}} <input type="text" id="type-question-input" disabled style="margin-left: 5px; margin-right: 5px; color: #1af045; border: 1px solid #4d646f; width: 120px; height: 30px; font-size: 25px" [(ngModel)]="this.correctAnswers[0].lib"> {{this.question2}}</h3>
+                <h3 id="translate-input" style="text-align: right"> {{this.translate}}</h3>
             </div>
             <div style="margin-left: 40%; margin-top: 50px">
                 <button pButton pRipple type="button" style="width: 200px;" label="{{this.button}}" (click)="start()" class="p-button-outlined p-button-success"></button>

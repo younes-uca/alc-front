@@ -3,7 +3,7 @@
     <div class="p-col-6">{{this.selected.numero}} out of {{this.items.length}}</div>
 </div>
 <div class="p-grid">
-    <div class="p-col-fixed" style="width: 20%">
+    <div class="p-col-fixed" style="width: 8%">
         <p-table [value]="this.items">
             <ng-template pTemplate="header">
                 <tr>
@@ -28,7 +28,7 @@
     <div class="p-col">
         <div class="p-grid" id="bodyRadio">
             <div class="p-col-6" id="question">
-                <h3 style="margin-top: 100px;margin-bottom: 100px; text-align: center">{{this.question1}} <span id="myAnswer" [style.color]="this.isCorrect? '#1af045' : 'red'">{{this.myAnswerEtudiant[0].reponse.lib}} </span> <span id="pp-preview" [style.visibility]="this.isCorrect? 'hidden' : 'visible'"> {{this.correctAnswers[0].lib}} </span> {{this.question2}}</h3>
+                <h3 style="margin-top: 100px;margin-bottom: 100px; text-align: center">{{this.question1}} <span id="myAnswer" [style.color]="this.isCorrect? '#1af045' : 'red'">{{this.reponseRadio}} </span> <span id="pp-preview" [style.visibility]="this.isCorrect? 'hidden' : 'visible'"> {{this.correctAnswers[0].lib}} </span> {{this.question2}}</h3>
                 <h3 id="translate-choix-unique" style="text-align: right"> {{this.translate}}</h3>
             </div>
             <div class="p-col-6" id="answers" >
@@ -41,11 +41,9 @@
             </div>
 
             <div style="background-color: white; width: 100%" id="mistake">
-                <!--<h3 style="margin-top: 100px;margin-bottom: 20px; text-align: center">{{this.selected.libelle}} </h3>-->
                 <span class="p-float-label" style="margin-left: 10%; margin-bottom: 20px; margin-top: 100px">
-                    <!--<textarea id="float-input-correct-mistake" [disabled]="disable? true: null" [(ngModel)]="this.selected.libelle" (keyup)="correctMistake()" pInputTextarea></textarea>-->
                     <div id="div-output">
-                        <output *ngFor="let i of numberofword" id="output-correct-mistake"> <span id="span-output-{{i}}" [style.color]="answerCorrectOrFalse[i]? '#0a80bb' : 'red'" [style.textDecoration]="answerCorrectOrFalse[i]? 'none' : 'line-through'" >  {{this.myAnswerEtudiant[0].answer}} </span> <span id="span-correct-{{i}}" class="span-correct" [style.visibility]="answerCorrectOrFalse[i]? 'hidden' : 'visible'"> {{this.correctanswers[i]}} </span> </output>
+                        <output *ngFor="let i of numberofword" id="output-correct-mistake"> <span id="span-output-{{i}}"  >  {{this.myanswers[i]}} </span> <span id="span-correct-{{i}}" class="span-correct" > {{this.correctanswers[i]}} </span> </output>
                         <h3 id="translate-correct-mistake" style="text-align: right"> {{this.translate}}</h3>
                     </div>
                 </span>
@@ -59,6 +57,11 @@
                     <output style="margin-left: 20px; margin-right: 10px; font-size: 30px; font-family: 'Goudy Old Style'">False </output><p-inputSwitch [(ngModel)]="on_off"></p-inputSwitch> <output style="margin-left: 10px; font-size: 30px; font-family: 'Goudy Old Style'">True</output>
 
                 </div>
+            </div>
+
+            <div id="type-input" style="background-color: white; width: 100%; ">
+                <h3 style="text-align: center; margin-top: 100px; margin-bottom: 100px">{{this.question1}} <input type="text" id="type-question-input" disabled style="margin-left: 5px; margin-right: 5px; color: #0a80bb; border: 1px solid #4d646f; width: 120px; height: 30px; font-size: 25px" [(ngModel)]="this.reponseInput"> <span id="tooltiptext-input" [style.visibility]="input_true_false? 'hidden' : 'visible'">{{this.correctAnswers[0].lib}}</span> {{this.question2}}</h3>
+                <h3 id="translate-input" [style.visibility]="disableInput? 'visible' : 'hidden'" style="text-align: right"> {{this.translate}}</h3>
             </div>
             <div style="margin-left: 40%; margin-top: 50px">
                 <button pButton pRipple type="button" style="width: 200px;" label="{{this.button}}" (click)="start()" class="p-button-outlined p-button-success"></button>
@@ -76,6 +79,56 @@
                     style="margin-left: 10%" type="button"></button>
         </div>
     </div>
+
+    <div class="p-col-fixed" style="width: 20%">
+        <div class="p-col-3 product-grid-item"  style="width: 100%;">
+            <div class="product-grid-item-content" >
+                <div style="margin-top: 20px">
+
+                    <h5><u style="color: #8b8b90; margin-left: 5px">{{this.selectedDict.word}}</u>  {{this.selectedDict.definition}}</h5>
+                    <div class="p-inputgroup" >
+                        <p-autoComplete [(ngModel)]="wordDictionnary" [suggestions]="filteredDict" (completeMethod)="filterDict($event)" field="word" [minLength]="1"></p-autoComplete>
+                        <button type="button" pButton pRipple icon="pi pi-search"  (click)="findByWord()" ></button>
+                        <button type="button" pButton pRipple icon="pi pi-plus" style="background-color: #8b8b90" (click)="openCreateDict()" ></button>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 15px">
+                    <p-tabMenu [model]="menu" [activeItem]="menu[0]" style="width: 100%;" ></p-tabMenu>
+
+
+                    <div  id="categoriess" style="width: 100%;margin-top: 15px" >
+                        <p-table [value]="itemssection2" id="categ" style="margin-top: 20px; margin-right: 30px;">
+
+                            <ng-template let-section  pTemplate="body" >
+                                <tr class="timeline">
+                                    <li>
+                                        <td (click)="Section(section.categorieSection.libelle)"
+                                            [style.color]="(section.categorieSection.libelle) == (this.selectedsection.categorieSection.libelle)? '#8b8b90' :'#1BA7AF' "
+                                            style="cursor: pointer; font-weight: 600;margin-left: 5px"><u>{{section.categorieSection.libelle}}</u></td>
+                                    </li></tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                    <div  id="word" style="margin-top: 5px; width: 0px; height: 0px" [style.visibility]="'hidden'">
+
+                        <p-table  id="wrd" [value]="itemsDict" [rows]="5" [paginator]="true" [rowHover]="true" dataKey="id" style="margin-top: 20px; width: 0px">
+
+                            <ng-template let-dict  pTemplate="body" >
+                                <tr>
+
+                                    <td style="font-weight: 800; text-align: center; color: #1BA7AF;cursor: pointer" (click)="dictEdit(dict)"><b>{{dict.word}}</b></td>
+                                </tr>
+                            </ng-template>
+
+                        </p-table>
+                    </div>
+                    <app-chat1 id="chat" [style.visibility]="'hidden'"></app-chat1>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
+<app-dictionary-create></app-dictionary-create>
+<app-dictionary-edit></app-dictionary-edit>

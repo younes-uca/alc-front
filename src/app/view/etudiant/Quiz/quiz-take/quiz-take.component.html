@@ -5,7 +5,7 @@
             <div class="p-col-6">{{this.selected.numero}} out of {{this.items.length}}</div>
         </div>
         <div >
-            <i class="pi pi-volume-up" style="font-size: 1.5rem; cursor: pointer" (click)="sound(this.selected.libelle)"></i>
+            <i class="pi pi-volume-up" style="font-size: 1.5rem; cursor: pointer" (click)="sound()"></i>
         </div>
         <div class="p-grid" id="bodyRadio">
             <div class="p-col-6" id="question">
@@ -44,7 +44,9 @@
                 </div>
             </div>
             <div id="type-input" style="background-color: white; width: 100%; ">
-                <h3 style="text-align: center; margin-top: 100px; margin-bottom: 100px">{{this.question1}} <input type="text" style="margin-left: 5px; margin-right: 5px; color: #0a80bb; border: 1px solid #4d646f; width: 80px; height: 30px" placeholder="{{this.placeholderTypeInput}}"> {{this.question2}}</h3>
+                <h3 style="text-align: center; margin-top: 100px; margin-bottom: 100px">{{this.question1}} <input type="text" id="type-question-input" [attr.disabled]="disableInput? true: null" style="margin-left: 5px; margin-right: 5px; color: #0a80bb; border: 1px solid #4d646f; width: 120px; height: 30px; font-size: 25px" [(ngModel)]="this.reponseInput" placeholder="{{this.placeholderTypeInput}}"> <span id="tooltiptext-input" [style.visibility]="input_true_false? 'hidden' : 'visible'">{{this.correctAnswers[0].lib}}</span> {{this.question2}}</h3>
+                <h3 id="translate-input" [style.visibility]="disableInput? 'visible' : 'hidden'" style="text-align: right"> {{this.translate}}</h3>
+                <button pButton pRipple id="check-input" type="button" style="width: 200px; margin-left: 30%; margin-top: 50px" label="Check" (click)="checkCorrectMistake()" class="p-button-outlined p-button-success"></button>
             </div>
             <div style="margin-left: 40%; margin-top: 50px">
                 <button pButton pRipple type="button" style="width: 200px;" [style.visibility]="disable? 'visible' : 'hidden'" label="{{this.button}}" (click)="start()" class="p-button-outlined p-button-success"></button>
